@@ -75,7 +75,9 @@ class _MyDrawerState extends State<MyDrawer> {
               color: Color(0xff6e475b),
               size: 25,
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed('/Login');
+            },
           ),
           ListTile(
             trailing: Icon(Icons.chevron_right, color: Colors.grey),
