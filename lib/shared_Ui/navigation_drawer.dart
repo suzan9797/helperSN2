@@ -5,11 +5,6 @@ class MyDrawer extends StatefulWidget {
   _MyDrawerState createState() => _MyDrawerState();
 }
 
-class _MyDrawer extends StatefulWidget {
-  @override
-  _MyDrawerState createState() => _MyDrawerState();
-}
-
 class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
@@ -76,7 +71,7 @@ class _MyDrawerState extends State<MyDrawer> {
               size: 25,
             ),
             onTap: () {
-              Navigator.of(context).pushNamed('/Login');
+              Navigator.of(context).pushNamed('Login');
             },
           ),
           ListTile(

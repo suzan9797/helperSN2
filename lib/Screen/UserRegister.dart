@@ -237,7 +237,9 @@ class _UserRegister extends State<UserRegister> {
                     width: 5,
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushNamed('Login');
+                    },
                     child: Text('Login',
                         style: TextStyle(
                             color: Color(0xff6e475b),

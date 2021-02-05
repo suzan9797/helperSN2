@@ -14,8 +14,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/UserRegister': (context) => UserRegister(),
-        '/Login': (context) => Login(),
+        'UserRegister': (context) {
+          return UserRegister();
+        },
+        'Login': (context) {
+          return Login();
+        },
       },
       theme: AppTheme.appTheme,
       home: OnBoarding(),
