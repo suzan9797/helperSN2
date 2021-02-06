@@ -75,7 +75,7 @@ class _HomeMaintenceState extends State<HomeMaintence> {
             ),
           ),
           Container(
-            height: 400,
+            height: 350,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: GridView(
@@ -96,7 +96,9 @@ class _HomeMaintenceState extends State<HomeMaintence> {
                         ),
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushNamed("Carpentry");
+                    },
                   ),
                   InkWell(
                     child: GridTile(
