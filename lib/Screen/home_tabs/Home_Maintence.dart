@@ -64,13 +64,13 @@ class _HomeMaintenceState extends State<HomeMaintence> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(left: 40, top: 35),
+            padding: const EdgeInsets.only(left: 40, top: 20),
             child: Text(
               'Gategory:',
               style: TextStyle(
                 color: Color(0xff925e78),
                 fontWeight: FontWeight.w600,
-                fontSize: 20,
+                fontSize: 30,
               ),
             ),
           ),

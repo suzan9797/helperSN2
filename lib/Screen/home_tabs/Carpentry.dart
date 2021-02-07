@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helper/Screen/home_tabs/rating.dart';
 
 class Carpentry extends StatefulWidget {
   @override
@@ -6,12 +7,7 @@ class Carpentry extends StatefulWidget {
 }
 
 class _CarpentryState extends State<Carpentry> {
-  var mobilelist = [
-    {
-      'name': 'Mohmmed Ali',
-      'Time': '5 min a way',
-    }
-  ];
+  int _Rating;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,15 +52,26 @@ class _CarpentryState extends State<Carpentry> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
-                                    Text(
-                                      '5 min away',
-                                      style: TextStyle(
-                                        color: Colors.red,
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        '5 min away',
+                                        style: TextStyle(
+                                          color: Colors.red,
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
+                              ),
+                              Rating(
+                                (rating) {
+                                  setState(() {
+                                    _Rating = rating;
+                                  });
+                                },
                               ),
                             ],
                           ),
@@ -76,7 +83,7 @@ class _CarpentryState extends State<Carpentry> {
               ),
             ),
             onTap: () {
-              print('detils');
+              Navigator.of(context).pushNamed('details');
             },
           );
         },
