@@ -51,7 +51,6 @@ flutter:
       - images/bg.png
       - images/bg1.png
       - images/bg2.png
-      - images/bg3.png
       - images/Logo.png
       - images/carpentry.png
       - images/electrical.png
@@ -60,8 +59,11 @@ flutter:
       - images/grass.png
       - images/painting.png
       - images/plumbing.png
-      - images/profilePicture.png
-      - images/rent.png
+      - images/electronics.png
+      - images/house.png
+      - images/other.png
+      - images/puzzle.png
+      - images/tools-and-utensils.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
