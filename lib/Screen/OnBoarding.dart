@@ -39,6 +39,7 @@ class _OnBoardingState extends State<OnBoarding> {
                       Text(
                         'Welcome',
                         style: TextStyle(
+                          fontFamily: 'YuseiMagic',
                           color: Colors.white,
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
@@ -51,6 +52,7 @@ class _OnBoardingState extends State<OnBoarding> {
                         child: Text(
                           'Everything you need in your house from here',
                           style: TextStyle(
+                            fontFamily: 'YuseiMagic',
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             fontSize: 18,
@@ -77,7 +79,10 @@ class _OnBoardingState extends State<OnBoarding> {
                   child: Text(
                     'GET STARTED',
                     style: TextStyle(
-                        color: Colors.white, fontSize: 16, letterSpacing: 1.3),
+                        fontFamily: 'YuseiMagic',
+                        color: Colors.white,
+                        fontSize: 16,
+                        letterSpacing: 1.3),
                   ),
                   onPressed: () {
                     Navigator.push(

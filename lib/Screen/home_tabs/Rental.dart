@@ -27,6 +27,7 @@ class _RentalState extends State<Rental> {
                   child: Text(
                     'Online Rental',
                     style: TextStyle(
+                      fontFamily: 'YuseiMagic',
                       color: Color(0xff925e78),
                       fontSize: 30,
                       fontWeight: FontWeight.w600,
@@ -39,6 +40,7 @@ class _RentalState extends State<Rental> {
                   child: Text(
                     'FOR ALL PRDUCTS IN YOUR HOME',
                     style: TextStyle(
+                      fontFamily: 'YuseiMagic',
                       color: Color(0xff925e78),
                       fontSize: 20,
                     ),
@@ -55,9 +57,10 @@ class _RentalState extends State<Rental> {
           child: Text(
             'Category',
             style: TextStyle(
-                fontSize: 30,
-                color: Color(0xff925e78),
-                fontWeight: FontWeight.w600),
+              fontSize: 30,
+              color: Color(0xff925e78),
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
         Container(
