@@ -19,9 +19,7 @@ class CategoryCard extends StatelessWidget {
           child: Column(
             children: [
               image,
-              SizedBox(
-                height: 8,
-              ),
+              SizedBox(height: 8),
               Text(
                 name,
                 style: TextStyle(

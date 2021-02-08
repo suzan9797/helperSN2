@@ -31,11 +31,11 @@ class _UserRegister extends State<UserRegister> {
         ),
       ),
       //end background design
-      Column(
+      ListView(
         children: [
           Center(
             child: Container(
-              margin: EdgeInsets.only(top: 50),
+              margin: EdgeInsets.only(top: 30),
               child: Text(
                 'Sign up',
                 style: TextStyle(
@@ -67,10 +67,8 @@ class _UserRegister extends State<UserRegister> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //start text first name
-                  Text(
-                    'First Name:',
-                    style: TextStyle(color: Colors.grey[800], fontSize: 20),
-                  ),
+                  Text('First Name:',
+                      style: TextStyle(color: Colors.grey[800], fontSize: 20)),
                   Padding(padding: EdgeInsets.only(top: 10)),
                   TextFormField(
                     decoration: InputDecoration(
@@ -202,40 +200,33 @@ class _UserRegister extends State<UserRegister> {
               RaisedButton(
                 color: Color(0xff6e475b),
                 padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('home');
+                },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      'SIGN UP',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontFamily: 'YuseiMagic'),
-                    ),
+                    Text('SIGN UP',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontFamily: 'YuseiMagic')),
                     Container(
                         padding: EdgeInsets.only(left: 5),
-                        child: Icon(
-                          Icons.arrow_forward,
-                          color: Colors.white,
-                        ))
+                        child: Icon(Icons.arrow_forward, color: Colors.white))
                   ],
                 ),
               ),
-              //end login button
+              //end sign up button
               SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Already have an account?",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
+                  Text("Already have an account?",
+                      style: TextStyle(color: Colors.black)),
+                  SizedBox(width: 5),
                   InkWell(
                     onTap: () {
                       Navigator.of(context).pushNamed('Login');

@@ -85,14 +85,7 @@ class _OnBoardingState extends State<OnBoarding> {
                         letterSpacing: 1.3),
                   ),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return HomeScreen();
-                        },
-                      ),
-                    );
+                    Navigator.of(context).pushNamed('home');
                   },
                 ),
               ),

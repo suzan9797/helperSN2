@@ -10,7 +10,6 @@ class _RentalState extends State<Rental> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      //crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
           width: MediaQuery.of(context).size.width,
@@ -40,10 +39,9 @@ class _RentalState extends State<Rental> {
                   child: Text(
                     'FOR ALL PRDUCTS IN YOUR HOME',
                     style: TextStyle(
-                      fontFamily: 'YuseiMagic',
-                      color: Color(0xff925e78),
-                      fontSize: 20,
-                    ),
+                        fontFamily: 'YuseiMagic',
+                        color: Color(0xff925e78),
+                        fontSize: 20),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -55,22 +53,25 @@ class _RentalState extends State<Rental> {
         Container(
           padding: EdgeInsets.all(10),
           child: Text(
-            'Category',
+            'Rental Categories',
             style: TextStyle(
-              fontSize: 30,
-              color: Color(0xff925e78),
-              fontWeight: FontWeight.w600,
-            ),
+                fontSize: 30,
+                color: Color(0xff925e78),
+                fontWeight: FontWeight.w600),
           ),
         ),
+        SizedBox(height: 5),
         Container(
           height: 350,
           child: GridView(
             gridDelegate:
                 SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
             children: [
+              //Electronics
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushNamed('electronic');
+                },
                 child: GridTile(
                     child: CategoryCard(
                         Image.asset(
@@ -80,6 +81,7 @@ class _RentalState extends State<Rental> {
                         ),
                         'Electronics')),
               ),
+              //Home
               InkWell(
                 onTap: () {},
                 child: GridTile(
@@ -91,6 +93,7 @@ class _RentalState extends State<Rental> {
                         ),
                         'Home')),
               ),
+              //Tools
               InkWell(
                 onTap: () {},
                 child: GridTile(
@@ -102,6 +105,7 @@ class _RentalState extends State<Rental> {
                         ),
                         'Tools')),
               ),
+              //Games
               InkWell(
                 onTap: () {},
                 child: GridTile(
@@ -113,6 +117,7 @@ class _RentalState extends State<Rental> {
                         ),
                         'Games')),
               ),
+              //Others
               InkWell(
                 onTap: () {},
                 child: GridTile(

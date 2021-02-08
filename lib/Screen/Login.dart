@@ -43,9 +43,8 @@ class _LoginState extends State<Login> {
                 children: [
                   Padding(padding: EdgeInsets.only(top: 80)),
                   CircleAvatar(
-                    radius: 60.0,
-                    backgroundImage: AssetImage('images/Logo.png'),
-                  ),
+                      radius: 60.0,
+                      backgroundImage: AssetImage('images/Logo.png')),
                   Center(
                     child: Container(
                       margin: EdgeInsets.only(top: 10),
@@ -170,7 +169,9 @@ class _LoginState extends State<Login> {
                   RaisedButton(
                     color: Color(0xff6e475b),
                     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('home');
+                    },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30)),
                     child: Row(
