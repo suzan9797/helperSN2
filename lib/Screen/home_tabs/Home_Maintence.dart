@@ -114,7 +114,9 @@ class _HomeMaintenceState extends State<HomeMaintence> {
                         ),
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushNamed("Grass");
+                    },
                   ),
                   InkWell(
                     child: GridTile(
@@ -130,7 +132,9 @@ class _HomeMaintenceState extends State<HomeMaintence> {
                         ),
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushNamed("Painting");
+                    },
                   ),
                   InkWell(
                     child: GridTile(
@@ -146,7 +150,9 @@ class _HomeMaintenceState extends State<HomeMaintence> {
                         ),
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushNamed("Plumbing");
+                    },
                   ),
                   InkWell(
                     child: GridTile(
@@ -162,7 +168,9 @@ class _HomeMaintenceState extends State<HomeMaintence> {
                         ),
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushNamed("Electrical");
+                    },
                   ),
                   InkWell(
                     child: GridTile(
@@ -178,7 +186,9 @@ class _HomeMaintenceState extends State<HomeMaintence> {
                         ),
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushNamed("AirCondition");
+                    },
                   ),
                 ],
               ),
