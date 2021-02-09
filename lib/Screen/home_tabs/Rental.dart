@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Category_card.dart';
+import '../../shared_Ui/Category_card.dart';
 
 class Rental extends StatefulWidget {
   @override
