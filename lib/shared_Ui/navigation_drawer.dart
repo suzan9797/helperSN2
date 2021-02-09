@@ -36,15 +36,17 @@ class _MyDrawerState extends State<MyDrawer> {
           ListTile(
             trailing: Icon(Icons.chevron_right, color: Colors.grey),
             title: Text(
-              ('Gategory'),
+              ('Home Page'),
               style: TextStyle(fontSize: 18),
             ),
             leading: Icon(
-              Icons.category,
+              Icons.home,
               color: Color(0xff6e475b),
               size: 25,
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed('home');
+            },
           ),
           ListTile(
             trailing: Icon(Icons.chevron_right, color: Colors.grey),

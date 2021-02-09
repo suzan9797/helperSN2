@@ -83,7 +83,9 @@ class _RentalState extends State<Rental> {
               ),
               //Home
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushNamed('RentHome');
+                },
                 child: GridTile(
                     child: CategoryCard(
                         Image.asset(
@@ -95,7 +97,9 @@ class _RentalState extends State<Rental> {
               ),
               //Tools
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushNamed('RentTools');
+                },
                 child: GridTile(
                     child: CategoryCard(
                         Image.asset(
@@ -107,7 +111,9 @@ class _RentalState extends State<Rental> {
               ),
               //Games
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushNamed('RentGames');
+                },
                 child: GridTile(
                     child: CategoryCard(
                         Image.asset(
@@ -119,7 +125,9 @@ class _RentalState extends State<Rental> {
               ),
               //Others
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushNamed('RentOther');
+                },
                 child: GridTile(
                     child: CategoryCard(
                         Image.asset(
