@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:helper/Screen/Electronics.dart';
+import 'package:helper/Screen/Rent/RentElectronics.dart';
+import 'package:helper/Screen/Rent/RentGames.dart';
+import 'package:helper/Screen/Rent/RentHome.dart';
+import 'package:helper/Screen/Rent/RentOther.dart';
+import 'package:helper/Screen/Rent/RentTools.dart';
 import 'package:helper/Screen/home_screen.dart';
 import 'package:helper/Screen/home_tabs/Carpentry.dart';
 import 'package:helper/Screen/login.dart';
@@ -56,6 +60,18 @@ class MyApp extends StatelessWidget {
         'AirCondition': (context) {
           return AirCondition();
         },
+        'RentHome': (context) {
+          return RentHome();
+        },
+        'RentTools': (context) {
+          return RentTools();
+        },
+        'RentGames': (context) {
+          return RentGames();
+        },
+        'RentOther': (context) {
+          return RentOther();
+        }
       },
       theme: AppTheme.appTheme,
       home: OnBoarding(),
