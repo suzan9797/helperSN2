@@ -82,7 +82,9 @@ class _PaintingState extends State<Painting> {
                 ),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed('details');
+            },
           );
         },
       ),

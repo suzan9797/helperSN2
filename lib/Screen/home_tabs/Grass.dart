@@ -82,7 +82,9 @@ class _GrassState extends State<Grass> {
                 ),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed('details');
+            },
           );
         },
       ),

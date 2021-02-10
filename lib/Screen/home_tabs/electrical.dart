@@ -82,7 +82,9 @@ class _ElectricalState extends State<Electrical> {
                 ),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed('details');
+            },
           );
         },
       ),

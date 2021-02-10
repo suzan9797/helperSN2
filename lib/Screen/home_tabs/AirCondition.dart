@@ -40,7 +40,7 @@ class _AirConditionState extends State<AirCondition> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Text(
-                                'Mohammed',
+                                'Abd Al-Rahman',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Color(0xff925e78),
@@ -57,7 +57,7 @@ class _AirConditionState extends State<AirCondition> {
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        '2 min away',
+                                        '7 min away',
                                         style: TextStyle(
                                           color: Colors.red,
                                         ),
@@ -82,7 +82,9 @@ class _AirConditionState extends State<AirCondition> {
                 ),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed('details');
+            },
           );
         },
       ),

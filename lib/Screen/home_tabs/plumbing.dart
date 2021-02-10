@@ -82,7 +82,9 @@ class _PlumbingState extends State<Plumbing> {
                 ),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed('details');
+            },
           );
         },
       ),
