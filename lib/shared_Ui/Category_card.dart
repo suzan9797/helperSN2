@@ -8,12 +8,12 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(16),
       child: Container(
         decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [BoxShadow(blurRadius: 2, color: Colors.grey)]),
+            borderRadius: BorderRadius.circular(100),
+            boxShadow: [BoxShadow(blurRadius: 2, color: Colors.grey[400])]),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -23,7 +23,7 @@ class CategoryCard extends StatelessWidget {
               Text(
                 name,
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 22,
                   color: Color((0xff6e475b)),
                 ),
               )
