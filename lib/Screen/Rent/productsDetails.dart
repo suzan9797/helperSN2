@@ -79,7 +79,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                             text:
                                 'Take your tunes on the go with the powerful JBL Flip 5. Our lightweight Bluetooth speaker goes anywhere. Bad weather? Not to worry. With its waterproof design, you can rock out to our signature sound rain or shine. Move more. Pair two JBL PartyBoost-compatible speakers together for stereo sound or link multiple JBL PartyBoost-compatible speakers to create a bigger party. Enjoy up to 12 hours of play time for your favorite music. Stand it vertical or horizontal and be bold with your choice of 11 vibrant colors.',
                             style:
-                                TextStyle(fontSize: 20, color: Colors.black)),
+                                TextStyle(fontSize: 18, color: Colors.black)),
                       ]),
                     ),
                   )
@@ -87,7 +87,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
               ),
             ),
             //end column description
-            SizedBox(height: 15),
+            SizedBox(height: 30),
             RaisedButton(
               color: Color(0xff6e475b),
               padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
