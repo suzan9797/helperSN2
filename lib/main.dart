@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:helper/Screen/Rent/RentElectronics.dart';
 import 'package:helper/Screen/Rent/RentGames.dart';
 import 'package:helper/Screen/Rent/RentHome.dart';
+import 'package:helper/Screen/Rent/RentIt.dart';
 import 'package:helper/Screen/Rent/RentOther.dart';
 import 'package:helper/Screen/Rent/RentTools.dart';
 import 'package:helper/Screen/Rent/productsDetails.dart';
@@ -75,6 +76,9 @@ class MyApp extends StatelessWidget {
         },
         'productsDetails': (context) {
           return ProductsDetails();
+        },
+        'RentIt': (context) {
+          return RentIt();
         }
       },
       theme: AppTheme.appTheme,

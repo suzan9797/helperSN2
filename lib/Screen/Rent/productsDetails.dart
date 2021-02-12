@@ -67,6 +67,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
             ),
             //start column description
             Container(
+              width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.all(8),
               child: Column(
                 children: [
@@ -88,26 +89,41 @@ class _ProductsDetailsState extends State<ProductsDetails> {
             ),
             //end column description
             SizedBox(height: 30),
-            RaisedButton(
-              color: Color(0xff6e475b),
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-              onPressed: () {},
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30)),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'SUPMIT',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontFamily: 'YuseiMagic',
-                        letterSpacing: 1.3),
-                  ),
-                ],
+            //start rent button
+            Center(
+              child: Container(
+                margin: EdgeInsets.only(bottom: 20),
+                child: Column(
+                  children: [
+                    RaisedButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('RentIt');
+                      },
+                      color: Color(0xff6e475b),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30)),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Rent it',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontFamily: 'YuseiMagic',
+                              letterSpacing: 1.3,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
+            //end rent button
           ],
         ));
   }
