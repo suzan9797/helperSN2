@@ -1,6 +1,5 @@
-import 'package:flutter/gestures.dart';
+//import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:helper/shared_Ui/navigation_drawer.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -12,11 +11,6 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     var mdw = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        title: Text('LOGIN'),
-        centerTitle: true,
-      ),
-      drawer: MyDrawer(),
       body: Stack(
         children: [
           Container(
@@ -47,7 +41,7 @@ class _LoginState extends State<Login> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Padding(padding: EdgeInsets.only(top: 20)),
+                  Padding(padding: EdgeInsets.only(top: 60)),
                   CircleAvatar(
                       radius: 60.0,
                       backgroundImage: AssetImage('images/Logo.png')),
@@ -74,7 +68,7 @@ class _LoginState extends State<Login> {
             children: [
               Center(
                 child: Container(
-                  margin: EdgeInsets.only(top: 220),
+                  margin: EdgeInsets.only(top: 250),
                   height: 250,
                   width: mdw / 1.2,
                   decoration: BoxDecoration(
@@ -174,7 +168,7 @@ class _LoginState extends State<Login> {
 
           Center(
             child: Container(
-              margin: EdgeInsets.only(top: 500),
+              margin: EdgeInsets.only(top: 550),
               child: Column(
                 children: [
                   //start login button
@@ -206,7 +200,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   //end login button
-                  SizedBox(height: 10),
+                  SizedBox(height: 15),
                   InkWell(
                     onTap: () {},
                     child: Text(
@@ -217,7 +211,7 @@ class _LoginState extends State<Login> {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  SizedBox(height: 70),
+                  SizedBox(height: 90),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -228,7 +222,7 @@ class _LoginState extends State<Login> {
                       SizedBox(width: 5),
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).pushNamed('UserRegister');
+                          Navigator.of(context).pushNamed('JoinOptions');
                         },
                         child: Text('Sign up',
                             style: TextStyle(

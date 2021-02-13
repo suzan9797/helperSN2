@@ -4,6 +4,36 @@ class UserRegister extends StatefulWidget {
   _UserRegister createState() => _UserRegister();
 }
 
+Widget input({String labelText, String hintText, bool scure}) {
+  return Expanded(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(labelText,
+            style: TextStyle(color: Colors.grey[800], fontSize: 20)),
+        Padding(padding: EdgeInsets.only(top: 10)),
+        TextFormField(
+          obscureText: scure,
+          decoration: InputDecoration(
+            labelStyle: TextStyle(color: Colors.grey[600]),
+            hintText: hintText,
+            filled: true,
+            fillColor: Colors.white,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(40),
+              borderSide: BorderSide(color: Colors.grey),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(40),
+              borderSide: BorderSide(color: Colors.grey),
+            ),
+          ),
+        )
+      ],
+    ),
+  );
+}
+
 class _UserRegister extends State<UserRegister> {
   @override
   Widget build(BuildContext context) {
@@ -51,157 +81,58 @@ class _UserRegister extends State<UserRegister> {
       ListView(
         children: [
           Center(
-            child: Container(
-              margin: EdgeInsets.only(top: 90),
-              height: 520,
-              width: mdw / 1.2,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.black,
-                      spreadRadius: 0.4,
-                      offset: Offset(1, 1))
-                ],
-              ),
-              child: Form(
-                child: Container(
-                  padding: EdgeInsets.all(15),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      //start text first name
-                      Text('First Name:',
-                          style:
-                              TextStyle(color: Colors.grey[800], fontSize: 20)),
-                      Padding(padding: EdgeInsets.only(top: 10)),
-                      TextFormField(
-                        decoration: InputDecoration(
-                          labelStyle: TextStyle(color: Colors.grey[600]),
-                          hintText: 'Enter Your First Name',
-                          filled: true,
-                          fillColor: Colors.white,
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                        ),
-                      ),
-                      //end text first name
-                      SizedBox(height: 5),
-                      //start text last name
-                      Text(
-                        'Last Name:',
-                        style: TextStyle(color: Colors.grey[800], fontSize: 20),
-                      ),
-                      Padding(padding: EdgeInsets.only(top: 10)),
-                      TextFormField(
-                        decoration: InputDecoration(
-                          labelStyle: TextStyle(color: Colors.grey[600]),
-                          hintText: 'Enter Your Last Name',
-                          filled: true,
-                          fillColor: Colors.white,
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                        ),
-                      ),
-                      //end text Last Name
-                      SizedBox(height: 5),
-                      //start text email
-                      Text(
-                        'Email:',
-                        style: TextStyle(color: Colors.grey[800], fontSize: 20),
-                      ),
-                      Padding(padding: EdgeInsets.only(top: 10)),
-                      TextFormField(
-                        decoration: InputDecoration(
-                          labelStyle: TextStyle(color: Colors.grey[600]),
-                          hintText: 'Enter Your Email',
-                          filled: true,
-                          fillColor: Colors.white,
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                        ),
-                      ),
-                      //end text email
-                      SizedBox(height: 5),
-                      //start text city
-                      Text(
-                        'City:',
-                        style: TextStyle(color: Colors.grey[800], fontSize: 20),
-                      ),
-                      Padding(padding: EdgeInsets.only(top: 10)),
-                      TextFormField(
-                        decoration: InputDecoration(
-                          labelStyle: TextStyle(color: Colors.grey[600]),
-                          hintText: 'Enter Your City',
-                          filled: true,
-                          fillColor: Colors.white,
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                        ),
-                      ),
-                      //end text email
-                      SizedBox(height: 5),
-                      //start text password
-                      Text(
-                        'Password:',
-                        style: TextStyle(color: Colors.grey[800], fontSize: 20),
-                      ),
-                      Padding(padding: EdgeInsets.only(top: 10)),
-                      TextFormField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          labelStyle: TextStyle(color: Colors.grey[600]),
-                          hintText: 'Enter Your password',
-                          filled: true,
-                          fillColor: Colors.white,
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                        ),
-                      ),
-                      //end text passwoed
+              child: Container(
+                  margin: EdgeInsets.only(top: 90),
+                  height: 530,
+                  width: mdw / 1.2,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black,
+                          spreadRadius: 0.4,
+                          offset: Offset(1, 1))
                     ],
                   ),
-                ),
-              ),
-            ),
-          ),
+                  child: Form(
+                      child: Container(
+                    padding: EdgeInsets.all(15),
+                    child: Column(
+                      children: [
+                        input(
+                            labelText: 'First Name',
+                            hintText: ' Your First Name',
+                            scure: false),
+                        SizedBox(width: 5),
+                        input(
+                            labelText: 'Last Name',
+                            hintText: ' Your Last Name',
+                            scure: false),
+                        SizedBox(height: 5),
+                        input(
+                            labelText: 'Email',
+                            hintText: 'Enter Your Email',
+                            scure: false),
+                        SizedBox(height: 5),
+                        input(
+                            labelText: 'City',
+                            hintText: 'Enter Your City',
+                            scure: false),
+                        SizedBox(height: 5),
+                        input(
+                            labelText: 'password',
+                            hintText: 'Enter Your password',
+                            scure: true),
+                      ],
+                    ),
+                  ))))
         ],
       ),
       //end box form
       Center(
         child: Container(
-          margin: EdgeInsets.only(top: 650),
+          margin: EdgeInsets.only(top: 655),
           child: Column(
             children: [
               //start sign up button
