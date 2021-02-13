@@ -213,9 +213,7 @@ class _LoginState extends State<Login> {
                         "Don't have an account?",
                         style: TextStyle(color: Colors.black),
                       ),
-                      SizedBox(
-                        width: 5,
-                      ),
+                      SizedBox(width: 5),
                       InkWell(
                         onTap: () {
                           Navigator.of(context).pushNamed('UserRegister');

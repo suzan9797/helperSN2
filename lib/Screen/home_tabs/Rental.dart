@@ -76,8 +76,8 @@ class _RentalState extends State<Rental> {
                     child: CategoryCard(
                         Image.asset(
                           'images/electronics.png',
-                          width: 110,
-                          height: 110,
+                          width: 90,
+                          height: 90,
                         ),
                         'Electronics')),
               ),
@@ -90,8 +90,8 @@ class _RentalState extends State<Rental> {
                     child: CategoryCard(
                         Image.asset(
                           'images/house.png',
-                          width: 110,
-                          height: 110,
+                          width: 90,
+                          height: 90,
                         ),
                         'Home')),
               ),
@@ -104,8 +104,8 @@ class _RentalState extends State<Rental> {
                     child: CategoryCard(
                         Image.asset(
                           'images/tools-and-utensils.png',
-                          width: 110,
-                          height: 110,
+                          width: 90,
+                          height: 90,
                         ),
                         'Tools')),
               ),
@@ -118,8 +118,8 @@ class _RentalState extends State<Rental> {
                     child: CategoryCard(
                         Image.asset(
                           'images/puzzle.png',
-                          width: 110,
-                          height: 110,
+                          width: 90,
+                          height: 90,
                         ),
                         'Games')),
               ),
@@ -132,8 +132,8 @@ class _RentalState extends State<Rental> {
                     child: CategoryCard(
                         Image.asset(
                           'images/other.png',
-                          width: 110,
-                          height: 110,
+                          width: 90,
+                          height: 90,
                         ),
                         'Others')),
               ),

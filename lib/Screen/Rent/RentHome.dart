@@ -21,12 +21,6 @@ class _RentHomeState extends State<RentHome> {
       'time': 'SR/hours',
       'image': 'images/speaker.jpg'
     },
-    {
-      'name': 'Speker',
-      'price': '20',
-      'time': 'SR/hours',
-      'image': 'images/speaker.jpg'
-    },
   ];
 
   @override

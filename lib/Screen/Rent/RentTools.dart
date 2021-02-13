@@ -21,24 +21,6 @@ class _RentToolsState extends State<RentTools> {
       'time': 'SR/hours',
       'image': 'images/speaker.jpg'
     },
-    {
-      'name': 'Speker',
-      'price': '20',
-      'time': 'SR/hours',
-      'image': 'images/speaker.jpg'
-    },
-    {
-      'name': 'Speker',
-      'price': '20',
-      'time': 'SR/hours',
-      'image': 'images/speaker.jpg'
-    },
-    {
-      'name': 'Speker',
-      'price': '20',
-      'time': 'SR/hours',
-      'image': 'images/speaker.jpg'
-    },
   ];
 
   @override

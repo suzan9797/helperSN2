@@ -21,24 +21,6 @@ class _ElectronicsState extends State<Electronics> {
       'time': 'SR/hours',
       'image': 'images/speaker.jpg'
     },
-    {
-      'name': 'Speker',
-      'price': '20',
-      'time': 'SR/hours',
-      'image': 'images/speaker.jpg'
-    },
-    {
-      'name': 'Speker',
-      'price': '20',
-      'time': 'SR/hours',
-      'image': 'images/speaker.jpg'
-    },
-    {
-      'name': 'Speker',
-      'price': '20',
-      'time': 'SR/hours',
-      'image': 'images/speaker.jpg'
-    },
   ];
 
   @override

@@ -33,7 +33,7 @@ class Products extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w800,
-                                color: Color(0xff925e78))),
+                                color: Color(0xff6e475b))),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -43,10 +43,13 @@ class Products extends StatelessWidget {
                             Text(price,
                                 style: TextStyle(
                                     fontSize: 18, color: Colors.blue)),
-                            SizedBox(width: 2),
-                            Text(time,
-                                style: TextStyle(
-                                    fontSize: 14, color: Colors.grey[600])),
+                            SizedBox(width: 5),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 8),
+                              child: Text(time,
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.grey[600])),
+                            ),
                           ],
                         ),
                       ),
@@ -56,7 +59,9 @@ class Products extends StatelessWidget {
           ],
         )),
       ),
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).pushNamed('productsDetails');
+      },
     );
   }
 }
