@@ -23,20 +23,6 @@ class _MyDrawerState extends State<MyDrawer> {
           ListTile(
             trailing: Icon(Icons.chevron_right, color: Colors.grey),
             title: Text(
-              ('Gategory'),
-              semanticsLabel: ('MY Order'),
-              style: TextStyle(fontSize: 18),
-            ),
-            leading: Icon(
-              Icons.home_repair_service_sharp,
-              color: Color(0xff6e475b),
-              size: 25,
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            trailing: Icon(Icons.chevron_right, color: Colors.grey),
-            title: Text(
               ('Home Page'),
               style: TextStyle(fontSize: 18),
             ),
@@ -47,6 +33,21 @@ class _MyDrawerState extends State<MyDrawer> {
             ),
             onTap: () {
               Navigator.of(context).pushNamed('home');
+            },
+          ),
+          ListTile(
+            trailing: Icon(Icons.chevron_right, color: Colors.grey),
+            title: Text(
+              ('Profile'),
+              style: TextStyle(fontSize: 18),
+            ),
+            leading: Icon(
+              Icons.person,
+              color: Color(0xff6e475b),
+              size: 25,
+            ),
+            onTap: () {
+              Navigator.of(context).pushNamed('ProfilePage ');
             },
           ),
           ListTile(

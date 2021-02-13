@@ -16,6 +16,7 @@ import 'Screen/home_tabs/details.dart';
 import 'Screen/home_tabs/electrical.dart';
 import 'Screen/home_tabs/painting.dart';
 import 'Screen/home_tabs/plumbing.dart';
+import 'Screen/profilePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -71,7 +72,10 @@ class MyApp extends StatelessWidget {
         },
         'RentOther': (context) {
           return RentOther();
-        }
+        },
+        'ProfilePage ': (context) {
+          return ProfilePage();
+        },
       },
       theme: AppTheme.appTheme,
       home: OnBoarding(),

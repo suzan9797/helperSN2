@@ -67,7 +67,8 @@ flutter:
       - images/tools-and-utensils.png
       - images/farmer.png
       - images/pro.png
-      - images/
+      - images/speaker.jpg
+      - images/profilePicture.png
   #   - images/a_dot_ham.jpeg
 
   fonts:

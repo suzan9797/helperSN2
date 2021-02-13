@@ -49,10 +49,10 @@ class Products extends StatelessWidget {
                                     fontSize: 14, color: Colors.grey[600])),
                           ],
                         ),
-                      )
+                      ),
                     ],
                   )),
-            )
+            ),
           ],
         )),
       ),
