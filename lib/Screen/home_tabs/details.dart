@@ -5,10 +5,10 @@ import 'package:intl/intl.dart';
 
 class Details extends StatefulWidget {
   @override
-  _Details createState() => _Details();
+  _DetailsState createState() => _DetailsState();
 }
 
-class _Details extends State<Details> {
+class _DetailsState extends State<Details> {
   String _date = "Choose the Date";
 
   Widget _buildDescribtion() {
@@ -21,7 +21,7 @@ class _Details extends State<Details> {
             borderRadius: BorderRadius.circular(55),
           ),
         ),
-        maxLines: 7,
+        maxLines: 8,
       ),
     );
   }

@@ -57,7 +57,7 @@ class _MyDrawerState extends State<MyDrawer> {
               style: TextStyle(fontSize: 18),
             ),
             leading: Icon(
-              Icons.how_to_reg_rounded,
+              Icons.favorite,
               color: Color(0xff6e475b),
               size: 25,
             ),
@@ -89,7 +89,9 @@ class _MyDrawerState extends State<MyDrawer> {
               color: Color(0xff6e475b),
               size: 25,
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed('Settings');
+            },
           ),
         ],
       ),
