@@ -48,147 +48,155 @@ class _UserRegister extends State<UserRegister> {
         ],
       ),
       //start box form
-      Center(
-        child: Container(
-          height: 520,
-          width: mdw / 1.2,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.black, spreadRadius: 0.4, offset: Offset(1, 1))
-            ],
-          ),
-          child: Form(
+      ListView(
+        children: [
+          Center(
             child: Container(
-              padding: EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  //start text first name
-                  Text('First Name:',
-                      style: TextStyle(color: Colors.grey[800], fontSize: 20)),
-                  Padding(padding: EdgeInsets.only(top: 10)),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelStyle: TextStyle(color: Colors.grey[600]),
-                      hintText: 'Enter Your First Name',
-                      filled: true,
-                      fillColor: Colors.white,
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(color: Colors.grey),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(color: Colors.grey),
-                      ),
-                    ),
-                  ),
-                  //end text first name
-                  SizedBox(height: 5),
-                  //start text last name
-                  Text(
-                    'Last Name:',
-                    style: TextStyle(color: Colors.grey[800], fontSize: 20),
-                  ),
-                  Padding(padding: EdgeInsets.only(top: 10)),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelStyle: TextStyle(color: Colors.grey[600]),
-                      hintText: 'Enter Your Last Name',
-                      filled: true,
-                      fillColor: Colors.white,
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(color: Colors.grey),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(color: Colors.grey),
-                      ),
-                    ),
-                  ),
-                  //end text Last Name
-                  SizedBox(height: 5),
-                  //start text email
-                  Text(
-                    'Email:',
-                    style: TextStyle(color: Colors.grey[800], fontSize: 20),
-                  ),
-                  Padding(padding: EdgeInsets.only(top: 10)),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelStyle: TextStyle(color: Colors.grey[600]),
-                      hintText: 'Enter Your Email',
-                      filled: true,
-                      fillColor: Colors.white,
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(color: Colors.grey),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(color: Colors.grey),
-                      ),
-                    ),
-                  ),
-                  //end text email
-                  SizedBox(height: 5),
-                  //start text city
-                  Text(
-                    'City:',
-                    style: TextStyle(color: Colors.grey[800], fontSize: 20),
-                  ),
-                  Padding(padding: EdgeInsets.only(top: 10)),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelStyle: TextStyle(color: Colors.grey[600]),
-                      hintText: 'Enter Your City',
-                      filled: true,
-                      fillColor: Colors.white,
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(color: Colors.grey),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(color: Colors.grey),
-                      ),
-                    ),
-                  ),
-                  //end text email
-                  SizedBox(height: 5),
-                  //start text password
-                  Text(
-                    'Password:',
-                    style: TextStyle(color: Colors.grey[800], fontSize: 20),
-                  ),
-                  Padding(padding: EdgeInsets.only(top: 10)),
-                  TextFormField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      labelStyle: TextStyle(color: Colors.grey[600]),
-                      hintText: 'Enter Your password',
-                      filled: true,
-                      fillColor: Colors.white,
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(color: Colors.grey),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(color: Colors.grey),
-                      ),
-                    ),
-                  ),
-                  //end text passwoed
+              margin: EdgeInsets.only(top: 90),
+              height: 520,
+              width: mdw / 1.2,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black,
+                      spreadRadius: 0.4,
+                      offset: Offset(1, 1))
                 ],
+              ),
+              child: Form(
+                child: Container(
+                  padding: EdgeInsets.all(15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //start text first name
+                      Text('First Name:',
+                          style:
+                              TextStyle(color: Colors.grey[800], fontSize: 20)),
+                      Padding(padding: EdgeInsets.only(top: 10)),
+                      TextFormField(
+                        decoration: InputDecoration(
+                          labelStyle: TextStyle(color: Colors.grey[600]),
+                          hintText: 'Enter Your First Name',
+                          filled: true,
+                          fillColor: Colors.white,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(40),
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(40),
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                        ),
+                      ),
+                      //end text first name
+                      SizedBox(height: 5),
+                      //start text last name
+                      Text(
+                        'Last Name:',
+                        style: TextStyle(color: Colors.grey[800], fontSize: 20),
+                      ),
+                      Padding(padding: EdgeInsets.only(top: 10)),
+                      TextFormField(
+                        decoration: InputDecoration(
+                          labelStyle: TextStyle(color: Colors.grey[600]),
+                          hintText: 'Enter Your Last Name',
+                          filled: true,
+                          fillColor: Colors.white,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(40),
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(40),
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                        ),
+                      ),
+                      //end text Last Name
+                      SizedBox(height: 5),
+                      //start text email
+                      Text(
+                        'Email:',
+                        style: TextStyle(color: Colors.grey[800], fontSize: 20),
+                      ),
+                      Padding(padding: EdgeInsets.only(top: 10)),
+                      TextFormField(
+                        decoration: InputDecoration(
+                          labelStyle: TextStyle(color: Colors.grey[600]),
+                          hintText: 'Enter Your Email',
+                          filled: true,
+                          fillColor: Colors.white,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(40),
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(40),
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                        ),
+                      ),
+                      //end text email
+                      SizedBox(height: 5),
+                      //start text city
+                      Text(
+                        'City:',
+                        style: TextStyle(color: Colors.grey[800], fontSize: 20),
+                      ),
+                      Padding(padding: EdgeInsets.only(top: 10)),
+                      TextFormField(
+                        decoration: InputDecoration(
+                          labelStyle: TextStyle(color: Colors.grey[600]),
+                          hintText: 'Enter Your City',
+                          filled: true,
+                          fillColor: Colors.white,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(40),
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(40),
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                        ),
+                      ),
+                      //end text email
+                      SizedBox(height: 5),
+                      //start text password
+                      Text(
+                        'Password:',
+                        style: TextStyle(color: Colors.grey[800], fontSize: 20),
+                      ),
+                      Padding(padding: EdgeInsets.only(top: 10)),
+                      TextFormField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          labelStyle: TextStyle(color: Colors.grey[600]),
+                          hintText: 'Enter Your password',
+                          filled: true,
+                          fillColor: Colors.white,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(40),
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(40),
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                        ),
+                      ),
+                      //end text passwoed
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
-        ),
+        ],
       ),
       //end box form
       Center(

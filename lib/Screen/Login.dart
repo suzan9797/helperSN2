@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:helper/shared_Ui/navigation_drawer.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -11,6 +12,11 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     var mdw = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        title: Text('LOGIN'),
+        centerTitle: true,
+      ),
+      drawer: MyDrawer(),
       body: Stack(
         children: [
           Container(
@@ -41,7 +47,7 @@ class _LoginState extends State<Login> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Padding(padding: EdgeInsets.only(top: 80)),
+                  Padding(padding: EdgeInsets.only(top: 20)),
                   CircleAvatar(
                       radius: 60.0,
                       backgroundImage: AssetImage('images/Logo.png')),
@@ -64,105 +70,111 @@ class _LoginState extends State<Login> {
           //end avatar
 
           //start box form
-          Center(
-            child: Container(
-              margin: EdgeInsets.only(top: 50),
-              height: 250,
-              width: mdw / 1.2,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.black,
-                      spreadRadius: 0.4,
-                      offset: Offset(1, 1))
-                ],
-              ),
-              child: Form(
+          ListView(
+            children: [
+              Center(
                 child: Container(
-                  margin: EdgeInsets.only(top: 10),
-                  padding: EdgeInsets.all(15),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      //start text email
-                      Text(
-                        'Email:',
-                        style: TextStyle(color: Colors.grey[800], fontSize: 20),
-                      ),
-                      Padding(padding: EdgeInsets.only(top: 10)),
-                      TextFormField(
-                        decoration: InputDecoration(
-                          labelStyle: TextStyle(color: Colors.grey[600]),
-                          hintText: 'Enter Your Email',
-                          filled: true,
-                          fillColor: Colors.white,
-                          prefixIcon: Padding(
-                            padding: EdgeInsets.only(left: 10),
-                            child: Icon(
-                              Icons.email,
-                              size: 30,
-                              color: Color(0xff6e475b),
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                        ),
-                      ),
-                      //end text email
-
-                      //start text password
-                      SizedBox(height: 10),
-                      Text(
-                        'Password:',
-                        style: TextStyle(color: Colors.grey[800], fontSize: 20),
-                      ),
-
-                      Padding(padding: EdgeInsets.only(top: 10)),
-                      TextFormField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          labelStyle: TextStyle(color: Colors.grey[600]),
-                          hintText: 'Enter Your password',
-                          filled: true,
-                          fillColor: Colors.white,
-                          prefixIcon: Padding(
-                            padding: EdgeInsets.only(left: 10),
-                            child: Icon(
-                              Icons.vpn_key_sharp,
-                              size: 30,
-                              color: Color(0xff6e475b),
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                        ),
-                      ),
-                      //end text passwoed
+                  margin: EdgeInsets.only(top: 220),
+                  height: 250,
+                  width: mdw / 1.2,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black,
+                          spreadRadius: 0.4,
+                          offset: Offset(1, 1))
                     ],
+                  ),
+                  child: Form(
+                    child: Container(
+                      margin: EdgeInsets.only(top: 10),
+                      padding: EdgeInsets.all(15),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          //start text email
+                          Text(
+                            'Email:',
+                            style: TextStyle(
+                                color: Colors.grey[800], fontSize: 20),
+                          ),
+                          Padding(padding: EdgeInsets.only(top: 10)),
+                          TextFormField(
+                            decoration: InputDecoration(
+                              labelStyle: TextStyle(color: Colors.grey[600]),
+                              hintText: 'Enter Your Email',
+                              filled: true,
+                              fillColor: Colors.white,
+                              prefixIcon: Padding(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Icon(
+                                  Icons.email,
+                                  size: 30,
+                                  color: Color(0xff6e475b),
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(40),
+                                borderSide: BorderSide(color: Colors.grey),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(40),
+                                borderSide: BorderSide(color: Colors.grey),
+                              ),
+                            ),
+                          ),
+                          //end text email
+
+                          //start text password
+                          SizedBox(height: 10),
+                          Text(
+                            'Password:',
+                            style: TextStyle(
+                                color: Colors.grey[800], fontSize: 20),
+                          ),
+
+                          Padding(padding: EdgeInsets.only(top: 10)),
+                          TextFormField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              labelStyle: TextStyle(color: Colors.grey[600]),
+                              hintText: 'Enter Your password',
+                              filled: true,
+                              fillColor: Colors.white,
+                              prefixIcon: Padding(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Icon(
+                                  Icons.vpn_key_sharp,
+                                  size: 30,
+                                  color: Color(0xff6e475b),
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(40),
+                                borderSide: BorderSide(color: Colors.grey),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(40),
+                                borderSide: BorderSide(color: Colors.grey),
+                              ),
+                            ),
+                          ),
+                          //end text passwoed
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
+            ],
           ),
           //end box form
 
           Center(
             child: Container(
-              margin: EdgeInsets.only(top: 550),
+              margin: EdgeInsets.only(top: 500),
               child: Column(
                 children: [
                   //start login button
@@ -194,7 +206,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   //end login button
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   InkWell(
                     onTap: () {},
                     child: Text(
@@ -205,7 +217,7 @@ class _LoginState extends State<Login> {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  SizedBox(height: 80),
+                  SizedBox(height: 70),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
