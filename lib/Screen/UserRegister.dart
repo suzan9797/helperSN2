@@ -132,7 +132,7 @@ class _UserRegister extends State<UserRegister> {
       //end box form
       Center(
         child: Container(
-          margin: EdgeInsets.only(top: 655),
+          margin: EdgeInsets.only(top: 685),
           child: Column(
             children: [
               //start sign up button

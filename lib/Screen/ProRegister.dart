@@ -143,7 +143,7 @@ class _ProRegisterState extends State<ProRegister> {
           //end box form
           Center(
             child: Container(
-              margin: EdgeInsets.only(top: 660),
+              margin: EdgeInsets.only(top: 690),
               child: Column(
                 children: [
                   //start sign up button
