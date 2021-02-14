@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:helper/Screen/JoinOptions.dart';
+import 'package:helper/Screen/ProRegister.dart';
 import 'package:helper/Screen/Rent/RentElectronics.dart';
 import 'package:helper/Screen/Rent/RentGames.dart';
 import 'package:helper/Screen/Rent/RentHome.dart';
@@ -87,7 +89,13 @@ class MyApp extends StatelessWidget {
         },
         'Settings': (context) {
           return Settings();
-        }
+        },
+        'JoinOptions': (context) {
+          return JoinOptions();
+        },
+        'ProRegister': (context) {
+          return ProRegister();
+        },
       },
       theme: AppTheme.appTheme,
       home: OnBoarding(),

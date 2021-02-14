@@ -10,6 +10,7 @@ class Settings extends StatelessWidget {
         brightness: Brightness.light,
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.grey.shade200,
+        centerTitle: true,
         title: Text(
           'Settings',
           style: TextStyle(
