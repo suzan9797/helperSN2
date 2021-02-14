@@ -12,7 +12,7 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
-  String _date = "Choose the Date";
+  String _date = " ";
   String userAddress;
   String manualAddress;
   String userDistrict;
@@ -25,13 +25,21 @@ class _DetailsState extends State<Details> {
   }
 
   getLocation() async {
-    Position position = await Geolocator()
-        .getCurrentPosition(desiredAccuracy: prefix0.LocationAccuracy.high);
+    print('GetLocation Function in Proccess');
+    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: prefix0.LocationAccuracy.high);
     debugPrint('location: ${position.latitude}');
-    debugPrint('long= ' + position.longitude.toString());
     final coordinates = new Coordinates(position.latitude, position.longitude);
-    final addresses =
-        await Geocoder.local.findAddressesFromCoordinates(coordinates);
+    var addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
+    var first = addresses.first;
+    userAddress = 'https://www.google.com/maps/search/?api=1&query=' + position.latitude.toString() + ',' + position.longitude.toString();
+    print("${first.featureName} : ${first.addressLine}");
+    print('https://www.google.com/maps/search/?api=1&query=' + position.latitude.toString() + ',' + position.longitude.toString());
+    print(userAddress);
+    print(addresses.last.subLocality);
+    setState(() {
+      userDistrict=addresses.last.subLocality;
+      userLocality=first.addressLine;
+    });
   }
 
   Widget _buildDescribtion() {
@@ -71,13 +79,34 @@ class _DetailsState extends State<Details> {
           ),
           _buildDescribtion(),
           SizedBox(
-            height: 20,
+            height: 5,
           ),
+          Divider(
+            color: Color(0xff6e475b),
+          ),
+          SizedBox(height: 5),
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Icon(
+                  Icons.date_range_outlined,
+                  size: 30,
+                  color: Color(0xff6e475b),
+                ),
+              ),
+              Text(
+                'Date and Time:',
+                style: TextStyle(color: Colors.grey[800], fontSize: 18),
+              ),
+            ],
+          ),
+          SizedBox(height: 7),
           RaisedButton(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
             ),
-            elevation: 4.0,
+            elevation: 1.0,
             onPressed: () {
               DatePicker.showDateTimePicker(context,
                   theme: DatePickerTheme(
@@ -107,11 +136,6 @@ class _DetailsState extends State<Details> {
                       Container(
                         child: Row(
                           children: <Widget>[
-                            Icon(
-                              Icons.date_range,
-                              size: 18.0,
-                              color: Color(0xff6e475b),
-                            ),
                             Text(
                               " $_date",
                               style: TextStyle(
@@ -125,7 +149,7 @@ class _DetailsState extends State<Details> {
                     ],
                   ),
                   Text(
-                    "  Change",
+                    "  Choose",
                     style: TextStyle(
                         color: Color(0xff6e475b),
                         fontWeight: FontWeight.bold,
@@ -136,14 +160,12 @@ class _DetailsState extends State<Details> {
             ),
             color: Colors.white,
           ),
-          SizedBox(height: 25),
-          Text(
-            'Location:',
-            style: TextStyle(color: Colors.grey[800], fontSize: 20),
+          SizedBox(height: 10),
+          Divider(
+            color: Color(0xff6e475b),
           ),
-          Padding(padding: EdgeInsets.only(top: 10)),
+          SizedBox(height: 5),
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.all(4.0),
@@ -154,12 +176,34 @@ class _DetailsState extends State<Details> {
                 ),
               ),
               Text(
-                userLocality,
-              )
+                'Location:',
+                style: TextStyle(color: Colors.grey[800], fontSize: 20),
+              ),
             ],
           ),
+          Padding(padding: EdgeInsets.only(top: 10)),
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Text(
+                    userLocality,
+                    style: TextStyle(
+                      color: Color(0xff6e475b),
+                      fontSize: 12.5,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+          Divider(
+            color: Color(0xff6e475b),
+          ),
           Padding(
-            padding: const EdgeInsets.only(top: 160),
+            padding: const EdgeInsets.only(top: 75),
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
