@@ -35,6 +35,9 @@ Widget input({String labelText, String hintText, bool scure}) {
 }
 
 class _UserRegister extends State<UserRegister> {
+  String valueChoose;
+  List listitem = ['Jeddah', 'Riyadh', 'Dammam'];
+
   @override
   Widget build(BuildContext context) {
     var mdw = MediaQuery.of(context).size.width;
@@ -99,7 +102,9 @@ class _UserRegister extends State<UserRegister> {
                       child: Container(
                     padding: EdgeInsets.all(15),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Padding(padding: EdgeInsets.only(top: 10)),
                         input(
                             labelText: 'First Name',
                             hintText: ' Your First Name',
@@ -115,10 +120,39 @@ class _UserRegister extends State<UserRegister> {
                             hintText: 'Enter Your Email',
                             scure: false),
                         SizedBox(height: 5),
-                        input(
-                            labelText: 'City',
-                            hintText: 'Enter Your City',
-                            scure: false),
+                        Text('City',
+                            style: TextStyle(
+                                color: Colors.grey[800], fontSize: 20)),
+                        SizedBox(height: 6),
+                        Container(
+                          padding: EdgeInsets.only(left: 5, right: 5),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(40),
+                          ),
+                          child: DropdownButton(
+                              hint: Text('Select your city:'),
+                              icon: Icon(Icons.arrow_drop_down),
+                              iconSize: 35,
+                              isExpanded: true,
+                              underline: SizedBox(),
+                              style: TextStyle(
+                                  color: Colors.grey[600], fontSize: 17),
+                              value: valueChoose,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  valueChoose = newValue;
+                                });
+                              },
+                              items: listitem.map((valueItem) {
+                                return DropdownMenuItem(
+                                  value: valueItem,
+                                  child: Text(valueItem),
+                                );
+                              }).toList()),
+                        ),
+
+                        //end dropDown
                         SizedBox(height: 5),
                         input(
                             labelText: 'password',
