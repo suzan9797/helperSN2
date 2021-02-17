@@ -1,5 +1,6 @@
 //import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -41,7 +42,7 @@ class _LoginState extends State<Login> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Padding(padding: EdgeInsets.only(top: 60)),
+                  Padding(padding: EdgeInsets.only(top: 90)),
                   CircleAvatar(
                       radius: 60.0,
                       backgroundImage: AssetImage('images/Logo.png')),
@@ -68,7 +69,7 @@ class _LoginState extends State<Login> {
             children: [
               Center(
                 child: Container(
-                  margin: EdgeInsets.only(top: 250),
+                  margin: EdgeInsets.only(top: 260),
                   height: 250,
                   width: mdw / 1.2,
                   decoration: BoxDecoration(
@@ -168,7 +169,7 @@ class _LoginState extends State<Login> {
 
           Center(
             child: Container(
-              margin: EdgeInsets.only(top: 550),
+              margin: EdgeInsets.only(top: 590),
               child: Column(
                 children: [
                   //start login button
