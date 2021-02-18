@@ -1,6 +1,6 @@
 //import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -8,6 +8,28 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  //start form controller
+
+  TextEditingController email = new TextEditingController();
+  TextEditingController password = new TextEditingController();
+
+  GlobalKey<FormState> formStateLogin = new GlobalKey<FormState>();
+
+  String vaildglobal(String val) {
+    if (val.isEmpty) {
+      return "field can't empty";
+    }
+  }
+
+  login() {
+    var formdata = formStateLogin.currentState;
+    if (formdata.validate()) {
+      print("valid");
+    } else {
+      print("not valid");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var mdw = MediaQuery.of(context).size.width;
@@ -70,7 +92,7 @@ class _LoginState extends State<Login> {
               Center(
                 child: Container(
                   margin: EdgeInsets.only(top: 260),
-                  height: 250,
+                  height: 280,
                   width: mdw / 1.2,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -83,6 +105,7 @@ class _LoginState extends State<Login> {
                     ],
                   ),
                   child: Form(
+                    key: formStateLogin,
                     child: Container(
                       margin: EdgeInsets.only(top: 10),
                       padding: EdgeInsets.all(15),
@@ -96,30 +119,8 @@ class _LoginState extends State<Login> {
                                 color: Colors.grey[800], fontSize: 20),
                           ),
                           Padding(padding: EdgeInsets.only(top: 10)),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              labelStyle: TextStyle(color: Colors.grey[600]),
-                              hintText: 'Enter Your Email',
-                              filled: true,
-                              fillColor: Colors.white,
-                              prefixIcon: Padding(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Icon(
-                                  Icons.email,
-                                  size: 30,
-                                  color: Color(0xff6e475b),
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40),
-                                borderSide: BorderSide(color: Colors.grey),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40),
-                                borderSide: BorderSide(color: Colors.grey),
-                              ),
-                            ),
-                          ),
+                          buildTextFormFieldAll(
+                              'Enter Your Email', false, email, vaildglobal),
                           //end text email
 
                           //start text password
@@ -129,33 +130,10 @@ class _LoginState extends State<Login> {
                             style: TextStyle(
                                 color: Colors.grey[800], fontSize: 20),
                           ),
-
                           Padding(padding: EdgeInsets.only(top: 10)),
-                          TextFormField(
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              labelStyle: TextStyle(color: Colors.grey[600]),
-                              hintText: 'Enter Your password',
-                              filled: true,
-                              fillColor: Colors.white,
-                              prefixIcon: Padding(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Icon(
-                                  Icons.vpn_key_sharp,
-                                  size: 30,
-                                  color: Color(0xff6e475b),
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40),
-                                borderSide: BorderSide(color: Colors.grey),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40),
-                                borderSide: BorderSide(color: Colors.grey),
-                              ),
-                            ),
-                          ),
+                          buildTextFormFieldAll('Enter Your password', true,
+                              password, vaildglobal),
+
                           //end text passwoed
                         ],
                       ),
@@ -169,16 +147,17 @@ class _LoginState extends State<Login> {
 
           Center(
             child: Container(
-              margin: EdgeInsets.only(top: 590),
+              margin: EdgeInsets.only(top: 620),
               child: Column(
                 children: [
                   //start login button
                   RaisedButton(
                     color: Color(0xff6e475b),
                     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('home');
-                    },
+                    onPressed: login,
+                    // () {
+                    //   Navigator.of(context).pushNamed('home');
+                    // },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30)),
                     child: Row(
@@ -212,7 +191,7 @@ class _LoginState extends State<Login> {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  SizedBox(height: 90),
+                  SizedBox(height: 65),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -237,6 +216,29 @@ class _LoginState extends State<Login> {
             ),
           )
         ],
+      ),
+    );
+  }
+
+  TextFormField buildTextFormFieldAll(String myhinttext, bool pass,
+      TextEditingController mycontroller, myvalid) {
+    return TextFormField(
+      controller: mycontroller,
+      obscureText: pass,
+      validator: myvalid,
+      decoration: InputDecoration(
+        labelStyle: TextStyle(color: Colors.grey[600]),
+        hintText: myhinttext,
+        filled: true,
+        fillColor: Colors.white,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(40),
+          borderSide: BorderSide(color: Colors.grey),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(40),
+          borderSide: BorderSide(color: Colors.grey),
+        ),
       ),
     );
   }

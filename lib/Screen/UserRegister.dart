@@ -4,36 +4,6 @@ class UserRegister extends StatefulWidget {
   _UserRegister createState() => _UserRegister();
 }
 
-Widget input({String labelText, String hintText, bool scure}) {
-  return Expanded(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(labelText,
-            style: TextStyle(color: Colors.grey[800], fontSize: 20)),
-        Padding(padding: EdgeInsets.only(top: 10)),
-        TextFormField(
-          obscureText: scure,
-          decoration: InputDecoration(
-            labelStyle: TextStyle(color: Colors.grey[600]),
-            hintText: hintText,
-            filled: true,
-            fillColor: Colors.white,
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(40),
-              borderSide: BorderSide(color: Colors.grey),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(40),
-              borderSide: BorderSide(color: Colors.grey),
-            ),
-          ),
-        )
-      ],
-    ),
-  );
-}
-
 class _UserRegister extends State<UserRegister> {
   String valueChoose;
   List listitem = ['Jeddah', 'Riyadh', 'Dammam'];
@@ -105,20 +75,38 @@ class _UserRegister extends State<UserRegister> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(padding: EdgeInsets.only(top: 10)),
-                        input(
-                            labelText: 'First Name',
-                            hintText: ' Your First Name',
-                            scure: false),
-                        SizedBox(width: 5),
-                        input(
-                            labelText: 'Last Name',
-                            hintText: ' Your Last Name',
-                            scure: false),
+                        //start text first name
+                        Text(
+                          'First Name:',
+                          style:
+                              TextStyle(color: Colors.grey[800], fontSize: 20),
+                        ),
+                        Padding(padding: EdgeInsets.only(top: 10)),
+                        buildTextFormFieldAll('Enter Your First Name', false),
+                        //end text first name
                         SizedBox(height: 5),
-                        input(
-                            labelText: 'Email',
-                            hintText: 'Enter Your Email',
-                            scure: false),
+
+                        //start text last name
+                        Text(
+                          'Last Name:',
+                          style:
+                              TextStyle(color: Colors.grey[800], fontSize: 20),
+                        ),
+                        Padding(padding: EdgeInsets.only(top: 10)),
+                        buildTextFormFieldAll('Enter Your Last Name', false),
+                        //end text last name
+                        SizedBox(height: 5),
+
+                        //start text email
+                        Text(
+                          'Email:',
+                          style:
+                              TextStyle(color: Colors.grey[800], fontSize: 20),
+                        ),
+                        Padding(padding: EdgeInsets.only(top: 10)),
+                        buildTextFormFieldAll('Enter Your Email', false),
+                        //end text email
+
                         SizedBox(height: 5),
                         Text('City',
                             style: TextStyle(
@@ -154,10 +142,17 @@ class _UserRegister extends State<UserRegister> {
 
                         //end dropDown
                         SizedBox(height: 5),
-                        input(
-                            labelText: 'password',
-                            hintText: 'Enter Your password',
-                            scure: true),
+
+                        //start text passwoed
+                        Text(
+                          'Password:',
+                          style:
+                              TextStyle(color: Colors.grey[800], fontSize: 20),
+                        ),
+                        Padding(padding: EdgeInsets.only(top: 10)),
+                        buildTextFormFieldAll('Enter Your password', true),
+
+                        //end text passwoed
                       ],
                     ),
                   ))))
@@ -216,5 +211,25 @@ class _UserRegister extends State<UserRegister> {
         ),
       ),
     ]));
+  }
+
+  TextFormField buildTextFormFieldAll(String myhinttext, bool pass) {
+    return TextFormField(
+      obscureText: pass,
+      decoration: InputDecoration(
+        labelStyle: TextStyle(color: Colors.grey[600]),
+        hintText: myhinttext,
+        filled: true,
+        fillColor: Colors.white,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(40),
+          borderSide: BorderSide(color: Colors.grey),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(40),
+          borderSide: BorderSide(color: Colors.grey),
+        ),
+      ),
+    );
   }
 }
