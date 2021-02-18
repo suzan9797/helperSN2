@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:helper/Screen/JoinOptions.dart';
-import 'package:helper/Screen/ProRegister.dart';
+import 'package:helper/Auth/JoinOptions.dart';
+import 'package:helper/Auth/ProRegister.dart';
 import 'package:helper/Screen/Rent/RentElectronics.dart';
 import 'package:helper/Screen/Rent/RentGames.dart';
 import 'package:helper/Screen/Rent/RentHome.dart';
@@ -13,7 +13,7 @@ import 'package:helper/Screen/home_tabs/Carpentry.dart';
 import 'package:helper/Screen/login.dart';
 import 'package:helper/utilties/app_theme.dart';
 import 'Screen/OnBoarding.dart';
-import 'Screen/UserRegister.dart';
+import 'Auth/UserRegister.dart';
 import 'Screen/home_tabs/AirCondition.dart';
 import 'Screen/home_tabs/Grass.dart';
 import 'Screen/home_tabs/details.dart';
