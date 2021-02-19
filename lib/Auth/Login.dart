@@ -15,10 +15,18 @@ class _LoginState extends State<Login> {
 
   GlobalKey<FormState> formStateLogin = new GlobalKey<FormState>();
 
-  String vaildglobal(String val) {
+  String validEmail(String val) {
     if (val.isEmpty) {
-      return "field can't empty";
+      return "Email can't to be empty";
     }
+    return null;
+  }
+
+  String validPassword(String val) {
+    if (val.isEmpty) {
+      return "Password can't to be empty";
+    }
+    return null;
   }
 
   login() {
@@ -120,7 +128,7 @@ class _LoginState extends State<Login> {
                           ),
                           Padding(padding: EdgeInsets.only(top: 10)),
                           buildTextFormFieldAll(
-                              'Enter Your Email', false, email, vaildglobal),
+                              'Enter Your Email', false, email, validEmail),
                           //end text email
 
                           //start text password
@@ -132,7 +140,7 @@ class _LoginState extends State<Login> {
                           ),
                           Padding(padding: EdgeInsets.only(top: 10)),
                           buildTextFormFieldAll('Enter Your password', true,
-                              password, vaildglobal),
+                              password, validPassword),
 
                           //end text passwoed
                         ],
