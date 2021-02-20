@@ -15,6 +15,7 @@ class _UserRegister extends State<UserRegister> {
   GlobalKey<FormState> formUserRegister = new GlobalKey<FormState>();
 
   bool autovalid = false;
+  bool isLoading = false;
   String error;
 
   String validFname(String val) {
@@ -35,6 +36,11 @@ class _UserRegister extends State<UserRegister> {
     if (val.isEmpty) {
       return "Email can't to be empty";
     }
+    if (!RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(val)) {
+      return "Enter valid email";
+    }
     return null;
   }
 
@@ -48,20 +54,21 @@ class _UserRegister extends State<UserRegister> {
   usersignup() async {
     if (!formUserRegister.currentState.validate()) {
       setState(() {
+        isLoading = false;
         autovalid = true;
       });
     } else {
       setState(() {
-        //_isLoading = true;
+        isLoading = true;
         autovalid = false;
       });
 
-      UserCredential result = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: email.text, password: password.text);
+      var result = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: email.text, password: password.text);
 
       if (result.user == null) {
         setState(() {
+          isLoading = false;
           error = 'User registeration error';
         });
       } else {
@@ -84,9 +91,15 @@ class _UserRegister extends State<UserRegister> {
 
   @override
   Widget build(BuildContext context) {
-    var mdw = MediaQuery.of(context).size.width;
     return Scaffold(
-        body: Stack(
+      body: isLoading ? _loading(context) : _form(context),
+    );
+  }
+
+  Widget _form(BuildContext context) {
+    var mdw = MediaQuery.of(context).size.width;
+
+    return Stack(
       children: [
         Container(
           height: double.infinity,
@@ -145,7 +158,8 @@ class _UserRegister extends State<UserRegister> {
                     ],
                   ),
                   child: Form(
-                      autovalidate: autovalid,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      //autovalidate: autovalid,
                       key: formUserRegister,
                       child: Container(
                         padding: EdgeInsets.all(15),
@@ -153,7 +167,7 @@ class _UserRegister extends State<UserRegister> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Padding(padding: EdgeInsets.only(top: 10)),
+                              //Padding(padding: EdgeInsets.only(top: 2)),
                               Row(
                                 children: [],
                               ),
@@ -203,14 +217,15 @@ class _UserRegister extends State<UserRegister> {
                                   border: Border.all(color: Colors.grey),
                                   borderRadius: BorderRadius.circular(40),
                                 ),
-                                child: DropdownButton(
+                                child: DropdownButtonFormField(
                                     hint: Text('Select your city:'),
                                     icon: Icon(Icons.arrow_drop_down),
                                     iconSize: 35,
                                     isExpanded: true,
-                                    underline: SizedBox(),
+
+                                    //underline: SizedBox(),
                                     style: TextStyle(
-                                        color: Colors.grey[600], fontSize: 17),
+                                        color: Colors.grey[600], fontSize: 16),
                                     value: valueChoose,
                                     onChanged: (newValue) {
                                       setState(() {
@@ -278,6 +293,7 @@ class _UserRegister extends State<UserRegister> {
                 ),
                 //end sign up button
                 SizedBox(height: 20),
+                _errorMessage(context),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -300,12 +316,12 @@ class _UserRegister extends State<UserRegister> {
           ),
         ),
       ],
-    ));
+    );
   }
 
-  // Widget _loading(BuildContext context) {
-  //   return Center(child: CircularProgressIndicator());
-  // }
+  Widget _loading(BuildContext context) {
+    return Center(child: CircularProgressIndicator());
+  }
 
   TextFormField buildTextFormFieldAll(String myhinttext, bool pass,
       TextEditingController mycontroller, myvalid) {
@@ -326,6 +342,18 @@ class _UserRegister extends State<UserRegister> {
           borderRadius: BorderRadius.circular(40),
           borderSide: BorderSide(color: Colors.grey),
         ),
+      ),
+    );
+  }
+
+  Widget _errorMessage(BuildContext context) {
+    if (error == null) {
+      return Container();
+    }
+    return Container(
+      child: Text(
+        error,
+        style: TextStyle(color: Colors.red),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:helper/Auth/JoinOptions.dart';
 import 'package:helper/Auth/ProRegister.dart';
 import 'package:helper/Screen/Rent/RentElectronics.dart';
@@ -23,7 +24,9 @@ import 'Screen/home_tabs/plumbing.dart';
 import 'Screen/profilePage.dart';
 import 'Screen/settings.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
