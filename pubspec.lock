@@ -83,9 +83,8 @@ packages:
     description:
       name: fake_async
       url: "https://pub.dartlang.org"
-    source: hosted 
+    source: hosted
     version: "1.2.0-nullsafety.1"
-    version: "1.2.0-nullsafety.3"
   firebase:
     dependency: transitive
     description:
@@ -114,7 +113,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.1"
-
   firebase_auth:
     dependency: "direct main"
     description:
@@ -137,7 +135,7 @@ packages:
     source: hosted
     version: "0.3.2+6"
   firebase_core:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase_core
       url: "https://pub.dartlang.org"
@@ -169,6 +167,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.5.0"
+  flutter_spinkit:
+    dependency: "direct main"
+    description:
+      name: flutter_spinkit
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.1.2+1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -255,18 +260,14 @@ packages:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.8.0-nullsafety.1"
-=======
-    version: "1.8.0-nullsafety.3"
   pedantic:
     dependency: transitive
     description:
       name: pedantic
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.10.0"
->>>>>>> 5516099fb6f3a7c1afd70443a1b21e7a0412c24f
+    version: "1.9.2"
   plugin_platform_interface:
     dependency: transitive
     description:

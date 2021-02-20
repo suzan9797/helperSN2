@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:helper/Auth/JoinOptions.dart';
-import 'package:helper/Auth/Login.dart';
 import 'package:helper/Auth/ProRegister.dart';
 import 'package:helper/Screen/Rent/RentElectronics.dart';
 import 'package:helper/Screen/Rent/RentGames.dart';
@@ -11,6 +11,7 @@ import 'package:helper/Screen/Rent/RentTools.dart';
 import 'package:helper/Screen/Rent/productsDetails.dart';
 import 'package:helper/Screen/home_screen.dart';
 import 'package:helper/Screen/home_tabs/Carpentry.dart';
+import 'package:helper/Auth/login.dart';
 import 'package:helper/utilties/app_theme.dart';
 import 'Screen/OnBoarding.dart';
 import 'Auth/UserRegister.dart';
@@ -23,7 +24,9 @@ import 'Screen/home_tabs/plumbing.dart';
 import 'Screen/profilePage.dart';
 import 'Screen/settings.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
