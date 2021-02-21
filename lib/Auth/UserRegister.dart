@@ -168,9 +168,7 @@ class _UserRegister extends State<UserRegister> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               //Padding(padding: EdgeInsets.only(top: 2)),
-                              Row(
-                                children: [],
-                              ),
+
                               //start text first name
                               Text(
                                 'First Name:',

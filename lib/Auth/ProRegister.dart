@@ -97,7 +97,7 @@ class _ProRegisterState extends State<ProRegister> {
               Center(
                   child: Container(
                       margin: EdgeInsets.only(top: 90),
-                      height: 530,
+                      height: 540,
                       width: mdw / 1.2,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
@@ -112,101 +112,117 @@ class _ProRegisterState extends State<ProRegister> {
                       child: Form(
                           child: Container(
                         padding: EdgeInsets.all(15),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                input(
-                                    labelText: 'First Name',
-                                    hintText: ' Your First Name',
-                                    scure: false),
-                                SizedBox(width: 6),
-                                input(
-                                    labelText: 'Last Name',
-                                    hintText: ' Your Last Name',
-                                    scure: false),
-                              ],
-                            ),
-                            SizedBox(height: 5),
-                            input(
-                                labelText: 'Email',
-                                hintText: 'Enter Your Email',
-                                scure: false),
+                        child: Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              //start text full name
+                              Text(
+                                'Full Name:',
+                                style: TextStyle(
+                                    color: Colors.grey[800], fontSize: 20),
+                              ),
+                              Padding(padding: EdgeInsets.only(top: 10)),
+                              buildTextFormFieldAll(
+                                  'Enter your full name', false),
+                              //end text full name
+                              SizedBox(height: 5),
 
-                            //Start drop pro
-                            Text('Profession',
+                              //start text email
+                              Text(
+                                'Email:',
                                 style: TextStyle(
-                                    color: Colors.grey[800], fontSize: 20)),
-                            SizedBox(height: 10),
-                            Container(
-                              padding: EdgeInsets.only(left: 5, right: 5),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(40),
+                                    color: Colors.grey[800], fontSize: 20),
                               ),
-                              child: DropdownButton(
-                                  hint: Text('Choose your profession:'),
-                                  icon: Icon(Icons.arrow_drop_down),
-                                  iconSize: 35,
-                                  isExpanded: true,
-                                  underline: SizedBox(),
+                              Padding(padding: EdgeInsets.only(top: 10)),
+                              buildTextFormFieldAll('Enter your Email', false),
+                              //end text email
+                              SizedBox(height: 5),
+
+                              //Start drop pro
+                              Text('Profession',
                                   style: TextStyle(
-                                      color: Colors.grey[600], fontSize: 17),
-                                  value: valueSelect,
-                                  onChanged: (newValue) {
-                                    setState(() {
-                                      valueSelect = newValue;
-                                    });
-                                  },
-                                  items: listpro.map((valueItem) {
-                                    return DropdownMenuItem(
-                                      value: valueItem,
-                                      child: Text(valueItem),
-                                    );
-                                  }).toList()),
-                            ),
-                            //end drop pro
-                            SizedBox(height: 10),
-                            //Start drop city
-                            Text('City',
+                                      color: Colors.grey[800], fontSize: 20)),
+                              SizedBox(height: 10),
+                              Container(
+                                padding: EdgeInsets.only(left: 5, right: 5),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(40),
+                                ),
+                                child: DropdownButton(
+                                    hint: Text('Choose your profession:'),
+                                    icon: Icon(Icons.arrow_drop_down),
+                                    iconSize: 35,
+                                    isExpanded: true,
+                                    underline: SizedBox(),
+                                    style: TextStyle(
+                                        color: Colors.grey[600], fontSize: 17),
+                                    value: valueSelect,
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        valueSelect = newValue;
+                                      });
+                                    },
+                                    items: listpro.map((valueItem) {
+                                      return DropdownMenuItem(
+                                        value: valueItem,
+                                        child: Text(valueItem),
+                                      );
+                                    }).toList()),
+                              ),
+                              //end drop pro
+                              SizedBox(height: 10),
+
+                              //Start drop city
+                              Text('City',
+                                  style: TextStyle(
+                                      color: Colors.grey[800], fontSize: 20)),
+                              SizedBox(height: 10),
+                              Container(
+                                padding: EdgeInsets.only(left: 5, right: 5),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(40),
+                                ),
+                                child: DropdownButton(
+                                    hint: Text('Select your city:'),
+                                    icon: Icon(Icons.arrow_drop_down),
+                                    iconSize: 35,
+                                    isExpanded: true,
+                                    underline: SizedBox(),
+                                    style: TextStyle(
+                                        color: Colors.grey[600], fontSize: 17),
+                                    value: valueChoose,
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        valueChoose = newValue;
+                                      });
+                                    },
+                                    items: listcity.map((valueItem) {
+                                      return DropdownMenuItem(
+                                        value: valueItem,
+                                        child: Text(valueItem),
+                                      );
+                                    }).toList()),
+                              ),
+                              //end drop city
+                              SizedBox(height: 5),
+
+                              //start text passwoed
+                              Text(
+                                'Password:',
                                 style: TextStyle(
-                                    color: Colors.grey[800], fontSize: 20)),
-                            SizedBox(height: 10),
-                            Container(
-                              padding: EdgeInsets.only(left: 5, right: 5),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(40),
+                                    color: Colors.grey[800], fontSize: 20),
                               ),
-                              child: DropdownButton(
-                                  hint: Text('Select your city:'),
-                                  icon: Icon(Icons.arrow_drop_down),
-                                  iconSize: 35,
-                                  isExpanded: true,
-                                  underline: SizedBox(),
-                                  style: TextStyle(
-                                      color: Colors.grey[600], fontSize: 17),
-                                  value: valueChoose,
-                                  onChanged: (newValue) {
-                                    setState(() {
-                                      valueChoose = newValue;
-                                    });
-                                  },
-                                  items: listcity.map((valueItem) {
-                                    return DropdownMenuItem(
-                                      value: valueItem,
-                                      child: Text(valueItem),
-                                    );
-                                  }).toList()),
-                            ),
-                            //end drop city
-                            SizedBox(height: 5),
-                            input(
-                                labelText: 'password',
-                                hintText: 'Enter Your password',
-                                scure: true),
-                          ],
+                              Padding(padding: EdgeInsets.only(top: 10)),
+                              buildTextFormFieldAll(
+                                'Enter Your password',
+                                true,
+                              )
+                              //end text passwoed
+                            ],
+                          ),
                         ),
                       ))))
             ],
@@ -265,6 +281,26 @@ class _ProRegisterState extends State<ProRegister> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  TextFormField buildTextFormFieldAll(String myhinttext, bool pass) {
+    return TextFormField(
+      obscureText: pass,
+      decoration: InputDecoration(
+        labelStyle: TextStyle(color: Colors.grey[600]),
+        hintText: myhinttext,
+        filled: true,
+        fillColor: Colors.white,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(40),
+          borderSide: BorderSide(color: Colors.grey),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(40),
+          borderSide: BorderSide(color: Colors.grey),
+        ),
       ),
     );
   }
