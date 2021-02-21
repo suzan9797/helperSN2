@@ -15,6 +15,8 @@ class _LoginState extends State<Login> {
 
   GlobalKey<FormState> formStateLogin = new GlobalKey<FormState>();
 
+  String error;
+
   String validEmail(String val) {
     if (val.isEmpty) {
       return "Email can't to be empty";
@@ -35,14 +37,16 @@ class _LoginState extends State<Login> {
     return null;
   }
 
-  login() async {
+  void login() async {
     if (formStateLogin.currentState.validate()) {
       var result = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: email.text, password: password.text);
       if (result != null) {
         Navigator.of(context).pushNamed('home');
       } else {
-        print('user not found');
+        setState(() {
+          error = 'User registeration error';
+        });
       }
     }
   }
@@ -197,6 +201,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   //end login button
+                  _errorMessage(context),
                   SizedBox(height: 15),
                   InkWell(
                     onTap: () {},
@@ -256,6 +261,18 @@ class _LoginState extends State<Login> {
           borderRadius: BorderRadius.circular(40),
           borderSide: BorderSide(color: Colors.grey),
         ),
+      ),
+    );
+  }
+
+  Widget _errorMessage(BuildContext context) {
+    if (error == null) {
+      return Container();
+    }
+    return Container(
+      child: Text(
+        error,
+        style: TextStyle(color: Colors.red),
       ),
     );
   }

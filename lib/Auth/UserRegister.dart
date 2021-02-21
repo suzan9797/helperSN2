@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class UserRegister extends StatefulWidget {
@@ -14,7 +15,7 @@ class _UserRegister extends State<UserRegister> {
 
   GlobalKey<FormState> formUserRegister = new GlobalKey<FormState>();
 
-  bool autovalid = false;
+  //bool autovalid = false;
   bool isLoading = false;
   String error;
 
@@ -51,18 +52,15 @@ class _UserRegister extends State<UserRegister> {
     return null;
   }
 
-  usersignup() async {
+  void usersignup() async {
     if (!formUserRegister.currentState.validate()) {
       setState(() {
         isLoading = false;
-        autovalid = true;
       });
     } else {
       setState(() {
         isLoading = true;
-        autovalid = false;
       });
-
       var result = await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: email.text, password: password.text);
 
@@ -72,7 +70,7 @@ class _UserRegister extends State<UserRegister> {
           error = 'User registeration error';
         });
       } else {
-        Navigator.of(context).pushNamed('home');
+        Navigator.of(context).pushNamed('Login');
       }
     }
   }
@@ -158,102 +156,94 @@ class _UserRegister extends State<UserRegister> {
                     ],
                   ),
                   child: Form(
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      //autovalidate: autovalid,
                       key: formUserRegister,
                       child: Container(
                         padding: EdgeInsets.all(15),
-                        child: Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              //Padding(padding: EdgeInsets.only(top: 2)),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            //start text first name
+                            Text(
+                              'First Name:',
+                              style: TextStyle(
+                                  color: Colors.grey[800], fontSize: 20),
+                            ),
+                            Padding(padding: EdgeInsets.only(top: 10)),
+                            buildTextFormFieldAll('Enter Your First Name',
+                                false, fname, validFname),
+                            //end text first name
+                            SizedBox(height: 5),
 
-                              //start text first name
-                              Text(
-                                'First Name:',
+                            //start text last name
+                            Text(
+                              'Last Name:',
+                              style: TextStyle(
+                                  color: Colors.grey[800], fontSize: 20),
+                            ),
+                            Padding(padding: EdgeInsets.only(top: 10)),
+                            buildTextFormFieldAll('Enter Your Last Name', false,
+                                lname, validLname),
+                            //end text last name
+                            SizedBox(height: 5),
+
+                            //start text email
+                            Text(
+                              'Email:',
+                              style: TextStyle(
+                                  color: Colors.grey[800], fontSize: 20),
+                            ),
+                            Padding(padding: EdgeInsets.only(top: 10)),
+                            buildTextFormFieldAll(
+                                'Enter Your Email', false, email, validEmail),
+                            //end text email
+
+                            SizedBox(height: 5),
+                            Text('City',
                                 style: TextStyle(
-                                    color: Colors.grey[800], fontSize: 20),
+                                    color: Colors.grey[800], fontSize: 20)),
+                            SizedBox(height: 6),
+                            Container(
+                              padding: EdgeInsets.only(left: 5, right: 5),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey),
+                                borderRadius: BorderRadius.circular(40),
                               ),
-                              Padding(padding: EdgeInsets.only(top: 10)),
-                              buildTextFormFieldAll('Enter Your First Name',
-                                  false, fname, validFname),
-                              //end text first name
-                              SizedBox(height: 5),
-
-                              //start text last name
-                              Text(
-                                'Last Name:',
-                                style: TextStyle(
-                                    color: Colors.grey[800], fontSize: 20),
-                              ),
-                              Padding(padding: EdgeInsets.only(top: 10)),
-                              buildTextFormFieldAll('Enter Your Last Name',
-                                  false, lname, validLname),
-                              //end text last name
-                              SizedBox(height: 5),
-
-                              //start text email
-                              Text(
-                                'Email:',
-                                style: TextStyle(
-                                    color: Colors.grey[800], fontSize: 20),
-                              ),
-                              Padding(padding: EdgeInsets.only(top: 10)),
-                              buildTextFormFieldAll(
-                                  'Enter Your Email', false, email, validEmail),
-                              //end text email
-
-                              SizedBox(height: 5),
-                              Text('City',
+                              child: DropdownButtonFormField(
+                                  hint: Text('Select your city:'),
+                                  icon: Icon(Icons.arrow_drop_down),
+                                  iconSize: 35,
+                                  isExpanded: true,
                                   style: TextStyle(
-                                      color: Colors.grey[800], fontSize: 20)),
-                              SizedBox(height: 6),
-                              Container(
-                                padding: EdgeInsets.only(left: 5, right: 5),
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey),
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                                child: DropdownButtonFormField(
-                                    hint: Text('Select your city:'),
-                                    icon: Icon(Icons.arrow_drop_down),
-                                    iconSize: 35,
-                                    isExpanded: true,
+                                      color: Colors.grey[600], fontSize: 16),
+                                  value: valueChoose,
+                                  onChanged: (newValue) {
+                                    setState(() {
+                                      valueChoose = newValue;
+                                    });
+                                  },
+                                  items: listitem.map((valueItem) {
+                                    return DropdownMenuItem(
+                                      value: valueItem,
+                                      child: Text(valueItem),
+                                    );
+                                  }).toList()),
+                            ),
 
-                                    //underline: SizedBox(),
-                                    style: TextStyle(
-                                        color: Colors.grey[600], fontSize: 16),
-                                    value: valueChoose,
-                                    onChanged: (newValue) {
-                                      setState(() {
-                                        valueChoose = newValue;
-                                      });
-                                    },
-                                    items: listitem.map((valueItem) {
-                                      return DropdownMenuItem(
-                                        value: valueItem,
-                                        child: Text(valueItem),
-                                      );
-                                    }).toList()),
-                              ),
+                            //end dropDown
+                            SizedBox(height: 5),
 
-                              //end dropDown
-                              SizedBox(height: 5),
+                            //start text passwoed
+                            Text(
+                              'Password:',
+                              style: TextStyle(
+                                  color: Colors.grey[800], fontSize: 20),
+                            ),
+                            Padding(padding: EdgeInsets.only(top: 10)),
+                            buildTextFormFieldAll('Enter Your password', true,
+                                password, validPasswoed)
 
-                              //start text passwoed
-                              Text(
-                                'Password:',
-                                style: TextStyle(
-                                    color: Colors.grey[800], fontSize: 20),
-                              ),
-                              Padding(padding: EdgeInsets.only(top: 10)),
-                              buildTextFormFieldAll('Enter Your password', true,
-                                  password, validPasswoed)
-
-                              //end text passwoed
-                            ],
-                          ),
+                            //end text passwoed
+                          ],
                         ),
                       ))),
             ))
