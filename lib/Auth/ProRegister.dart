@@ -47,6 +47,40 @@ class _ProRegisterState extends State<ProRegister> {
     'Electrical',
     'A/C'
   ];
+  TextEditingController username = new TextEditingController();
+  TextEditingController email = new TextEditingController();
+  TextEditingController password = new TextEditingController();
+
+  GlobalKey<FormState> formstate = new GlobalKey<FormState>();
+
+  String validglobal(String val) {
+    return "field can't empty";
+  }
+
+  String validUsername(String val) {
+    if (val.trim().isEmpty) {
+      return "username can't to be empty";
+    }
+  }
+
+  String validPassword(String val) {
+    if (val.trim().isEmpty) {
+      return "password can't to be empty";
+    }
+  }
+
+  signin() {
+    var formdata = formstate.currentState;
+    if (formdata.validate()) {
+      print('valid');
+    } else {
+      print('not valid');
+    }
+  }
+
+  signup() {
+    print('sign up');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,121 +144,125 @@ class _ProRegisterState extends State<ProRegister> {
                         ],
                       ),
                       child: Form(
+                          key: formstate,
                           child: Container(
-                        padding: EdgeInsets.all(15),
-                        child: Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              //start text full name
-                              Text(
-                                'Full Name:',
-                                style: TextStyle(
-                                    color: Colors.grey[800], fontSize: 20),
-                              ),
-                              Padding(padding: EdgeInsets.only(top: 10)),
-                              buildTextFormFieldAll(
-                                  'Enter your full name', false),
-                              //end text full name
-                              SizedBox(height: 5),
-
-                              //start text email
-                              Text(
-                                'Email:',
-                                style: TextStyle(
-                                    color: Colors.grey[800], fontSize: 20),
-                              ),
-                              Padding(padding: EdgeInsets.only(top: 10)),
-                              buildTextFormFieldAll('Enter your Email', false),
-                              //end text email
-                              SizedBox(height: 5),
-
-                              //Start drop pro
-                              Text('Profession',
-                                  style: TextStyle(
-                                      color: Colors.grey[800], fontSize: 20)),
-                              SizedBox(height: 10),
-                              Container(
-                                padding: EdgeInsets.only(left: 5, right: 5),
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey),
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                                child: DropdownButton(
-                                    hint: Text('Choose your profession:'),
-                                    icon: Icon(Icons.arrow_drop_down),
-                                    iconSize: 35,
-                                    isExpanded: true,
-                                    underline: SizedBox(),
+                            padding: EdgeInsets.all(15),
+                            child: Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  //start text full name
+                                  Text(
+                                    'Full Name:',
                                     style: TextStyle(
-                                        color: Colors.grey[600], fontSize: 17),
-                                    value: valueSelect,
-                                    onChanged: (newValue) {
-                                      setState(() {
-                                        valueSelect = newValue;
-                                      });
-                                    },
-                                    items: listpro.map((valueItem) {
-                                      return DropdownMenuItem(
-                                        value: valueItem,
-                                        child: Text(valueItem),
-                                      );
-                                    }).toList()),
-                              ),
-                              //end drop pro
-                              SizedBox(height: 10),
+                                        color: Colors.grey[800], fontSize: 20),
+                                  ),
+                                  Padding(padding: EdgeInsets.only(top: 10)),
+                                  buildTextFormFieldAll('Enter your full name',
+                                      false, username, validUsername),
+                                  //end text full name
+                                  SizedBox(height: 5),
 
-                              //Start drop city
-                              Text('City',
-                                  style: TextStyle(
-                                      color: Colors.grey[800], fontSize: 20)),
-                              SizedBox(height: 10),
-                              Container(
-                                padding: EdgeInsets.only(left: 5, right: 5),
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey),
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                                child: DropdownButton(
-                                    hint: Text('Select your city:'),
-                                    icon: Icon(Icons.arrow_drop_down),
-                                    iconSize: 35,
-                                    isExpanded: true,
-                                    underline: SizedBox(),
+                                  //start text email
+                                  Text(
+                                    'Email:',
                                     style: TextStyle(
-                                        color: Colors.grey[600], fontSize: 17),
-                                    value: valueChoose,
-                                    onChanged: (newValue) {
-                                      setState(() {
-                                        valueChoose = newValue;
-                                      });
-                                    },
-                                    items: listcity.map((valueItem) {
-                                      return DropdownMenuItem(
-                                        value: valueItem,
-                                        child: Text(valueItem),
-                                      );
-                                    }).toList()),
-                              ),
-                              //end drop city
-                              SizedBox(height: 5),
+                                        color: Colors.grey[800], fontSize: 20),
+                                  ),
+                                  Padding(padding: EdgeInsets.only(top: 10)),
+                                  buildTextFormFieldAll('Enter your Email',
+                                      false, email, validglobal),
+                                  //end text email
+                                  SizedBox(height: 5),
 
-                              //start text passwoed
-                              Text(
-                                'Password:',
-                                style: TextStyle(
-                                    color: Colors.grey[800], fontSize: 20),
+                                  //Start drop pro
+                                  Text('Profession',
+                                      style: TextStyle(
+                                          color: Colors.grey[800],
+                                          fontSize: 20)),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    padding: EdgeInsets.only(left: 5, right: 5),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(40),
+                                    ),
+                                    child: DropdownButton(
+                                        hint: Text('Choose your profession:'),
+                                        icon: Icon(Icons.arrow_drop_down),
+                                        iconSize: 35,
+                                        isExpanded: true,
+                                        underline: SizedBox(),
+                                        style: TextStyle(
+                                            color: Colors.grey[600],
+                                            fontSize: 17),
+                                        value: valueSelect,
+                                        onChanged: (newValue) {
+                                          setState(() {
+                                            valueSelect = newValue;
+                                          });
+                                        },
+                                        items: listpro.map((valueItem) {
+                                          return DropdownMenuItem(
+                                            value: valueItem,
+                                            child: Text(valueItem),
+                                          );
+                                        }).toList()),
+                                  ),
+                                  //end drop pro
+                                  SizedBox(height: 10),
+
+                                  //Start drop city
+                                  Text('City',
+                                      style: TextStyle(
+                                          color: Colors.grey[800],
+                                          fontSize: 20)),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    padding: EdgeInsets.only(left: 5, right: 5),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(40),
+                                    ),
+                                    child: DropdownButton(
+                                        hint: Text('Select your city:'),
+                                        icon: Icon(Icons.arrow_drop_down),
+                                        iconSize: 35,
+                                        isExpanded: true,
+                                        underline: SizedBox(),
+                                        style: TextStyle(
+                                            color: Colors.grey[600],
+                                            fontSize: 17),
+                                        value: valueChoose,
+                                        onChanged: (newValue) {
+                                          setState(() {
+                                            valueChoose = newValue;
+                                          });
+                                        },
+                                        items: listcity.map((valueItem) {
+                                          return DropdownMenuItem(
+                                            value: valueItem,
+                                            child: Text(valueItem),
+                                          );
+                                        }).toList()),
+                                  ),
+                                  //end drop city
+                                  SizedBox(height: 5),
+
+                                  //start text passwoed
+                                  Text(
+                                    'Password:',
+                                    style: TextStyle(
+                                        color: Colors.grey[800], fontSize: 20),
+                                  ),
+                                  Padding(padding: EdgeInsets.only(top: 10)),
+                                  buildTextFormFieldAll('Enter Your password',
+                                      true, password, validPassword)
+                                  //end text passwoed
+                                ],
                               ),
-                              Padding(padding: EdgeInsets.only(top: 10)),
-                              buildTextFormFieldAll(
-                                'Enter Your password',
-                                true,
-                              )
-                              //end text passwoed
-                            ],
-                          ),
-                        ),
-                      ))))
+                            ),
+                          ))))
             ],
           ),
           //end box form
@@ -237,9 +275,7 @@ class _ProRegisterState extends State<ProRegister> {
                   RaisedButton(
                     color: Color(0xff6e475b),
                     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('home');
-                    },
+                    onPressed: signin,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30)),
                     child: Row(
@@ -285,9 +321,12 @@ class _ProRegisterState extends State<ProRegister> {
     );
   }
 
-  TextFormField buildTextFormFieldAll(String myhinttext, bool pass) {
+  TextFormField buildTextFormFieldAll(String myhinttext, bool pass,
+      TextEditingController myController, myvalid) {
     return TextFormField(
+      controller: myController,
       obscureText: pass,
+      validator: myvalid,
       decoration: InputDecoration(
         labelStyle: TextStyle(color: Colors.grey[600]),
         hintText: myhinttext,
