@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class UserRegister extends StatefulWidget {
@@ -209,10 +209,11 @@ class _UserRegister extends State<UserRegister> {
                                 borderRadius: BorderRadius.circular(40),
                               ),
                               child: DropdownButtonFormField(
+                                  decoration: InputDecoration(
+                                      isDense: true, border: InputBorder.none),
                                   hint: Text('Select your city:'),
                                   icon: Icon(Icons.arrow_drop_down),
                                   iconSize: 35,
-                                  isExpanded: true,
                                   style: TextStyle(
                                       color: Colors.grey[600], fontSize: 16),
                                   value: valueChoose,

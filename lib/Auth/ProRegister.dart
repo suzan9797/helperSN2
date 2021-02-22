@@ -1,5 +1,8 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProRegister extends StatefulWidget {
   @override
@@ -65,12 +68,17 @@ class _ProRegisterState extends State<ProRegister> {
       var result = await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: email.text, password: password.text);
 
-      if (result.user == null) {
+      if (result == null) {
         setState(() {
           isLoading = false;
           error = 'User registeration error';
         });
       } else {
+        // FirebaseFirestore.instance
+        //     .collection('Users')
+        //     .doc()
+        //     .set({'email': result.user});
+
         Navigator.of(context).pushNamed('Login');
       }
     }
@@ -191,12 +199,13 @@ class _ProRegisterState extends State<ProRegister> {
                                   border: Border.all(color: Colors.grey),
                                   borderRadius: BorderRadius.circular(40),
                                 ),
-                                child: DropdownButton(
+                                child: DropdownButtonFormField(
+                                    decoration: InputDecoration(
+                                        isDense: true,
+                                        border: InputBorder.none),
                                     hint: Text('Choose your profession:'),
                                     icon: Icon(Icons.arrow_drop_down),
                                     iconSize: 35,
-                                    isExpanded: true,
-                                    underline: SizedBox(),
                                     style: TextStyle(
                                         color: Colors.grey[600], fontSize: 17),
                                     value: valueSelect,
@@ -213,7 +222,7 @@ class _ProRegisterState extends State<ProRegister> {
                                     }).toList()),
                               ),
                               //end drop pro
-                              SizedBox(height: 10),
+                              SizedBox(height: 5),
 
                               //Start drop city
                               Text('City',
@@ -226,12 +235,13 @@ class _ProRegisterState extends State<ProRegister> {
                                   border: Border.all(color: Colors.grey),
                                   borderRadius: BorderRadius.circular(40),
                                 ),
-                                child: DropdownButton(
+                                child: DropdownButtonFormField(
+                                    decoration: InputDecoration(
+                                        isDense: true,
+                                        border: InputBorder.none),
                                     hint: Text('Select your city:'),
                                     icon: Icon(Icons.arrow_drop_down),
                                     iconSize: 35,
-                                    isExpanded: true,
-                                    underline: SizedBox(),
                                     style: TextStyle(
                                         color: Colors.grey[600], fontSize: 17),
                                     value: valueChoose,
