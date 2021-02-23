@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +17,7 @@ class _UserRegister extends State<UserRegister> {
 
   GlobalKey<FormState> formUserRegister = new GlobalKey<FormState>();
 
-  //bool autovalid = false;
+  final _auth = FirebaseAuth.instance;
   bool isLoading = false;
   String error;
 
@@ -61,7 +63,7 @@ class _UserRegister extends State<UserRegister> {
       setState(() {
         isLoading = true;
       });
-      var result = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      final result = await _auth.createUserWithEmailAndPassword(
           email: email.text, password: password.text);
 
       if (result.user == null) {
@@ -70,6 +72,13 @@ class _UserRegister extends State<UserRegister> {
           error = 'User registeration error';
         });
       } else {
+        FirebaseFirestore.instance
+            .collection("Users")
+            .doc(result.user.uid)
+            .set({
+          'First name': fname.text,
+          'Last name': lname.text,
+        });
         Navigator.of(context).pushNamed('Login');
       }
     }
@@ -143,7 +152,7 @@ class _UserRegister extends State<UserRegister> {
                 child: SingleChildScrollView(
               child: Container(
                   margin: EdgeInsets.only(top: 90),
-                  height: 555,
+                  height: 570,
                   width: mdw / 1.2,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -198,37 +207,74 @@ class _UserRegister extends State<UserRegister> {
                             //end text email
 
                             SizedBox(height: 5),
-                            Text('City',
-                                style: TextStyle(
-                                    color: Colors.grey[800], fontSize: 20)),
-                            SizedBox(height: 6),
-                            Container(
-                              padding: EdgeInsets.only(left: 5, right: 5),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(40),
-                              ),
-                              child: DropdownButtonFormField(
-                                  decoration: InputDecoration(
-                                      isDense: true, border: InputBorder.none),
-                                  hint: Text('Select your city:'),
-                                  icon: Icon(Icons.arrow_drop_down),
-                                  iconSize: 35,
-                                  style: TextStyle(
-                                      color: Colors.grey[600], fontSize: 16),
-                                  value: valueChoose,
-                                  onChanged: (newValue) {
-                                    setState(() {
-                                      valueChoose = newValue;
-                                    });
-                                  },
-                                  items: listitem.map((valueItem) {
-                                    return DropdownMenuItem(
-                                      value: valueItem,
-                                      child: Text(valueItem),
-                                    );
-                                  }).toList()),
+                            StreamBuilder<QuerySnapshot>(
+                              stream: FirebaseFirestore.instance
+                                  .collection('Users')
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData) {
+                                  Text('Loading');
+                                } else {
+                                  List<DropdownMenuItem> currencyItems = [];
+                                  for (int i = 0;
+                                      i < snapshot.data.docs.length;
+                                      i++) {
+                                    DocumentSnapshot snap =
+                                        snapshot.data.docs[i];
+                                    currencyItems.add(DropdownMenuItem(
+                                      child: Text(snap.id),
+                                      value: "${snap.id}",
+                                    ));
+                                  }
+                                  return DropdownButton(
+                                    items: currencyItems,
+                                    onChanged: (currencyValue) {
+                                      final snackBar = SnackBar(
+                                          content:
+                                              Text('selected $currencyValue'));
+                                      // Scaffold.of(context).show
+                                    },
+                                  );
+                                }
+                              },
                             ),
+                            // Text('City',
+                            //     style: TextStyle(
+                            //         color: Colors.grey[800], fontSize: 20)),
+                            // SizedBox(height: 6),
+                            // Container(
+                            //   padding: EdgeInsets.only(left: 5, right: 5),
+                            //   decoration: BoxDecoration(
+                            //     border: Border.all(color: Colors.grey),
+                            //     borderRadius: BorderRadius.circular(40),
+                            //   ),
+                            //   child: DropdownButtonFormField<String>(
+                            //       autovalidateMode:
+                            //           AutovalidateMode.onUserInteraction,
+                            //       validator: (newValue) => newValue == null
+                            //           ? "City can't to be empty"
+                            //           : null,
+                            //       decoration: InputDecoration(
+                            //           isDense: true, border: InputBorder.none),
+                            //       hint: Text('Select your city:'),
+                            //       icon: Icon(Icons.arrow_drop_down),
+                            //       iconSize: 35,
+                            //       style: TextStyle(
+                            //           color: Colors.grey[600], fontSize: 16),
+                            //       value: valueChoose,
+                            //       onChanged: (newValue) {
+                            //         setState(() {
+                            //           valueChoose = newValue;
+                            //         });
+                            //       },
+                            //       items: listitem.map<DropdownMenuItem<String>>(
+                            //           (valueItem) {
+                            //         return DropdownMenuItem<String>(
+                            //           value: valueItem,
+                            //           child: Text(valueItem),
+                            //         );
+                            //       }).toList()),
+                            // ),
 
                             //end dropDown
                             SizedBox(height: 5),
@@ -253,7 +299,7 @@ class _UserRegister extends State<UserRegister> {
         //end box form
         Center(
           child: Container(
-            margin: EdgeInsets.only(top: 700),
+            margin: EdgeInsets.only(top: 715),
             child: Column(
               children: [
                 //start sign up button
@@ -281,7 +327,7 @@ class _UserRegister extends State<UserRegister> {
                   ),
                 ),
                 //end sign up button
-                SizedBox(height: 20),
+                SizedBox(height: 10),
                 _errorMessage(context),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

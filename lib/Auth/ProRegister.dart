@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -21,11 +19,13 @@ class _ProRegisterState extends State<ProRegister> {
     'Electrical',
     'A/C'
   ];
-  TextEditingController fullName = new TextEditingController();
-  TextEditingController email = new TextEditingController();
-  TextEditingController password = new TextEditingController();
+  TextEditingController _fullName = new TextEditingController();
+  TextEditingController _email = new TextEditingController();
+  TextEditingController _password = new TextEditingController();
 
   GlobalKey<FormState> formProRegister = new GlobalKey<FormState>();
+
+  final _auth = FirebaseAuth.instance;
 
   bool isLoading = false;
   String error;
@@ -56,7 +56,7 @@ class _ProRegisterState extends State<ProRegister> {
     return null;
   }
 
-  prosignup() async {
+  void prosignup() async {
     if (!formProRegister.currentState.validate()) {
       setState(() {
         isLoading = false;
@@ -65,8 +65,8 @@ class _ProRegisterState extends State<ProRegister> {
       setState(() {
         isLoading = true;
       });
-      var result = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: email.text, password: password.text);
+      final result = await _auth.createUserWithEmailAndPassword(
+          email: _email.text, password: _password.text);
 
       if (result == null) {
         setState(() {
@@ -74,20 +74,22 @@ class _ProRegisterState extends State<ProRegister> {
           error = 'User registeration error';
         });
       } else {
-        // FirebaseFirestore.instance
-        //     .collection('Users')
-        //     .doc()
-        //     .set({'email': result.user});
-
+        FirebaseFirestore.instance
+            .collection("Profession")
+            .doc(result.user.uid)
+            .set({
+          'Full name': _fullName.text,
+          'Email': _email.text,
+        });
         Navigator.of(context).pushNamed('Login');
       }
     }
   }
 
   void dispose() {
-    fullName.dispose();
-    email.dispose();
-    password.dispose();
+    _fullName.dispose();
+    _email.dispose();
+    _password.dispose();
     super.dispose();
   }
 
@@ -172,7 +174,7 @@ class _ProRegisterState extends State<ProRegister> {
                               ),
                               Padding(padding: EdgeInsets.only(top: 10)),
                               buildTextFormFieldAll('Enter your full name',
-                                  false, fullName, validFullName),
+                                  false, _fullName, validFullName),
                               //end text full name
                               SizedBox(height: 5),
 
@@ -183,8 +185,8 @@ class _ProRegisterState extends State<ProRegister> {
                                     color: Colors.grey[800], fontSize: 20),
                               ),
                               Padding(padding: EdgeInsets.only(top: 10)),
-                              buildTextFormFieldAll(
-                                  'Enter your Email', false, email, validEmail),
+                              buildTextFormFieldAll('Enter your Email', false,
+                                  _email, validEmail),
                               //end text email
                               SizedBox(height: 5),
 
@@ -199,7 +201,7 @@ class _ProRegisterState extends State<ProRegister> {
                                   border: Border.all(color: Colors.grey),
                                   borderRadius: BorderRadius.circular(40),
                                 ),
-                                child: DropdownButtonFormField(
+                                child: DropdownButtonFormField<String>(
                                     decoration: InputDecoration(
                                         isDense: true,
                                         border: InputBorder.none),
@@ -214,8 +216,10 @@ class _ProRegisterState extends State<ProRegister> {
                                         valueSelect = newValue;
                                       });
                                     },
-                                    items: listpro.map((valueItem) {
-                                      return DropdownMenuItem(
+                                    items: listpro
+                                        .map<DropdownMenuItem<String>>(
+                                            (valueItem) {
+                                      return DropdownMenuItem<String>(
                                         value: valueItem,
                                         child: Text(valueItem),
                                       );
@@ -235,7 +239,10 @@ class _ProRegisterState extends State<ProRegister> {
                                   border: Border.all(color: Colors.grey),
                                   borderRadius: BorderRadius.circular(40),
                                 ),
-                                child: DropdownButtonFormField(
+                                child: DropdownButtonFormField<String>(
+                                    validator: (newValue) => newValue == null
+                                        ? "City can't to be empty"
+                                        : null,
                                     decoration: InputDecoration(
                                         isDense: true,
                                         border: InputBorder.none),
@@ -250,8 +257,10 @@ class _ProRegisterState extends State<ProRegister> {
                                         valueChoose = newValue;
                                       });
                                     },
-                                    items: listcity.map((valueItem) {
-                                      return DropdownMenuItem(
+                                    items: listcity
+                                        .map<DropdownMenuItem<String>>(
+                                            (valueItem) {
+                                      return DropdownMenuItem<String>(
                                         value: valueItem,
                                         child: Text(valueItem),
                                       );
@@ -268,7 +277,7 @@ class _ProRegisterState extends State<ProRegister> {
                               ),
                               Padding(padding: EdgeInsets.only(top: 10)),
                               buildTextFormFieldAll('Enter Your password', true,
-                                  password, validPasswoed)
+                                  _password, validPasswoed)
                               //end text passwoed
                             ],
                           ),

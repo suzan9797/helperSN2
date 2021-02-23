@@ -10,12 +10,14 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   //start form controller
 
-  TextEditingController email = new TextEditingController();
-  TextEditingController password = new TextEditingController();
+  TextEditingController _email = new TextEditingController();
+  TextEditingController _password = new TextEditingController();
 
   GlobalKey<FormState> formStateLogin = new GlobalKey<FormState>();
 
-  String error;
+  final _auth = FirebaseAuth.instance;
+
+  String _error;
 
   String validEmail(String val) {
     if (val.isEmpty) {
@@ -39,14 +41,16 @@ class _LoginState extends State<Login> {
 
   void login() async {
     if (formStateLogin.currentState.validate()) {
-      var result = await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: email.text, password: password.text);
-      if (result != null) {
-        Navigator.of(context).pushNamed('home');
-      } else {
-        setState(() {
-          error = 'User registeration error';
-        });
+      try {
+        final result = await _auth.signInWithEmailAndPassword(
+            email: _email.text, password: _password.text);
+        if (result != null) {
+          Navigator.of(context).pushNamed('home');
+        } else {
+          print('Invalid email or password');
+        }
+      } catch (e) {
+        return e;
       }
     }
   }
@@ -141,7 +145,7 @@ class _LoginState extends State<Login> {
                           ),
                           Padding(padding: EdgeInsets.only(top: 10)),
                           buildTextFormFieldAll(
-                              'Enter Your Email', false, email, validEmail),
+                              'Enter Your Email', false, _email, validEmail),
                           //end text email
 
                           //start text password
@@ -153,7 +157,7 @@ class _LoginState extends State<Login> {
                           ),
                           Padding(padding: EdgeInsets.only(top: 10)),
                           buildTextFormFieldAll('Enter Your password', true,
-                              password, validPassword),
+                              _password, validPassword),
 
                           //end text passwoed
                         ],
@@ -201,7 +205,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   //end login button
-                  _errorMessage(context),
+                  // _errorMessage(context),
                   SizedBox(height: 15),
                   InkWell(
                     onTap: () {},
@@ -213,7 +217,9 @@ class _LoginState extends State<Login> {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
+
                   SizedBox(height: 65),
+                  showAlert(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -265,15 +271,27 @@ class _LoginState extends State<Login> {
     );
   }
 
-  Widget _errorMessage(BuildContext context) {
-    if (error == null) {
-      return Container();
+  Widget showAlert() {
+    if (_error != null) {
+      return Container(
+        color: Colors.grey,
+        width: double.infinity,
+        padding: EdgeInsets.all(8.0),
+        child: Row(),
+      );
     }
-    return Container(
-      child: Text(
-        error,
-        style: TextStyle(color: Colors.red),
-      ),
-    );
+    return SizedBox(height: 0);
   }
+
+  // Widget _errorMessage(BuildContext context) {
+  //   if (_error == null) {
+  //     return Container();
+  //   }
+  //   return Container(
+  //     child: Text(
+  //       _error,
+  //       style: TextStyle(color: Colors.red),
+  //     ),
+  //   );
+  // }
 }
