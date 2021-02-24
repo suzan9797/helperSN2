@@ -89,13 +89,13 @@ class _LoginState extends State<Login> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Padding(padding: EdgeInsets.only(top: 90)),
+                  Padding(padding: EdgeInsets.only(top: 100)),
                   CircleAvatar(
                       radius: 60.0,
                       backgroundImage: AssetImage('images/Logo.png')),
                   Center(
                     child: Container(
-                      margin: EdgeInsets.only(top: 10),
+                      margin: EdgeInsets.only(top: 15),
                       child: Text(
                         'Login',
                         style: TextStyle(
@@ -116,8 +116,8 @@ class _LoginState extends State<Login> {
             children: [
               Center(
                 child: Container(
-                  margin: EdgeInsets.only(top: 260),
-                  height: 280,
+                  margin: EdgeInsets.only(top: 270),
+                  height: 250,
                   width: mdw / 1.2,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -138,26 +138,27 @@ class _LoginState extends State<Login> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           //start text email
-                          Text(
-                            'Email:',
-                            style: TextStyle(
-                                color: Colors.grey[800], fontSize: 20),
-                          ),
-                          Padding(padding: EdgeInsets.only(top: 10)),
-                          buildTextFormFieldAll(
-                              'Enter Your Email', false, _email, validEmail),
+                          // Text(
+                          //   'Email:',
+                          //   style: TextStyle(
+                          //       color: Colors.grey[800], fontSize: 20),
+                          // ),
+                          // Padding(padding: EdgeInsets.only(top: 10)),
+                          SizedBox(height: 15),
+                          buildTextFormFieldAll('Enter Your Email', false,
+                              _email, validEmail, Icons.email),
                           //end text email
 
                           //start text password
-                          SizedBox(height: 10),
-                          Text(
-                            'Password:',
-                            style: TextStyle(
-                                color: Colors.grey[800], fontSize: 20),
-                          ),
-                          Padding(padding: EdgeInsets.only(top: 10)),
+                          SizedBox(height: 30),
+                          // Text(
+                          //   'Password:',
+                          //   style: TextStyle(
+                          //       color: Colors.grey[800], fontSize: 20),
+                          // ),
+                          // Padding(padding: EdgeInsets.only(top: 10)),
                           buildTextFormFieldAll('Enter Your password', true,
-                              _password, validPassword),
+                              _password, validPassword, Icons.lock),
 
                           //end text passwoed
                         ],
@@ -249,14 +250,18 @@ class _LoginState extends State<Login> {
   }
 
   TextFormField buildTextFormFieldAll(String myhinttext, bool pass,
-      TextEditingController mycontroller, myvalid) {
+      TextEditingController mycontroller, myvalid, IconData icon) {
     return TextFormField(
       controller: mycontroller,
       obscureText: pass,
       validator: myvalid,
       decoration: InputDecoration(
         labelStyle: TextStyle(color: Colors.grey[600]),
-        hintText: myhinttext,
+        labelText: myhinttext,
+        prefixIcon: Padding(
+          padding: EdgeInsets.only(left: 10),
+          child: Icon(icon, color: Color(0xff6e475b)),
+        ),
         filled: true,
         fillColor: Colors.white,
         enabledBorder: OutlineInputBorder(

@@ -207,37 +207,41 @@ class _UserRegister extends State<UserRegister> {
                             //end text email
 
                             SizedBox(height: 5),
-                            StreamBuilder<QuerySnapshot>(
-                              stream: FirebaseFirestore.instance
-                                  .collection('Users')
-                                  .snapshots(),
-                              builder: (context, snapshot) {
-                                if (!snapshot.hasData) {
-                                  Text('Loading');
-                                } else {
-                                  List<DropdownMenuItem> currencyItems = [];
-                                  for (int i = 0;
-                                      i < snapshot.data.docs.length;
-                                      i++) {
-                                    DocumentSnapshot snap =
-                                        snapshot.data.docs[i];
-                                    currencyItems.add(DropdownMenuItem(
-                                      child: Text(snap.id),
-                                      value: "${snap.id}",
-                                    ));
-                                  }
-                                  return DropdownButton(
-                                    items: currencyItems,
-                                    onChanged: (currencyValue) {
-                                      final snackBar = SnackBar(
-                                          content:
-                                              Text('selected $currencyValue'));
-                                      // Scaffold.of(context).show
-                                    },
-                                  );
-                                }
-                              },
-                            ),
+                            //-----------start---------------
+
+                            // StreamBuilder<QuerySnapshot>(
+                            //   stream: FirebaseFirestore.instance
+                            //       .collection('Users')
+                            //       .snapshots(),
+                            //   builder: (context, snapshot) {
+                            //     if (!snapshot.hasData) {
+                            //       Text('Loading');
+                            //     } else {
+                            //       List<DropdownMenuItem> currencyItems = [];
+                            //       for (int i = 0;
+                            //           i < snapshot.data.docs.length;
+                            //           i++) {
+                            //         DocumentSnapshot snap =
+                            //             snapshot.data.docs[i];
+                            //         currencyItems.add(DropdownMenuItem(
+                            //           child: Text(snap.id),
+                            //           value: "${snap.id}",
+                            //         ));
+                            //       }
+                            //       return DropdownButton(
+                            //         items: currencyItems,
+                            //         onChanged: (currencyValue) {
+                            //           final snackBar = SnackBar(
+                            //               content:
+                            //                   Text('selected $currencyValue'));
+                            //           // Scaffold.of(context).show
+                            //         },
+                            //       );
+                            //     }
+                            //   },
+                            // ),
+                            //-------------------end----------------
+
                             // Text('City',
                             //     style: TextStyle(
                             //         color: Colors.grey[800], fontSize: 20)),
