@@ -80,6 +80,8 @@ class _ProRegisterState extends State<ProRegister> {
             .set({
           'Full name': _fullName.text,
           'Email': _email.text,
+          'Profession': valueSelect,
+          'City': valueChoose,
         });
         Navigator.of(context).pushNamed('Login');
       }
@@ -147,7 +149,7 @@ class _ProRegisterState extends State<ProRegister> {
             Center(
                 child: Container(
                     margin: EdgeInsets.only(top: 90),
-                    height: 540,
+                    height: 528,
                     width: mdw / 1.2,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -166,35 +168,20 @@ class _ProRegisterState extends State<ProRegister> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              SizedBox(height: 20),
+
                               //start text full name
-                              Text(
-                                'Full Name:',
-                                style: TextStyle(
-                                    color: Colors.grey[800], fontSize: 20),
-                              ),
-                              Padding(padding: EdgeInsets.only(top: 10)),
                               buildTextFormFieldAll('Enter your full name',
                                   false, _fullName, validFullName),
                               //end text full name
-                              SizedBox(height: 5),
+                              SizedBox(height: 20),
 
                               //start text email
-                              Text(
-                                'Email:',
-                                style: TextStyle(
-                                    color: Colors.grey[800], fontSize: 20),
-                              ),
-                              Padding(padding: EdgeInsets.only(top: 10)),
                               buildTextFormFieldAll('Enter your Email', false,
                                   _email, validEmail),
                               //end text email
-                              SizedBox(height: 5),
+                              SizedBox(height: 20),
 
-                              //Start drop pro
-                              Text('Profession',
-                                  style: TextStyle(
-                                      color: Colors.grey[800], fontSize: 20)),
-                              SizedBox(height: 10),
                               Container(
                                 padding: EdgeInsets.only(left: 5, right: 5),
                                 decoration: BoxDecoration(
@@ -202,6 +189,9 @@ class _ProRegisterState extends State<ProRegister> {
                                   borderRadius: BorderRadius.circular(40),
                                 ),
                                 child: DropdownButtonFormField<String>(
+                                    validator: (newValue) => newValue == null
+                                        ? "profession can't to be empty"
+                                        : null,
                                     decoration: InputDecoration(
                                         isDense: true,
                                         border: InputBorder.none),
@@ -229,10 +219,7 @@ class _ProRegisterState extends State<ProRegister> {
                               SizedBox(height: 5),
 
                               //Start drop city
-                              Text('City',
-                                  style: TextStyle(
-                                      color: Colors.grey[800], fontSize: 20)),
-                              SizedBox(height: 10),
+                              SizedBox(height: 20),
                               Container(
                                 padding: EdgeInsets.only(left: 5, right: 5),
                                 decoration: BoxDecoration(
@@ -267,15 +254,9 @@ class _ProRegisterState extends State<ProRegister> {
                                     }).toList()),
                               ),
                               //end drop city
-                              SizedBox(height: 5),
+                              SizedBox(height: 20),
 
-                              //start text passwoed
-                              Text(
-                                'Password:',
-                                style: TextStyle(
-                                    color: Colors.grey[800], fontSize: 20),
-                              ),
-                              Padding(padding: EdgeInsets.only(top: 10)),
+                              //end text passwoed
                               buildTextFormFieldAll('Enter Your password', true,
                                   _password, validPasswoed)
                               //end text passwoed
@@ -287,7 +268,7 @@ class _ProRegisterState extends State<ProRegister> {
         //end box form
         Center(
           child: Container(
-            margin: EdgeInsets.only(top: 690),
+            margin: EdgeInsets.only(top: 710),
             child: Column(
               children: [
                 //start sign up button
@@ -313,7 +294,7 @@ class _ProRegisterState extends State<ProRegister> {
                 ),
                 //end sign up button
                 _errorMessage(context),
-                SizedBox(height: 20),
+                SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -353,7 +334,7 @@ class _ProRegisterState extends State<ProRegister> {
       validator: myvalid,
       decoration: InputDecoration(
         labelStyle: TextStyle(color: Colors.grey[600]),
-        hintText: myhinttext,
+        labelText: myhinttext,
         filled: true,
         fillColor: Colors.white,
         enabledBorder: OutlineInputBorder(

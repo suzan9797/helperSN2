@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -9,11 +7,10 @@ class UserRegister extends StatefulWidget {
 }
 
 class _UserRegister extends State<UserRegister> {
-  TextEditingController fname = new TextEditingController();
-  TextEditingController lname = new TextEditingController();
-  TextEditingController email = new TextEditingController();
-  //TextEditingController city = new TextEditingController();
-  TextEditingController password = new TextEditingController();
+  TextEditingController _fname = new TextEditingController();
+  TextEditingController _lname = new TextEditingController();
+  TextEditingController _email = new TextEditingController();
+  TextEditingController _password = new TextEditingController();
 
   GlobalKey<FormState> formUserRegister = new GlobalKey<FormState>();
 
@@ -64,7 +61,7 @@ class _UserRegister extends State<UserRegister> {
         isLoading = true;
       });
       final result = await _auth.createUserWithEmailAndPassword(
-          email: email.text, password: password.text);
+          email: _email.text, password: _password.text);
 
       if (result.user == null) {
         setState(() {
@@ -76,8 +73,10 @@ class _UserRegister extends State<UserRegister> {
             .collection("Users")
             .doc(result.user.uid)
             .set({
-          'First name': fname.text,
-          'Last name': lname.text,
+          'First name': _fname.text,
+          'Last name': _lname.text,
+          'Email': _email.text,
+          'Cyty': valueChoose,
         });
         Navigator.of(context).pushNamed('Login');
       }
@@ -85,11 +84,10 @@ class _UserRegister extends State<UserRegister> {
   }
 
   void dispose() {
-    fname.dispose();
-    lname.dispose();
-    email.dispose();
-    // city.dispose();
-    password.dispose();
+    _fname.dispose();
+    _lname.dispose();
+    _email.dispose();
+    _password.dispose();
     super.dispose();
   }
 
@@ -151,8 +149,8 @@ class _UserRegister extends State<UserRegister> {
             Center(
                 child: SingleChildScrollView(
               child: Container(
-                  margin: EdgeInsets.only(top: 90),
-                  height: 570,
+                  margin: EdgeInsets.only(top: 120),
+                  height: 480,
                   width: mdw / 1.2,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -172,126 +170,68 @@ class _UserRegister extends State<UserRegister> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             //start text first name
-                            Text(
-                              'First Name:',
-                              style: TextStyle(
-                                  color: Colors.grey[800], fontSize: 20),
-                            ),
-                            Padding(padding: EdgeInsets.only(top: 10)),
+                            SizedBox(height: 15),
                             buildTextFormFieldAll('Enter Your First Name',
-                                false, fname, validFname),
+                                false, _fname, validFname),
                             //end text first name
-                            SizedBox(height: 5),
+                            SizedBox(height: 20),
 
                             //start text last name
-                            Text(
-                              'Last Name:',
-                              style: TextStyle(
-                                  color: Colors.grey[800], fontSize: 20),
-                            ),
-                            Padding(padding: EdgeInsets.only(top: 10)),
+
                             buildTextFormFieldAll('Enter Your Last Name', false,
-                                lname, validLname),
+                                _lname, validLname),
                             //end text last name
-                            SizedBox(height: 5),
+                            SizedBox(height: 20),
 
                             //start text email
-                            Text(
-                              'Email:',
-                              style: TextStyle(
-                                  color: Colors.grey[800], fontSize: 20),
-                            ),
-                            Padding(padding: EdgeInsets.only(top: 10)),
+
                             buildTextFormFieldAll(
-                                'Enter Your Email', false, email, validEmail),
+                                'Enter Your Email', false, _email, validEmail),
                             //end text email
 
-                            SizedBox(height: 5),
-                            //-----------start---------------
+                            SizedBox(height: 20),
 
-                            // StreamBuilder<QuerySnapshot>(
-                            //   stream: FirebaseFirestore.instance
-                            //       .collection('Users')
-                            //       .snapshots(),
-                            //   builder: (context, snapshot) {
-                            //     if (!snapshot.hasData) {
-                            //       Text('Loading');
-                            //     } else {
-                            //       List<DropdownMenuItem> currencyItems = [];
-                            //       for (int i = 0;
-                            //           i < snapshot.data.docs.length;
-                            //           i++) {
-                            //         DocumentSnapshot snap =
-                            //             snapshot.data.docs[i];
-                            //         currencyItems.add(DropdownMenuItem(
-                            //           child: Text(snap.id),
-                            //           value: "${snap.id}",
-                            //         ));
-                            //       }
-                            //       return DropdownButton(
-                            //         items: currencyItems,
-                            //         onChanged: (currencyValue) {
-                            //           final snackBar = SnackBar(
-                            //               content:
-                            //                   Text('selected $currencyValue'));
-                            //           // Scaffold.of(context).show
-                            //         },
-                            //       );
-                            //     }
-                            //   },
-                            // ),
-                            //-------------------end----------------
-
-                            // Text('City',
-                            //     style: TextStyle(
-                            //         color: Colors.grey[800], fontSize: 20)),
-                            // SizedBox(height: 6),
-                            // Container(
-                            //   padding: EdgeInsets.only(left: 5, right: 5),
-                            //   decoration: BoxDecoration(
-                            //     border: Border.all(color: Colors.grey),
-                            //     borderRadius: BorderRadius.circular(40),
-                            //   ),
-                            //   child: DropdownButtonFormField<String>(
-                            //       autovalidateMode:
-                            //           AutovalidateMode.onUserInteraction,
-                            //       validator: (newValue) => newValue == null
-                            //           ? "City can't to be empty"
-                            //           : null,
-                            //       decoration: InputDecoration(
-                            //           isDense: true, border: InputBorder.none),
-                            //       hint: Text('Select your city:'),
-                            //       icon: Icon(Icons.arrow_drop_down),
-                            //       iconSize: 35,
-                            //       style: TextStyle(
-                            //           color: Colors.grey[600], fontSize: 16),
-                            //       value: valueChoose,
-                            //       onChanged: (newValue) {
-                            //         setState(() {
-                            //           valueChoose = newValue;
-                            //         });
-                            //       },
-                            //       items: listitem.map<DropdownMenuItem<String>>(
-                            //           (valueItem) {
-                            //         return DropdownMenuItem<String>(
-                            //           value: valueItem,
-                            //           child: Text(valueItem),
-                            //         );
-                            //       }).toList()),
-                            // ),
+                            Container(
+                              padding: EdgeInsets.only(left: 5, right: 5),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey),
+                                borderRadius: BorderRadius.circular(40),
+                              ),
+                              child: DropdownButtonFormField<String>(
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  validator: (newValue) => newValue == null
+                                      ? "City can't to be empty"
+                                      : null,
+                                  decoration: InputDecoration(
+                                      isDense: true, border: InputBorder.none),
+                                  hint: Text('Select your city:'),
+                                  icon: Icon(Icons.arrow_drop_down),
+                                  iconSize: 35,
+                                  style: TextStyle(
+                                      color: Colors.grey[600], fontSize: 16),
+                                  value: valueChoose,
+                                  onChanged: (String newValue) {
+                                    setState(() {
+                                      valueChoose = newValue;
+                                    });
+                                  },
+                                  items: listitem.map<DropdownMenuItem<String>>(
+                                      (valueItem) {
+                                    return DropdownMenuItem<String>(
+                                      value: valueItem,
+                                      child: Text(valueItem),
+                                    );
+                                  }).toList()),
+                            ),
 
                             //end dropDown
-                            SizedBox(height: 5),
+                            SizedBox(height: 20),
 
                             //start text passwoed
-                            Text(
-                              'Password:',
-                              style: TextStyle(
-                                  color: Colors.grey[800], fontSize: 20),
-                            ),
-                            Padding(padding: EdgeInsets.only(top: 10)),
+
                             buildTextFormFieldAll('Enter Your password', true,
-                                password, validPasswoed)
+                                _password, validPasswoed)
 
                             //end text passwoed
                           ],
@@ -303,7 +243,7 @@ class _UserRegister extends State<UserRegister> {
         //end box form
         Center(
           child: Container(
-            margin: EdgeInsets.only(top: 715),
+            margin: EdgeInsets.only(top: 710),
             child: Column(
               children: [
                 //start sign up button
@@ -311,9 +251,6 @@ class _UserRegister extends State<UserRegister> {
                   color: Color(0xff6e475b),
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                   onPressed: usersignup,
-                  // () {
-                  //   Navigator.of(context).pushNamed('home');
-                  // },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)),
                   child: Row(
