@@ -9,6 +9,7 @@ import 'package:helper/Screen/Rent/RentIt.dart';
 import 'package:helper/Screen/Rent/RentOther.dart';
 import 'package:helper/Screen/Rent/RentTools.dart';
 import 'package:helper/Screen/Rent/productsDetails.dart';
+import 'package:helper/Screen/addPost.dart';
 import 'package:helper/Screen/home_screen.dart';
 import 'package:helper/Screen/home_tabs/Carpentry.dart';
 import 'package:helper/Auth/login.dart';
@@ -99,6 +100,7 @@ class MyApp extends StatelessWidget {
         'ProRegister': (context) {
           return ProRegister();
         },
+        'AddPost': (context) => AddPost(),
       },
       theme: AppTheme.appTheme,
       home: OnBoarding(),
