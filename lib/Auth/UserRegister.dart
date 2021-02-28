@@ -69,14 +69,14 @@ class _UserRegister extends State<UserRegister> {
           error = 'User registeration error';
         });
       } else {
-        FirebaseFirestore.instance
+        await Firestore.instance
             .collection("Users")
-            .doc(result.user.uid)
-            .set({
+            .document(result.user.uid)
+            .setData({
           'First name': _fname.text,
           'Last name': _lname.text,
           'Email': _email.text,
-          'Cyty': valueChoose,
+          'City': valueChoose,
         });
         Navigator.of(context).pushNamed('Login');
       }

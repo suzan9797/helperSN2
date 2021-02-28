@@ -74,10 +74,10 @@ class _ProRegisterState extends State<ProRegister> {
           error = 'User registeration error';
         });
       } else {
-        FirebaseFirestore.instance
+        Firestore.instance
             .collection("Profession")
-            .doc(result.user.uid)
-            .set({
+            .document(result.user.uid)
+            .setData({
           'Full name': _fullName.text,
           'Email': _email.text,
           'Profession': valueSelect,

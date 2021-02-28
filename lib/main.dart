@@ -12,6 +12,7 @@ import 'package:helper/Screen/Rent/productsDetails.dart';
 import 'package:helper/Screen/home_screen.dart';
 import 'package:helper/Screen/home_tabs/Carpentry.dart';
 import 'package:helper/Auth/login.dart';
+import 'package:helper/Screen/home_tabs/orders.dart';
 import 'package:helper/utilties/app_theme.dart';
 import 'Screen/OnBoarding.dart';
 import 'Auth/UserRegister.dart';
@@ -26,7 +27,7 @@ import 'Screen/settings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -98,6 +99,9 @@ class MyApp extends StatelessWidget {
         },
         'ProRegister': (context) {
           return ProRegister();
+        },
+        'order': (context) {
+          return Orders();
         },
       },
       theme: AppTheme.appTheme,
