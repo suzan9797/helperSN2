@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,7 +10,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   //start form controller
-
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   TextEditingController _email = new TextEditingController();
   TextEditingController _password = new TextEditingController();
 
@@ -39,26 +40,61 @@ class _LoginState extends State<Login> {
     return null;
   }
 
-  void login() async {
+  Future login() async {
     if (formStateLogin.currentState.validate()) {
       try {
         final result = await _auth.signInWithEmailAndPassword(
             email: _email.text, password: _password.text);
         if (result != null) {
-          Navigator.of(context).pushNamed('home');
+          print(result.user.uid);
+          await Firestore.instance
+              .collection('Users')
+              .document(result.user.uid)
+              .get()
+              .then((value) {
+            switch (value.data['role']) {
+              case 'User':
+                {
+                  return Navigator.of(context).pushNamed('home');
+                }
+                break;
+              case 'Professional Account':
+                {
+                  return Navigator.of(context).pushNamed('order');
+                }
+            }
+          });
         } else {
           print('Invalid email or password');
         }
       } catch (e) {
-        return e;
+        showInSnackBar('Invalid Email or Password');
       }
     }
+  }
+
+  void showInSnackBar(String value) {
+    FocusScope.of(context).requestFocus(new FocusNode());
+    _scaffoldKey.currentState?.removeCurrentSnackBar();
+    _scaffoldKey.currentState.showSnackBar(new SnackBar(
+      content: new Text(
+        value,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 16.0,
+            fontFamily: "WorkSansSemiBold"),
+      ),
+      backgroundColor: Colors.red,
+      duration: Duration(seconds: 3),
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
     var mdw = MediaQuery.of(context).size.width;
     return Scaffold(
+      key: _scaffoldKey,
       body: Stack(
         children: [
           Container(

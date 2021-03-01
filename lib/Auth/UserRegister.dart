@@ -17,6 +17,7 @@ class _UserRegister extends State<UserRegister> {
   final _auth = FirebaseAuth.instance;
   bool isLoading = false;
   String error;
+  String _role = 'User';
 
   String validFname(String val) {
     if (val.isEmpty) {
@@ -69,14 +70,15 @@ class _UserRegister extends State<UserRegister> {
           error = 'User registeration error';
         });
       } else {
-        FirebaseFirestore.instance
+        await Firestore.instance
             .collection("Users")
-            .doc(result.user.uid)
-            .set({
+            .document(result.user.uid)
+            .setData({
           'First name': _fname.text,
           'Last name': _lname.text,
           'Email': _email.text,
-          'Cyty': valueChoose,
+          'City': valueChoose,
+          "role": _role,
         });
         Navigator.of(context).pushNamed('Login');
       }
