@@ -58,38 +58,303 @@ class _OrdersState extends State<Orders> {
 }
 
 Widget newRequest(BuildContext context) {
-  return ListView(
-    children: <Widget>[
-      Padding(
-        padding: const EdgeInsets.only(top: 45, left: 10, right: 10),
-        child: Container(
-          height: 120,
-          width: 150,
-          child: Card(
-            elevation: 14,
-            child: Expanded(
-              child: Container(
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      '  Date and Time:',
-                      style: TextStyle(color: Colors.grey[800], fontSize: 17),
-                    ),
-                    Text(
-                      '  Status of Requsts: ',
-                      style: TextStyle(color: Colors.grey[800], fontSize: 17),
-                    ),
-                  ],
-                ),
+  return Scaffold(
+    body: SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              elevation: 20,
+              color: Colors.grey.shade200,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const ListTile(
+                    leading: Icon(Icons.time_to_leave_outlined),
+                    title: Text('Status Of Request:'),
+                    subtitle: Text('22/2/2021    3:30 PM'),
+                  ),
+                  ButtonBar(
+                    children: <Widget>[
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Colors.red[900],
+                        child: const Text('Cancel order'),
+                        onPressed: () {},
+                      ),
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Color(0xff6e475b),
+                        child: const Text('VIEW '),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              elevation: 20,
+              color: Colors.grey.shade200,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const ListTile(
+                    leading: Icon(Icons.time_to_leave_outlined),
+                    title: Text('Status Of Request:'),
+                    subtitle: Text('2/7/2021    7:30 PM'),
+                  ),
+                  ButtonBar(
+                    children: <Widget>[
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Colors.red[900],
+                        child: const Text('Cancel order'),
+                        onPressed: () {},
+                      ),
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Color(0xff6e475b),
+                        child: const Text('VIEW '),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              elevation: 20,
+              color: Colors.grey.shade200,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const ListTile(
+                    leading: Icon(Icons.time_to_leave_outlined),
+                    title: Text('Status Of Request:'),
+                    subtitle: Text('2/5/2021    4:30 PM'),
+                  ),
+                  ButtonBar(
+                    children: <Widget>[
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Colors.red[900],
+                        child: const Text('Cancel order'),
+                        onPressed: () {},
+                      ),
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Color(0xff6e475b),
+                        child: const Text('VIEW '),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              elevation: 20,
+              color: Colors.grey.shade200,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const ListTile(
+                    leading: Icon(Icons.time_to_leave_outlined),
+                    title: Text('Status Of Request:'),
+                    subtitle: Text('12/8/2021    4:30 PM'),
+                  ),
+                  ButtonBar(
+                    children: <Widget>[
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Colors.red[900],
+                        child: const Text('Cancel order'),
+                        onPressed: () {},
+                      ),
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Color(0xff6e475b),
+                        child: const Text('VIEW '),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
-    ],
+    ),
   );
 }
 
 Widget oldRequest(BuildContext context) {
-  return Container();
+  return Scaffold(
+    body: SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              elevation: 20,
+              color: Colors.grey.shade200,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const ListTile(
+                    leading: Icon(Icons.done_all),
+                    title: Text('Status Of Request:'),
+                    subtitle: Text('22/2/2021    3:30 PM'),
+                  ),
+                  ButtonBar(
+                    children: <Widget>[
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Colors.green[900],
+                        child: const Text('DONE'),
+                        onPressed: () {},
+                      ),
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Color(0xff6e475b),
+                        child: const Text('VIEW '),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              elevation: 20,
+              color: Colors.grey.shade200,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const ListTile(
+                    leading: Icon(Icons.done_all),
+                    title: Text('Status Of Request:'),
+                    subtitle: Text('2/7/2021    7:30 PM'),
+                  ),
+                  ButtonBar(
+                    children: <Widget>[
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Colors.green[900],
+                        child: const Text('DONE'),
+                        onPressed: () {},
+                      ),
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Color(0xff6e475b),
+                        child: const Text('VIEW '),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              elevation: 20,
+              color: Colors.grey.shade200,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const ListTile(
+                    leading: Icon(Icons.done_all),
+                    title: Text('Status Of Request:'),
+                    subtitle: Text('2/5/2021    4:30 PM'),
+                  ),
+                  ButtonBar(
+                    children: <Widget>[
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Colors.green[900],
+                        child: const Text('Done'),
+                        onPressed: () {},
+                      ),
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Color(0xff6e475b),
+                        child: const Text('VIEW '),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              elevation: 20,
+              color: Colors.grey.shade200,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const ListTile(
+                    leading: Icon(Icons.done_all),
+                    title: Text('Status Of Request:'),
+                    subtitle: Text('12/8/2021    4:30 PM'),
+                  ),
+                  ButtonBar(
+                    children: <Widget>[
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Colors.green[900],
+                        child: const Text('DONE'),
+                        onPressed: () {},
+                      ),
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Color(0xff6e475b),
+                        child: const Text('VIEW '),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 }
