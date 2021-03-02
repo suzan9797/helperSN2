@@ -73,6 +73,9 @@ flutter:
       - images/pro.png
       - images/speaker.jpg
       - images/profilePicture.png
+      - images/clock.png 
+      - images/houses.png
+      - images/done.png
   #   - images/a_dot_ham.jpeg
 
   fonts:
