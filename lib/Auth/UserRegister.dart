@@ -17,6 +17,7 @@ class _UserRegister extends State<UserRegister> {
   final _auth = FirebaseAuth.instance;
   bool isLoading = false;
   String error;
+  String _role = 'User';
 
   String validFname(String val) {
     if (val.isEmpty) {
@@ -77,6 +78,7 @@ class _UserRegister extends State<UserRegister> {
           'Last name': _lname.text,
           'Email': _email.text,
           'City': valueChoose,
+          "role": _role,
         });
         Navigator.of(context).pushNamed('Login');
       }

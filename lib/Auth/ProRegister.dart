@@ -29,6 +29,7 @@ class _ProRegisterState extends State<ProRegister> {
 
   bool isLoading = false;
   String error;
+  String _role = 'Professional Account';
 
   String validFullName(String value) {
     if (value.isEmpty) {
@@ -75,13 +76,14 @@ class _ProRegisterState extends State<ProRegister> {
         });
       } else {
         Firestore.instance
-            .collection("Profession")
+            .collection("professionals")
             .document(result.user.uid)
             .setData({
           'Full name': _fullName.text,
           'Email': _email.text,
           'Profession': valueSelect,
           'City': valueChoose,
+          'role': _role,
         });
         Navigator.of(context).pushNamed('Login');
       }
