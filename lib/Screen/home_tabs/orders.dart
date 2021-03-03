@@ -71,7 +71,10 @@ Widget newRequest(BuildContext context) {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   const ListTile(
-                    leading: Icon(Icons.time_to_leave_outlined),
+                    leading: Icon(
+                      Icons.time_to_leave_outlined,
+                      size: 37,
+                    ),
                     title: Text('Status Of Request:'),
                     subtitle: Text('22/2/2021    3:30 PM'),
                   ),
@@ -106,7 +109,10 @@ Widget newRequest(BuildContext context) {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   const ListTile(
-                    leading: Icon(Icons.time_to_leave_outlined),
+                    leading: Icon(
+                      Icons.time_to_leave_outlined,
+                      size: 37,
+                    ),
                     title: Text('Status Of Request:'),
                     subtitle: Text('2/7/2021    7:30 PM'),
                   ),
@@ -141,7 +147,10 @@ Widget newRequest(BuildContext context) {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   const ListTile(
-                    leading: Icon(Icons.time_to_leave_outlined),
+                    leading: Icon(
+                      Icons.time_to_leave_outlined,
+                      size: 37,
+                    ),
                     title: Text('Status Of Request:'),
                     subtitle: Text('2/5/2021    4:30 PM'),
                   ),
@@ -176,7 +185,10 @@ Widget newRequest(BuildContext context) {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   const ListTile(
-                    leading: Icon(Icons.time_to_leave_outlined),
+                    leading: Icon(
+                      Icons.time_to_leave_outlined,
+                      size: 37,
+                    ),
                     title: Text('Status Of Request:'),
                     subtitle: Text('12/8/2021    4:30 PM'),
                   ),
@@ -222,7 +234,10 @@ Widget oldRequest(BuildContext context) {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   const ListTile(
-                    leading: Icon(Icons.done_all),
+                    leading: Icon(
+                      Icons.done_all,
+                      size: 37,
+                    ),
                     title: Text('Status Of Request:'),
                     subtitle: Text('22/2/2021    3:30 PM'),
                   ),
@@ -257,7 +272,10 @@ Widget oldRequest(BuildContext context) {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   const ListTile(
-                    leading: Icon(Icons.done_all),
+                    leading: Icon(
+                      Icons.done_all,
+                      size: 37,
+                    ),
                     title: Text('Status Of Request:'),
                     subtitle: Text('2/7/2021    7:30 PM'),
                   ),
@@ -292,7 +310,10 @@ Widget oldRequest(BuildContext context) {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   const ListTile(
-                    leading: Icon(Icons.done_all),
+                    leading: Icon(
+                      Icons.done_all,
+                      size: 37,
+                    ),
                     title: Text('Status Of Request:'),
                     subtitle: Text('2/5/2021    4:30 PM'),
                   ),
@@ -327,7 +348,10 @@ Widget oldRequest(BuildContext context) {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   const ListTile(
-                    leading: Icon(Icons.done_all),
+                    leading: Icon(
+                      Icons.done_all,
+                      size: 37,
+                    ),
                     title: Text('Status Of Request:'),
                     subtitle: Text('12/8/2021    4:30 PM'),
                   ),
