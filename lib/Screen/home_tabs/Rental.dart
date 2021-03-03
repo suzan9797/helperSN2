@@ -152,6 +152,7 @@ class _RentalState extends State<Rental> {
   }
 
   void _addPost() {
-    Navigator.of(context).pushNamed('AddPost');
+    //Navigator.of(context).pushNamed('AddPost');
+    Navigator.of(context).pushNamed('Addimage');
   }
 }

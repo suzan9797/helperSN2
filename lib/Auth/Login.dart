@@ -204,9 +204,6 @@ class _LoginState extends State<Login> {
                     color: Color(0xff6e475b),
                     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     onPressed: login,
-                    // () {
-                    //   Navigator.of(context).pushNamed('home');
-                    // },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30)),
                     child: Row(

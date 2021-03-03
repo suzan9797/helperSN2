@@ -1,10 +1,6 @@
-import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:path/path.dart' as p;
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 class AddPost extends StatefulWidget {
   @override
@@ -49,39 +45,7 @@ class _AddPostState extends State<AddPost> {
     return null;
   }
 
-  File _file;
-  String _url;
   bool _isLoading = false;
-
-  Future pickerCamera() async {
-    final myfile = await ImagePicker().getImage(source: ImageSource.camera);
-    setState(() {
-      _file = File(myfile.path);
-    });
-  }
-
-  Future uploadImage(Context) async {
-    // try {
-    FirebaseStorage storage =
-        FirebaseStorage(storageBucket: 'gs://helper-4f669.appspot.com');
-    StorageReference ref = storage.ref().child(p.basename(_file.path));
-    StorageUploadTask storageUploadTask = ref.putFile(_file);
-    StorageTaskSnapshot taskSnapshot = await storageUploadTask.onComplete;
-    // Scaffold.of(context).showSnackBar(SnackBar(
-    //   content: Text('success'),
-    // ));
-    String url = await taskSnapshot.ref.getDownloadURL();
-    return url;
-    // print('url $url');
-    // setState(() {
-    //   _url = url;
-    // });
-    // } catch (e) {
-    //   Scaffold.of(context).showSnackBar(SnackBar(
-    //     content: Text(e.message),
-    //   ));
-    // }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -156,30 +120,7 @@ class _AddPostState extends State<AddPost> {
                     );
                   }).toList()),
             ),
-            SizedBox(height: 20),
-            Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                    icon: Icon(Icons.camera_alt), onPressed: pickerCamera),
-                Builder(
-                  builder: (context) => RaisedButton(
-                    child: Text('Upload Image'),
-                    onPressed: () {
-                      uploadImage(context);
-                    },
-                  ),
-                ),
-                Container(
-                  height: 100,
-                  width: 100,
-                  child: Center(
-                    child: _file == null ? null : Image.file(_file),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 30),
+            SizedBox(height: 50),
             Center(
               child: Container(
                 margin: EdgeInsets.only(bottom: 20),
