@@ -173,13 +173,6 @@ class _LoginState extends State<Login> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          //start text email
-                          // Text(
-                          //   'Email:',
-                          //   style: TextStyle(
-                          //       color: Colors.grey[800], fontSize: 20),
-                          // ),
-                          // Padding(padding: EdgeInsets.only(top: 10)),
                           SizedBox(height: 15),
                           buildTextFormFieldAll('Enter Your Email', false,
                               _email, validEmail, Icons.email),
@@ -187,12 +180,6 @@ class _LoginState extends State<Login> {
 
                           //start text password
                           SizedBox(height: 30),
-                          // Text(
-                          //   'Password:',
-                          //   style: TextStyle(
-                          //       color: Colors.grey[800], fontSize: 20),
-                          // ),
-                          // Padding(padding: EdgeInsets.only(top: 10)),
                           buildTextFormFieldAll('Enter Your password', true,
                               _password, validPassword, Icons.lock),
 
