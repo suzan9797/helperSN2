@@ -24,7 +24,7 @@ class CategoryCard extends StatelessWidget {
                 name,
                 style: TextStyle(
                   fontSize: 22,
-                  color: Color((0xff6e475b)),
+                  color: Color(0xff6e475b),
                 ),
               )
             ],

@@ -12,7 +12,7 @@ class _RentalState extends State<Rental> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        backgroundColor: Color(0xff925e78),
+        backgroundColor: Color(0xff6e475b),
         onPressed: () {
           Navigator.of(context).pushNamed('Addimage');
         },
@@ -35,7 +35,7 @@ class _RentalState extends State<Rental> {
                       'Online Rental',
                       style: TextStyle(
                         fontFamily: 'YuseiMagic',
-                        color: Color(0xff925e78),
+                        color: Color(0xff6e475b),
                         fontSize: 30,
                         fontWeight: FontWeight.w600,
                       ),
@@ -48,7 +48,7 @@ class _RentalState extends State<Rental> {
                       'FOR ALL PRDUCTS IN YOUR HOME',
                       style: TextStyle(
                           fontFamily: 'YuseiMagic',
-                          color: Color(0xff925e78),
+                          color: Color(0xff6e475b),
                           fontSize: 20),
                       textAlign: TextAlign.center,
                     ),
@@ -64,7 +64,7 @@ class _RentalState extends State<Rental> {
               'Rental Categories',
               style: TextStyle(
                   fontSize: 30,
-                  color: Color(0xff925e78),
+                  color: Color(0xff6e475b),
                   fontWeight: FontWeight.w600),
             ),
           ),
