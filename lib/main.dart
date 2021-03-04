@@ -10,6 +10,7 @@ import 'package:helper/Screen/Rent/RentOther.dart';
 import 'package:helper/Screen/Rent/RentTools.dart';
 import 'package:helper/Screen/Rent/productsDetails.dart';
 import 'package:helper/Screen/addPost.dart';
+import 'package:helper/Screen/add_image.dart';
 import 'package:helper/Screen/home_screen.dart';
 import 'package:helper/Screen/home_tabs/Carpentry.dart';
 import 'package:helper/Auth/login.dart';
@@ -105,6 +106,7 @@ class MyApp extends StatelessWidget {
         'order': (context) {
           return Orders();
         },
+        'Addimage': (context) => Addimage(),
       },
       theme: AppTheme.appTheme,
       home: OnBoarding(),
