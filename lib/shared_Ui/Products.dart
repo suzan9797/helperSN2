@@ -17,7 +17,6 @@ class Products extends StatelessWidget {
             child: Row(
           children: [
             Expanded(flex: 1, child: Image.asset('images/speaker.jpg')),
-            //SizedBox(width: 8),
             Expanded(
               flex: 2,
               child: Container(
@@ -36,7 +35,7 @@ class Products extends StatelessWidget {
                                 color: Color(0xff6e475b))),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [

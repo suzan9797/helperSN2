@@ -13,7 +13,9 @@ class _RentalState extends State<Rental> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         backgroundColor: Color(0xff925e78),
-        onPressed: _addPost,
+        onPressed: () {
+          Navigator.of(context).pushNamed('Addimage');
+        },
       ),
       body: ListView(
         children: <Widget>[
@@ -149,10 +151,5 @@ class _RentalState extends State<Rental> {
         ],
       ),
     );
-  }
-
-  void _addPost() {
-    //Navigator.of(context).pushNamed('AddPost');
-    Navigator.of(context).pushNamed('Addimage');
   }
 }
