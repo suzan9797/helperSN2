@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:helper/shared_Ui/navigation_drawer.dart';
 
 class ProductsDetails extends StatefulWidget {
   @override
@@ -14,7 +13,6 @@ class _ProductsDetailsState extends State<ProductsDetails> {
           title: Text('Details'),
           centerTitle: true,
         ),
-        drawer: MyDrawer(),
         body: ListView(
           children: [
             //start header page

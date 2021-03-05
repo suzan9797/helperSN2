@@ -66,21 +66,6 @@ class _MyDrawerState extends State<MyDrawer> {
           ListTile(
             trailing: Icon(Icons.chevron_right, color: Colors.grey),
             title: Text(
-              ('Login'),
-              style: TextStyle(fontSize: 18),
-            ),
-            leading: Icon(
-              Icons.login,
-              color: Color(0xff6e475b),
-              size: 25,
-            ),
-            onTap: () {
-              Navigator.of(context).pushNamed('Login');
-            },
-          ),
-          ListTile(
-            trailing: Icon(Icons.chevron_right, color: Colors.grey),
-            title: Text(
               ('Setting'),
               style: TextStyle(fontSize: 18),
             ),
@@ -91,6 +76,21 @@ class _MyDrawerState extends State<MyDrawer> {
             ),
             onTap: () {
               Navigator.of(context).pushNamed('Settings');
+            },
+          ),
+          ListTile(
+            trailing: Icon(Icons.chevron_right, color: Colors.grey),
+            title: Text(
+              ('Login'),
+              style: TextStyle(fontSize: 18),
+            ),
+            leading: Icon(
+              Icons.login,
+              color: Color(0xff6e475b),
+              size: 25,
+            ),
+            onTap: () {
+              Navigator.of(context).pushNamed('Login');
             },
           ),
         ],

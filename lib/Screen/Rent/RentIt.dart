@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:helper/shared_Ui/navigation_drawer.dart';
 import 'package:intl/intl.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:geolocator/geolocator.dart';
@@ -294,9 +293,9 @@ class _RentItState extends State<RentIt> {
 
       FirebaseAuth.instance.currentUser().then((user) {
         Firestore.instance.collection("Rent Order").document().setData({
-          'Date': dateController.text,
-          'Time': timeController.text,
-          'Location': locationController.text,
+          'Date': dateSelected,
+          'Time': timeSelected,
+          'Location': userLocality,
           'Phone': phoneController.text
         }).then((_) {
           Navigator.of(context).pop();

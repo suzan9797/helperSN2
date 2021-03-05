@@ -84,6 +84,7 @@ class _ProRegisterState extends State<ProRegister> {
           'Profession': valueSelect,
           'City': valueChoose,
           'role': _role,
+          'UserID': result.user.uid
         });
         Navigator.of(context).pushNamed('Login');
       }
