@@ -30,7 +30,6 @@ class _ElectronicsState extends State<Electronics> {
         title: Text('Electronics'),
         //centerTitle: true,
       ),
-      drawer: MyDrawer(),
       body: ListView.builder(
         itemCount: productsList.length,
         itemBuilder: (context, i) {

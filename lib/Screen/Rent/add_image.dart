@@ -69,15 +69,15 @@ class _AddimageState extends State<Addimage> {
     // ));
     String url = await taskSnapshot.ref.getDownloadURL();
     return url;
-    // print('url $url');
-    // setState(() {
-    //   _url = url;
-    // });
+    //   print('url $url');
+    //   setState(() {
+    //     _url = url;
+    //   });
     // } catch (e) {
     //   Scaffold.of(context).showSnackBar(SnackBar(
     //     content: Text(e.message),
     //   ));
-    // }
+    //}
   }
 
   @override
