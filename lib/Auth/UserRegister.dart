@@ -79,6 +79,7 @@ class _UserRegister extends State<UserRegister> {
           'Email': _email.text,
           'City': valueChoose,
           "role": _role,
+          'UserID': result.user.uid,
         });
         Navigator.of(context).pushNamed('Login');
       }

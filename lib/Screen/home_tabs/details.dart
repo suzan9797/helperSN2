@@ -26,19 +26,27 @@ class _DetailsState extends State<Details> {
 
   getLocation() async {
     print('GetLocation Function in Proccess');
-    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: prefix0.LocationAccuracy.high);
+    Position position = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: prefix0.LocationAccuracy.high);
     debugPrint('location: ${position.latitude}');
     final coordinates = new Coordinates(position.latitude, position.longitude);
-    var addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
+    var addresses =
+        await Geocoder.local.findAddressesFromCoordinates(coordinates);
     var first = addresses.first;
-    userAddress = 'https://www.google.com/maps/search/?api=1&query=' + position.latitude.toString() + ',' + position.longitude.toString();
+    userAddress = 'https://www.google.com/maps/search/?api=1&query=' +
+        position.latitude.toString() +
+        ',' +
+        position.longitude.toString();
     print("${first.featureName} : ${first.addressLine}");
-    print('https://www.google.com/maps/search/?api=1&query=' + position.latitude.toString() + ',' + position.longitude.toString());
+    print('https://www.google.com/maps/search/?api=1&query=' +
+        position.latitude.toString() +
+        ',' +
+        position.longitude.toString());
     print(userAddress);
     print(addresses.last.subLocality);
     setState(() {
-      userDistrict=addresses.last.subLocality;
-      userLocality=first.addressLine;
+      userDistrict = addresses.last.subLocality;
+      userLocality = first.addressLine;
     });
   }
 
