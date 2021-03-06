@@ -15,9 +15,6 @@ class RentIt extends StatefulWidget {
 class _RentItState extends State<RentIt> {
   GlobalKey<FormState> _key = new GlobalKey<FormState>();
 
-  TextEditingController dateController = new TextEditingController();
-  TextEditingController timeController = new TextEditingController();
-  TextEditingController locationController = new TextEditingController();
   TextEditingController phoneController = new TextEditingController();
 
   String dateSelected = '';
@@ -66,7 +63,6 @@ class _RentItState extends State<RentIt> {
           title: Text('Rent it'),
           centerTitle: true,
         ),
-        //drawer: MyDrawer(),
         body: Padding(
             padding: EdgeInsets.all(25),
             child: _isLoading ? _loading(context) : _form(context)));
@@ -86,7 +82,6 @@ class _RentItState extends State<RentIt> {
             Padding(padding: EdgeInsets.only(top: 10)),
             InkWell(
               child: TextFormField(
-                controller: dateController,
                 enabled: false,
                 decoration: InputDecoration(
                     labelStyle: TextStyle(color: Colors.grey[600]),
@@ -137,7 +132,6 @@ class _RentItState extends State<RentIt> {
             Padding(padding: EdgeInsets.only(top: 10)),
             InkWell(
               child: TextFormField(
-                controller: timeController,
                 enabled: false,
                 decoration: InputDecoration(
                     labelStyle: TextStyle(color: Colors.grey[600]),
@@ -183,7 +177,6 @@ class _RentItState extends State<RentIt> {
             ),
             Padding(padding: EdgeInsets.only(top: 10)),
             TextFormField(
-              controller: locationController,
               enabled: false,
               decoration: InputDecoration(
                   labelStyle: TextStyle(color: Colors.grey[600]),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:helper/shared_Ui/navigation_drawer.dart';
 import 'package:helper/shared_Ui/Products.dart';
 
 class RentOther extends StatefulWidget {
@@ -30,7 +29,6 @@ class _RentOtherState extends State<RentOther> {
         title: Text('Other'),
         //centerTitle: true,
       ),
-      drawer: MyDrawer(),
       body: ListView.builder(
         itemCount: productsList.length,
         itemBuilder: (context, i) {
