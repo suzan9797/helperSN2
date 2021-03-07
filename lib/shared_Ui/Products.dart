@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 class Products extends StatelessWidget {
   final name;
   final price;
-  final time;
   final image;
-  Products({this.name, this.price, this.time, this.image});
+  Products({this.name, this.price, this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +44,7 @@ class Products extends StatelessWidget {
                             SizedBox(width: 5),
                             Padding(
                               padding: const EdgeInsets.only(right: 8),
-                              child: Text(time,
+                              child: Text('SR/hours',
                                   style: TextStyle(
                                       fontSize: 14, color: Colors.grey[600])),
                             ),

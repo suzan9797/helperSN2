@@ -172,22 +172,21 @@ class _UserRegister extends State<UserRegister> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            //start text first name
                             SizedBox(height: 15),
+                            //start text first name
                             buildTextFormFieldAll('Enter Your First Name',
                                 false, _fname, validFname),
                             //end text first name
+
                             SizedBox(height: 20),
 
                             //start text last name
-
                             buildTextFormFieldAll('Enter Your Last Name', false,
                                 _lname, validLname),
                             //end text last name
                             SizedBox(height: 20),
 
                             //start text email
-
                             buildTextFormFieldAll(
                                 'Enter Your Email', false, _email, validEmail),
                             //end text email
