@@ -76,7 +76,7 @@ class _ProRegisterState extends State<ProRegister> {
         });
       } else {
         Firestore.instance
-            .collection("professionals")
+            .collection("Users")
             .document(result.user.uid)
             .setData({
           'Full name': _fullName.text,
