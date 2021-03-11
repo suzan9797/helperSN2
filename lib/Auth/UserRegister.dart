@@ -21,21 +21,21 @@ class _UserRegister extends State<UserRegister> {
 
   String validFname(String val) {
     if (val.isEmpty) {
-      return "First name can't to be empty";
+      return "First name is required";
     }
     return null;
   }
 
   String validLname(String val) {
     if (val.isEmpty) {
-      return "Last name can't to be empty";
+      return "Last name is required";
     }
     return null;
   }
 
   String validEmail(String val) {
     if (val.isEmpty) {
-      return "Email can't to be empty";
+      return "Email is required";
     }
     if (!RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -47,7 +47,7 @@ class _UserRegister extends State<UserRegister> {
 
   String validPasswoed(String val) {
     if (val.isEmpty) {
-      return "Password can't to be empty";
+      return "Password is required";
     }
     return null;
   }
@@ -118,7 +118,7 @@ class _UserRegister extends State<UserRegister> {
           child: Transform.scale(
             scale: 4,
             child: Transform.translate(
-              offset: Offset(0, -190),
+              offset: Offset(0, -180),
               child: Container(
                 height: mdw,
                 width: mdw,
@@ -134,12 +134,12 @@ class _UserRegister extends State<UserRegister> {
           children: [
             Center(
               child: Container(
-                margin: EdgeInsets.only(top: 30),
+                margin: EdgeInsets.only(top: 50),
                 child: Text(
                   'Sign up',
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 30,
+                      fontSize: 36,
                       fontFamily: 'YuseiMagic'),
                 ),
               ),
@@ -150,103 +150,105 @@ class _UserRegister extends State<UserRegister> {
         ListView(
           children: [
             Center(
-                child: SingleChildScrollView(
-              child: Container(
-                  margin: EdgeInsets.only(top: 120),
-                  height: 480,
-                  width: mdw / 1.2,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black,
-                          spreadRadius: 0.4,
-                          offset: Offset(1, 1))
-                    ],
-                  ),
-                  child: Form(
-                      key: formUserRegister,
-                      child: Container(
-                        padding: EdgeInsets.all(15),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            //start text first name
-                            SizedBox(height: 15),
-                            buildTextFormFieldAll('Enter Your First Name',
-                                false, _fname, validFname),
-                            //end text first name
-                            SizedBox(height: 20),
+                child: Container(
+                    margin: EdgeInsets.only(top: 150),
+                    height: 435,
+                    width: mdw / 1.2,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black,
+                            spreadRadius: 0.4,
+                            offset: Offset(1, 1))
+                      ],
+                    ),
+                    child: SingleChildScrollView(
+                      child: Form(
+                          key: formUserRegister,
+                          child: Container(
+                            padding: EdgeInsets.all(15),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 15),
+                                //start text first name
+                                buildTextFormFieldAll('Enter Your First Name',
+                                    false, _fname, validFname),
+                                //end text first name
 
-                            //start text last name
+                                SizedBox(height: 20),
 
-                            buildTextFormFieldAll('Enter Your Last Name', false,
-                                _lname, validLname),
-                            //end text last name
-                            SizedBox(height: 20),
+                                //start text last name
+                                buildTextFormFieldAll('Enter Your Last Name',
+                                    false, _lname, validLname),
+                                //end text last name
+                                SizedBox(height: 20),
 
-                            //start text email
+                                //start text email
+                                buildTextFormFieldAll('Enter Your Email', false,
+                                    _email, validEmail),
+                                //end text email
 
-                            buildTextFormFieldAll(
-                                'Enter Your Email', false, _email, validEmail),
-                            //end text email
+                                SizedBox(height: 20),
 
-                            SizedBox(height: 20),
+                                Container(
+                                  padding: EdgeInsets.only(left: 5, right: 5),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey),
+                                    borderRadius: BorderRadius.circular(40),
+                                  ),
+                                  child: DropdownButtonFormField<String>(
+                                      autovalidateMode:
+                                          AutovalidateMode.onUserInteraction,
+                                      validator: (newValue) => newValue == null
+                                          ? "City can't to be empty"
+                                          : null,
+                                      decoration: InputDecoration(
+                                          isDense: true,
+                                          border: InputBorder.none),
+                                      hint: Text('Select your city:'),
+                                      icon: Icon(Icons.arrow_drop_down),
+                                      iconSize: 35,
+                                      style: TextStyle(
+                                          color: Colors.grey[600],
+                                          fontSize: 16),
+                                      value: valueChoose,
+                                      onChanged: (String newValue) {
+                                        setState(() {
+                                          valueChoose = newValue;
+                                        });
+                                      },
+                                      items: listitem
+                                          .map<DropdownMenuItem<String>>(
+                                              (valueItem) {
+                                        return DropdownMenuItem<String>(
+                                          value: valueItem,
+                                          child: Text(valueItem),
+                                        );
+                                      }).toList()),
+                                ),
 
-                            Container(
-                              padding: EdgeInsets.only(left: 5, right: 5),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(40),
-                              ),
-                              child: DropdownButtonFormField<String>(
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  validator: (newValue) => newValue == null
-                                      ? "City can't to be empty"
-                                      : null,
-                                  decoration: InputDecoration(
-                                      isDense: true, border: InputBorder.none),
-                                  hint: Text('Select your city:'),
-                                  icon: Icon(Icons.arrow_drop_down),
-                                  iconSize: 35,
-                                  style: TextStyle(
-                                      color: Colors.grey[600], fontSize: 16),
-                                  value: valueChoose,
-                                  onChanged: (String newValue) {
-                                    setState(() {
-                                      valueChoose = newValue;
-                                    });
-                                  },
-                                  items: listitem.map<DropdownMenuItem<String>>(
-                                      (valueItem) {
-                                    return DropdownMenuItem<String>(
-                                      value: valueItem,
-                                      child: Text(valueItem),
-                                    );
-                                  }).toList()),
+                                //end dropDown
+                                SizedBox(height: 20),
+
+                                //start text passwoed
+
+                                buildTextFormFieldAll('Enter Your password',
+                                    true, _password, validPasswoed)
+
+                                //end text passwoed
+                              ],
                             ),
-
-                            //end dropDown
-                            SizedBox(height: 20),
-
-                            //start text passwoed
-
-                            buildTextFormFieldAll('Enter Your password', true,
-                                _password, validPasswoed)
-
-                            //end text passwoed
-                          ],
-                        ),
-                      ))),
-            ))
+                          )),
+                    )))
           ],
         ),
         //end box form
         Center(
           child: Container(
-            margin: EdgeInsets.only(top: 710),
+            margin: EdgeInsets.only(top: 700),
             child: Column(
               children: [
                 //start sign up button
@@ -310,14 +312,14 @@ class _UserRegister extends State<UserRegister> {
       validator: myvalid,
       decoration: InputDecoration(
         labelStyle: TextStyle(color: Colors.grey[600]),
-        hintText: myhinttext,
+        labelText: myhinttext,
         filled: true,
         fillColor: Colors.white,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(40),
           borderSide: BorderSide(color: Colors.grey),
         ),
-        focusedBorder: OutlineInputBorder(
+        border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(40),
           borderSide: BorderSide(color: Colors.grey),
         ),

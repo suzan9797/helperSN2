@@ -22,7 +22,7 @@ class _LoginState extends State<Login> {
 
   String validEmail(String val) {
     if (val.isEmpty) {
-      return "Email can't to be empty";
+      return "Email is required";
     }
     if (!RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -34,7 +34,7 @@ class _LoginState extends State<Login> {
 
   String validPassword(String val) {
     if (val.isEmpty) {
-      return "Password can't to be empty";
+      return "Password is required";
     }
 
     return null;
@@ -122,27 +122,25 @@ class _LoginState extends State<Login> {
           //start avatar
           Container(
             height: mdw,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Padding(padding: EdgeInsets.only(top: 100)),
-                  CircleAvatar(
-                      radius: 60.0,
-                      backgroundImage: AssetImage('images/Logo.png')),
-                  Center(
-                    child: Container(
-                      margin: EdgeInsets.only(top: 15),
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontFamily: 'YuseiMagic'),
-                      ),
+            child: Column(
+              children: [
+                Padding(padding: EdgeInsets.only(top: 100)),
+                CircleAvatar(
+                    radius: 60.0,
+                    backgroundImage: AssetImage('images/Logo.png')),
+                Center(
+                  child: Container(
+                    margin: EdgeInsets.only(top: 15),
+                    child: Text(
+                      'Login',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 36,
+                          fontFamily: 'YuseiMagic'),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           //end avatar
@@ -152,8 +150,8 @@ class _LoginState extends State<Login> {
             children: [
               Center(
                 child: Container(
-                  margin: EdgeInsets.only(top: 270),
-                  height: 250,
+                  margin: EdgeInsets.only(top: 280),
+                  height: 220,
                   width: mdw / 1.2,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -165,26 +163,28 @@ class _LoginState extends State<Login> {
                           offset: Offset(1, 1))
                     ],
                   ),
-                  child: Form(
-                    key: formStateLogin,
-                    child: Container(
-                      margin: EdgeInsets.only(top: 10),
-                      padding: EdgeInsets.all(15),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 15),
-                          buildTextFormFieldAll('Enter Your Email', false,
-                              _email, validEmail, Icons.email),
-                          //end text email
+                  child: SingleChildScrollView(
+                    child: Form(
+                      key: formStateLogin,
+                      child: Container(
+                        margin: EdgeInsets.only(top: 5),
+                        padding: EdgeInsets.all(15),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 15),
+                            buildTextFormFieldAll('Enter Your Email', false,
+                                _email, validEmail, Icons.email),
+                            //end text email
 
-                          //start text password
-                          SizedBox(height: 30),
-                          buildTextFormFieldAll('Enter Your password', true,
-                              _password, validPassword, Icons.lock),
+                            //start text password
+                            SizedBox(height: 20),
+                            buildTextFormFieldAll('Enter Your password', true,
+                                _password, validPassword, Icons.lock),
 
-                          //end text passwoed
-                        ],
+                            //end text passwoed
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -288,7 +288,7 @@ class _LoginState extends State<Login> {
           borderRadius: BorderRadius.circular(40),
           borderSide: BorderSide(color: Colors.grey),
         ),
-        focusedBorder: OutlineInputBorder(
+        border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(40),
           borderSide: BorderSide(color: Colors.grey),
         ),

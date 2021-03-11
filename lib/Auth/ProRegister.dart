@@ -33,14 +33,14 @@ class _ProRegisterState extends State<ProRegister> {
 
   String validFullName(String value) {
     if (value.isEmpty) {
-      return "Full Name can't to be empty";
+      return "Name is required";
     }
     return null;
   }
 
   String validEmail(String value) {
     if (value.isEmpty) {
-      return "Email can't to be empty";
+      return "Email is required";
     }
     if (!RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -52,7 +52,7 @@ class _ProRegisterState extends State<ProRegister> {
 
   String validPasswoed(String val) {
     if (val.isEmpty) {
-      return "Password can't to be empty";
+      return "Password is required";
     }
     return null;
   }
@@ -76,7 +76,7 @@ class _ProRegisterState extends State<ProRegister> {
         });
       } else {
         Firestore.instance
-            .collection("professionals")
+            .collection("Users")
             .document(result.user.uid)
             .setData({
           'Full name': _fullName.text,
@@ -118,7 +118,7 @@ class _ProRegisterState extends State<ProRegister> {
           child: Transform.scale(
             scale: 4,
             child: Transform.translate(
-              offset: Offset(0, -190),
+              offset: Offset(0, -180),
               child: Container(
                 height: mdw,
                 width: mdw,
@@ -134,12 +134,12 @@ class _ProRegisterState extends State<ProRegister> {
           children: [
             Center(
               child: Container(
-                margin: EdgeInsets.only(top: 30),
+                margin: EdgeInsets.only(top: 50),
                 child: Text(
                   'Sign up',
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 30,
+                      fontSize: 36,
                       fontFamily: 'YuseiMagic'),
                 ),
               ),
@@ -151,8 +151,8 @@ class _ProRegisterState extends State<ProRegister> {
           children: [
             Center(
                 child: Container(
-                    margin: EdgeInsets.only(top: 90),
-                    height: 528,
+                    margin: EdgeInsets.only(top: 150),
+                    height: 435,
                     width: mdw / 1.2,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -164,114 +164,118 @@ class _ProRegisterState extends State<ProRegister> {
                             offset: Offset(1, 1))
                       ],
                     ),
-                    child: Form(
-                        key: formProRegister,
-                        child: Container(
-                          padding: EdgeInsets.all(15),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(height: 20),
+                    child: SingleChildScrollView(
+                      child: Form(
+                          key: formProRegister,
+                          child: Container(
+                            padding: EdgeInsets.all(15),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 20),
 
-                              //start text full name
-                              buildTextFormFieldAll('Enter your full name',
-                                  false, _fullName, validFullName),
-                              //end text full name
-                              SizedBox(height: 20),
+                                //start text full name
+                                buildTextFormFieldAll('Enter your full name',
+                                    false, _fullName, validFullName),
+                                //end text full name
+                                SizedBox(height: 20),
 
-                              //start text email
-                              buildTextFormFieldAll('Enter your Email', false,
-                                  _email, validEmail),
-                              //end text email
-                              SizedBox(height: 20),
+                                //start text email
+                                buildTextFormFieldAll('Enter your Email', false,
+                                    _email, validEmail),
+                                //end text email
+                                SizedBox(height: 20),
 
-                              Container(
-                                padding: EdgeInsets.only(left: 5, right: 5),
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey),
-                                  borderRadius: BorderRadius.circular(40),
+                                Container(
+                                  padding: EdgeInsets.only(left: 5, right: 5),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey),
+                                    borderRadius: BorderRadius.circular(40),
+                                  ),
+                                  child: DropdownButtonFormField<String>(
+                                      validator: (newValue) => newValue == null
+                                          ? "profession is required"
+                                          : null,
+                                      decoration: InputDecoration(
+                                          isDense: true,
+                                          border: InputBorder.none),
+                                      hint: Text('Choose your profession:'),
+                                      icon: Icon(Icons.arrow_drop_down),
+                                      iconSize: 35,
+                                      style: TextStyle(
+                                          color: Colors.grey[600],
+                                          fontSize: 17),
+                                      value: valueSelect,
+                                      onChanged: (newValue) {
+                                        setState(() {
+                                          valueSelect = newValue;
+                                        });
+                                      },
+                                      items: listpro
+                                          .map<DropdownMenuItem<String>>(
+                                              (valueItem) {
+                                        return DropdownMenuItem<String>(
+                                          value: valueItem,
+                                          child: Text(valueItem),
+                                        );
+                                      }).toList()),
                                 ),
-                                child: DropdownButtonFormField<String>(
-                                    validator: (newValue) => newValue == null
-                                        ? "profession can't to be empty"
-                                        : null,
-                                    decoration: InputDecoration(
-                                        isDense: true,
-                                        border: InputBorder.none),
-                                    hint: Text('Choose your profession:'),
-                                    icon: Icon(Icons.arrow_drop_down),
-                                    iconSize: 35,
-                                    style: TextStyle(
-                                        color: Colors.grey[600], fontSize: 17),
-                                    value: valueSelect,
-                                    onChanged: (newValue) {
-                                      setState(() {
-                                        valueSelect = newValue;
-                                      });
-                                    },
-                                    items: listpro
-                                        .map<DropdownMenuItem<String>>(
-                                            (valueItem) {
-                                      return DropdownMenuItem<String>(
-                                        value: valueItem,
-                                        child: Text(valueItem),
-                                      );
-                                    }).toList()),
-                              ),
-                              //end drop pro
-                              SizedBox(height: 5),
+                                //end drop pro
+                                SizedBox(height: 5),
 
-                              //Start drop city
-                              SizedBox(height: 20),
-                              Container(
-                                padding: EdgeInsets.only(left: 5, right: 5),
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey),
-                                  borderRadius: BorderRadius.circular(40),
+                                //Start drop city
+                                SizedBox(height: 20),
+                                Container(
+                                  padding: EdgeInsets.only(left: 5, right: 5),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey),
+                                    borderRadius: BorderRadius.circular(40),
+                                  ),
+                                  child: DropdownButtonFormField<String>(
+                                      validator: (newValue) => newValue == null
+                                          ? "City is required"
+                                          : null,
+                                      decoration: InputDecoration(
+                                          isDense: true,
+                                          border: InputBorder.none),
+                                      hint: Text('Select your city:'),
+                                      icon: Icon(Icons.arrow_drop_down),
+                                      iconSize: 35,
+                                      style: TextStyle(
+                                          color: Colors.grey[600],
+                                          fontSize: 17),
+                                      value: valueChoose,
+                                      onChanged: (newValue) {
+                                        setState(() {
+                                          valueChoose = newValue;
+                                        });
+                                      },
+                                      items: listcity
+                                          .map<DropdownMenuItem<String>>(
+                                              (valueItem) {
+                                        return DropdownMenuItem<String>(
+                                          value: valueItem,
+                                          child: Text(valueItem),
+                                        );
+                                      }).toList()),
                                 ),
-                                child: DropdownButtonFormField<String>(
-                                    validator: (newValue) => newValue == null
-                                        ? "City can't to be empty"
-                                        : null,
-                                    decoration: InputDecoration(
-                                        isDense: true,
-                                        border: InputBorder.none),
-                                    hint: Text('Select your city:'),
-                                    icon: Icon(Icons.arrow_drop_down),
-                                    iconSize: 35,
-                                    style: TextStyle(
-                                        color: Colors.grey[600], fontSize: 17),
-                                    value: valueChoose,
-                                    onChanged: (newValue) {
-                                      setState(() {
-                                        valueChoose = newValue;
-                                      });
-                                    },
-                                    items: listcity
-                                        .map<DropdownMenuItem<String>>(
-                                            (valueItem) {
-                                      return DropdownMenuItem<String>(
-                                        value: valueItem,
-                                        child: Text(valueItem),
-                                      );
-                                    }).toList()),
-                              ),
-                              //end drop city
-                              SizedBox(height: 20),
+                                //end drop city
+                                SizedBox(height: 20),
 
-                              //end text passwoed
-                              buildTextFormFieldAll('Enter Your password', true,
-                                  _password, validPasswoed)
-                              //end text passwoed
-                            ],
-                          ),
-                        ))))
+                                //end text passwoed
+                                buildTextFormFieldAll('Enter Your password',
+                                    true, _password, validPasswoed)
+                                //end text passwoed
+                              ],
+                            ),
+                          )),
+                    )))
           ],
         ),
         //end box form
         Center(
           child: Container(
-            margin: EdgeInsets.only(top: 710),
+            margin: EdgeInsets.only(top: 700),
             child: Column(
               children: [
                 //start sign up button
@@ -344,7 +348,7 @@ class _ProRegisterState extends State<ProRegister> {
           borderRadius: BorderRadius.circular(40),
           borderSide: BorderSide(color: Colors.grey),
         ),
-        focusedBorder: OutlineInputBorder(
+        border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(40),
           borderSide: BorderSide(color: Colors.grey),
         ),

@@ -8,18 +8,8 @@ class RentGames extends StatefulWidget {
 
 class _RentGamesState extends State<RentGames> {
   var productsList = [
-    {
-      'name': 'Speker',
-      'price': '20',
-      'time': 'SR/hours',
-      'image': 'images/speaker.jpg'
-    },
-    {
-      'name': 'Speker',
-      'price': '20',
-      'time': 'SR/hours',
-      'image': 'images/speaker.jpg'
-    },
+    {'name': 'Speker', 'price': '20', 'image': 'images/speaker.jpg'},
+    {'name': 'Speker', 'price': '20', 'image': 'images/speaker.jpg'},
   ];
 
   @override
@@ -35,7 +25,6 @@ class _RentGamesState extends State<RentGames> {
           return Products(
             name: productsList[i]['name'],
             price: productsList[i]['price'],
-            time: productsList[i]['time'],
             image: productsList[i]['image'],
           );
         },
