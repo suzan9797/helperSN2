@@ -26,21 +26,21 @@ class _AddPostState extends State<AddPost> {
 
   String validProductName(String value) {
     if (value.isEmpty) {
-      return "Producte name can't to be empty";
+      return "Producte name is required";
     }
     return null;
   }
 
   String validDescription(String value) {
     if (value.isEmpty) {
-      return "Description can't to be empty";
+      return "Description is required";
     }
     return null;
   }
 
   String validPrice(String value) {
     if (value.isEmpty) {
-      return "Price can't to be empty";
+      return "Price is required";
     }
     return null;
   }
@@ -66,6 +66,7 @@ class _AddPostState extends State<AddPost> {
         key: _key,
         child: Column(
           children: [
+            SizedBox(height: 15),
             buildTextFormField(
                 'Enter name of product', 1, _productName, validProductName),
             SizedBox(height: 20),
@@ -84,7 +85,7 @@ class _AddPostState extends State<AddPost> {
                   borderRadius: BorderRadius.circular(40),
                   borderSide: BorderSide(color: Colors.grey),
                 ),
-                focusedBorder: OutlineInputBorder(
+                border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(40),
                   borderSide: BorderSide(color: Colors.grey),
                 ),
@@ -99,7 +100,7 @@ class _AddPostState extends State<AddPost> {
               ),
               child: DropdownButtonFormField<String>(
                   validator: (newValue) =>
-                      newValue == null ? "category can't to be empty" : null,
+                      newValue == null ? "category is required" : null,
                   decoration:
                       InputDecoration(isDense: true, border: InputBorder.none),
                   hint: Text('Choose category:'),
@@ -198,7 +199,7 @@ class _AddPostState extends State<AddPost> {
           borderRadius: BorderRadius.circular(40),
           borderSide: BorderSide(color: Colors.grey),
         ),
-        focusedBorder: OutlineInputBorder(
+        border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(40),
           borderSide: BorderSide(color: Colors.grey),
         ),
