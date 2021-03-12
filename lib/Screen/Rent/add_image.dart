@@ -57,27 +57,23 @@ class _AddimageState extends State<Addimage> {
     Navigator.of(context).pop();
   }
 
-  Future uploadImage() async {
-    // try {
-    FirebaseStorage storage =
-        FirebaseStorage(storageBucket: 'gs://helper-4f669.appspot.com');
-    StorageReference ref = storage.ref().child(p.basename(_file.path));
-    StorageUploadTask storageUploadTask = ref.putFile(_file);
-    StorageTaskSnapshot taskSnapshot = await storageUploadTask.onComplete;
-    // Scaffold.of(context).showSnackBar(SnackBar(
-    //   content: Text('success'),
-    // ));
-    String url = await taskSnapshot.ref.getDownloadURL();
-    return url;
-    //   print('url $url');
-    //   setState(() {
-    //     _url = url;
-    //   });
-    // } catch (e) {
-    //   Scaffold.of(context).showSnackBar(SnackBar(
-    //     content: Text(e.message),
-    //   ));
-    //}
+  Future uploadImage(context) async {
+    try {
+      FirebaseStorage storage =
+          FirebaseStorage(storageBucket: 'gs://helper-4f669.appspot.com');
+      StorageReference ref = storage.ref().child(p.basename(_file.path));
+      StorageUploadTask storageUploadTask = ref.putFile(_file);
+      StorageTaskSnapshot taskSnapshot = await storageUploadTask.onComplete;
+      String url = await taskSnapshot.ref.getDownloadURL();
+      print('url $url');
+      setState(() {
+        _url = url;
+      });
+    } catch (e) {
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text(e.message),
+      ));
+    }
   }
 
   @override
@@ -103,7 +99,7 @@ class _AddimageState extends State<Addimage> {
                 ),
                 SizedBox(height: 30),
                 IconButton(
-                    icon: Icon(Icons.camera_alt, size: 30),
+                    icon: Icon(Icons.add_a_photo, size: 30),
                     onPressed: () {
                       _showChoiceDialog(context);
                     }),
@@ -133,7 +129,7 @@ class _AddimageState extends State<Addimage> {
                       ],
                     ),
                     onPressed: () {
-                      uploadImage().whenComplete(
+                      uploadImage(context).whenComplete(
                           () => Navigator.of(context).pushNamed('AddPost'));
                     },
                   ),

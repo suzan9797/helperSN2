@@ -26,6 +26,16 @@ class _RentItState extends State<RentIt> {
 
   bool _isLoading = false;
 
+  String validPhone(String val) {
+    if (val.isEmpty) {
+      return "Phone number is required";
+    }
+    if (val.length != 10) {
+      return "Enter valid phone";
+    }
+    return null;
+  }
+
   @override
   void initState() {
     getLocation();
@@ -93,14 +103,14 @@ class _RentItState extends State<RentIt> {
                         color: Color(0xff6e475b),
                       ),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(color: Colors.grey),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(color: Colors.grey),
-                    ),
+                    // enabledBorder: OutlineInputBorder(
+                    //   borderRadius: BorderRadius.circular(20),
+                    //   borderSide: BorderSide(color: Colors.grey),
+                    // ),
+                    // focusedBorder: OutlineInputBorder(
+                    //   borderRadius: BorderRadius.circular(20),
+                    //   borderSide: BorderSide(color: Colors.grey),
+                    // ),
                     hintText: '  ' + dateSelected,
                     hintStyle: TextStyle(color: Color(0xff6e475b))),
               ),
@@ -143,14 +153,14 @@ class _RentItState extends State<RentIt> {
                         color: Color(0xff6e475b),
                       ),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(color: Colors.grey),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(color: Colors.grey),
-                    ),
+                    // enabledBorder: OutlineInputBorder(
+                    //   borderRadius: BorderRadius.circular(20),
+                    //   borderSide: BorderSide(color: Colors.grey),
+                    // ),
+                    // focusedBorder: OutlineInputBorder(
+                    //   borderRadius: BorderRadius.circular(20),
+                    //   borderSide: BorderSide(color: Colors.grey),
+                    // ),
                     hintText: '  ' + timeSelected,
                     hintStyle: TextStyle(color: Color(0xff6e475b))),
               ),
@@ -188,14 +198,14 @@ class _RentItState extends State<RentIt> {
                       color: Color(0xff6e475b),
                     ),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey),
-                  ),
+                  // enabledBorder: OutlineInputBorder(
+                  //   borderRadius: BorderRadius.circular(20),
+                  //   borderSide: BorderSide(color: Colors.grey),
+                  // ),
+                  // focusedBorder: OutlineInputBorder(
+                  //   borderRadius: BorderRadius.circular(20),
+                  //   borderSide: BorderSide(color: Colors.grey),
+                  // ),
                   hintText: userLocality,
                   hintStyle: TextStyle(color: Color(0xff6e475b))),
             ),
@@ -206,6 +216,7 @@ class _RentItState extends State<RentIt> {
             ),
             Padding(padding: EdgeInsets.only(top: 10)),
             TextFormField(
+              validator: validPhone,
               controller: phoneController,
               keyboardType: TextInputType.phone,
               decoration: InputDecoration(
@@ -217,14 +228,6 @@ class _RentItState extends State<RentIt> {
                     size: 30,
                     color: Color(0xff6e475b),
                   ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.grey),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.grey),
                 ),
               ),
             ),
