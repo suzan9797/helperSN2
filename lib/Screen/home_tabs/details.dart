@@ -81,19 +81,25 @@ class _DetailsState extends State<Details> {
         title: Text('Details'),
         centerTitle: true,
       ),
-      body: Form(
+      body: Padding(
+          padding: const EdgeInsets.all(10),
+          child: _isLoading ? _loading(context) : _form(context)),
+    );
+  }
+
+  Widget _form(BuildContext context) {
+    return SingleChildScrollView(
+      child: Form(
         key: _key,
-        child: ListView(
-          padding: EdgeInsets.all(8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            ListTile(
-              title: Text(
-                'Description of your Service:',
-                style: TextStyle(
-                  color: Color(0xff6e475b),
-                  fontSize: 19,
-                  fontFamily: 'YuseiMagic',
-                ),
+            Text(
+              'Description of your Service:',
+              style: TextStyle(
+                color: Color(0xff6e475b),
+                fontSize: 19,
+                fontFamily: 'YuseiMagic',
               ),
             ),
             _buildDescribtion(),
@@ -250,10 +256,6 @@ class _DetailsState extends State<Details> {
         ),
       ),
     );
-  }
-
-  Widget _form(BuildContext context) {
-    return SingleChildScrollView();
   }
 
   Widget _loading(BuildContext context) {
