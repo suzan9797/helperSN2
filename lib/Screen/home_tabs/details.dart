@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -63,6 +65,7 @@ class _DetailsState extends State<Details> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextField(
+        controller: _detilsController,
         decoration: InputDecoration(
           labelText: 'Enter your Describtion',
           border: OutlineInputBorder(
@@ -272,6 +275,15 @@ class _DetailsState extends State<Details> {
     } else {
       setState(() {
         _isLoading = true;
+      });
+      FirebaseAuth.instance.currentUser().then((user) {
+        Firestore.instance.collection("detilsPro").document().setData({
+          'Describtion': _detilsController.text,
+          'Date&Time': _date,
+          'Location': userLocality,
+        }).then((_) {
+          Navigator.of(context).pop();
+        });
       });
     }
   }

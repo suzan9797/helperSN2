@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:helper/Screen/home_tabs/rating.dart';
 
@@ -8,6 +9,27 @@ class Plumbing extends StatefulWidget {
 
 class _PlumbingState extends State<Plumbing> {
   int _Rating;
+  QuerySnapshot proAccounts;
+
+  @override
+  void initState() {
+    getProAccounts();
+    super.initState();
+  }
+
+  getProAccounts() async {
+    await Firestore.instance
+        .collection('Users')
+        .where('role', isEqualTo: 'Professional Account')
+        .where('Profession', isEqualTo: 'Plumbing')
+        .getDocuments()
+        .then((value) {
+      setState(() {
+        proAccounts = value;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,8 +37,18 @@ class _PlumbingState extends State<Plumbing> {
         title: Text('Plumbing'),
         centerTitle: true,
       ),
-      body: ListView.builder(
-        itemCount: 6,
+      body: proAccountsFlowList(context),
+    );
+  }
+
+  Widget proAccountsFlowList(BuildContext context) {
+    if (proAccounts == null) {
+      return Center(
+        child: CircularProgressIndicator(),
+      );
+    } else {
+      return ListView.builder(
+        itemCount: proAccounts.documents.length,
         itemBuilder: (context, i) {
           return InkWell(
             child: Container(
@@ -27,7 +59,7 @@ class _PlumbingState extends State<Plumbing> {
                   children: <Widget>[
                     Expanded(
                       flex: 1,
-                      child: Image.asset('images/pro.png'),
+                      child: Image.asset('images/proffession.png'),
                     ),
                     Expanded(
                       flex: 2,
@@ -40,7 +72,8 @@ class _PlumbingState extends State<Plumbing> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Text(
-                                'Abd Al-Rahman',
+                                proAccounts.documents[i].data['Full name']
+                                    .toString(),
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Color(0xff925e78),
@@ -57,7 +90,7 @@ class _PlumbingState extends State<Plumbing> {
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        '7 min away',
+                                        '10 min away',
                                         style: TextStyle(
                                           color: Colors.red,
                                         ),
@@ -87,7 +120,7 @@ class _PlumbingState extends State<Plumbing> {
             },
           );
         },
-      ),
-    );
+      );
+    }
   }
 }

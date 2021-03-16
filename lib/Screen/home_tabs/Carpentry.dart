@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:helper/Screen/home_tabs/rating.dart';
 
@@ -8,15 +9,46 @@ class Carpentry extends StatefulWidget {
 
 class _CarpentryState extends State<Carpentry> {
   int _Rating;
+  QuerySnapshot proAccounts;
+
+  @override
+  void initState() {
+    getProAccounts();
+    super.initState();
+  }
+
+  getProAccounts() async {
+    await Firestore.instance
+        .collection('Users')
+        .where('role', isEqualTo: 'Professional Account')
+        .where('Profession', isEqualTo: 'Carpentry')
+        .getDocuments()
+        .then((value) {
+      setState(() {
+        proAccounts = value;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Carpentry'),
+        title: Text('Grass'),
         centerTitle: true,
       ),
-      body: ListView.builder(
-        itemCount: 6,
+      body: proAccountsFlowList(context),
+    );
+  }
+
+  Widget proAccountsFlowList(BuildContext context) {
+    if (proAccounts == null) {
+      return Center(
+        child: CircularProgressIndicator(),
+      );
+    } else {
+      return ListView.builder(
+        itemCount: proAccounts.documents.length,
         itemBuilder: (context, i) {
           return InkWell(
             child: Container(
@@ -40,7 +72,8 @@ class _CarpentryState extends State<Carpentry> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Text(
-                                'Mohmmed Ali',
+                                proAccounts.documents[i].data['Full name']
+                                    .toString(),
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Color(0xff925e78),
@@ -57,7 +90,7 @@ class _CarpentryState extends State<Carpentry> {
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        '5 min away',
+                                        '10 min away',
                                         style: TextStyle(
                                           color: Colors.red,
                                         ),
@@ -87,7 +120,7 @@ class _CarpentryState extends State<Carpentry> {
             },
           );
         },
-      ),
-    );
+      );
+    }
   }
 }
