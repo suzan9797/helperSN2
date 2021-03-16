@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -11,10 +12,18 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   //start form controller
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  TextEditingController _email = new TextEditingController();
+  TextEditingController email = new TextEditingController();
   TextEditingController _password = new TextEditingController();
 
   GlobalKey<FormState> formStateLogin = new GlobalKey<FormState>();
+
+  savePref(String name, String email) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setString('name', name);
+    preferences.setString('email', email);
+    print(preferences.getString('name'));
+    print(preferences.getString('email'));
+  }
 
   final _auth = FirebaseAuth.instance;
 
@@ -44,7 +53,7 @@ class _LoginState extends State<Login> {
     if (formStateLogin.currentState.validate()) {
       try {
         final result = await _auth.signInWithEmailAndPassword(
-            email: _email.text, password: _password.text);
+            email: email.text, password: _password.text);
         if (result != null) {
           print(result.user.uid);
           await Firestore.instance
@@ -55,6 +64,8 @@ class _LoginState extends State<Login> {
             switch (value.data['role']) {
               case 'User':
                 {
+                  savePref('name', email.text);
+
                   return Navigator.of(context).pushNamed('home');
                 }
                 break;
@@ -174,7 +185,7 @@ class _LoginState extends State<Login> {
                           children: [
                             SizedBox(height: 15),
                             buildTextFormFieldAll('Enter Your Email', false,
-                                _email, validEmail, Icons.email),
+                                email, validEmail, Icons.email),
                             //end text email
 
                             //start text password
