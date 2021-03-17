@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:helper/shared_Ui/Products.dart';
 
@@ -7,28 +8,54 @@ class RentOther extends StatefulWidget {
 }
 
 class _RentOtherState extends State<RentOther> {
-  var productsList = [
-    {'name': 'Speker', 'price': '20', 'image': 'images/speaker.jpg'},
-    {'name': 'Speker', 'price': '20', 'image': 'images/speaker.jpg'},
-  ];
+  // var productsList = [
+  //   {'name': 'Speker', 'price': '20', 'image': 'images/speaker.jpg'},
+  //   {'name': 'Speker', 'price': '20', 'image': 'images/speaker.jpg'},
+  // ];
+  QuerySnapshot productsList;
+
+  getOtherProducts() async {
+    await Firestore.instance
+        .collection('posts')
+        .where('category', isEqualTo: 'Other')
+        .getDocuments()
+        .then((value) {
+      setState(() {
+        productsList = value;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    getOtherProducts();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Other'),
-        //centerTitle: true,
-      ),
-      body: ListView.builder(
-        itemCount: productsList.length,
+        appBar: AppBar(
+          title: Text('Other'),
+          //centerTitle: true,
+        ),
+        body: electroProductsList(context));
+  }
+
+  Widget electroProductsList(BuildContext context) {
+    if (productsList == null) {
+      return Center(child: CircularProgressIndicator());
+    } else {
+      return ListView.builder(
+        itemCount: productsList.documents.length,
         itemBuilder: (context, i) {
           return Products(
-            name: productsList[i]['name'],
-            price: productsList[i]['price'],
-            image: productsList[i]['image'],
+            name: productsList.documents[i].data['product name'].toString(),
+            price: productsList.documents[i].data['product praice'].toString(),
+            image: productsList.documents[i].data['image'].toString(),
           );
         },
-      ),
-    );
+      );
+    }
   }
 }
