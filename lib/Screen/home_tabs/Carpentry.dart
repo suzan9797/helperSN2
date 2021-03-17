@@ -34,7 +34,7 @@ class _CarpentryState extends State<Carpentry> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Grass'),
+        title: Text('Carpentry'),
         centerTitle: true,
       ),
       body: proAccountsFlowList(context),
