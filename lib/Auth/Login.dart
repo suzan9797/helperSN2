@@ -12,7 +12,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   //start form controller
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  TextEditingController email = new TextEditingController();
+  TextEditingController _email = new TextEditingController();
   TextEditingController _password = new TextEditingController();
 
   GlobalKey<FormState> formStateLogin = new GlobalKey<FormState>();
@@ -53,7 +53,7 @@ class _LoginState extends State<Login> {
     if (formStateLogin.currentState.validate()) {
       try {
         final result = await _auth.signInWithEmailAndPassword(
-            email: email.text, password: _password.text);
+            email: _email.text, password: _password.text);
         if (result != null) {
           print(result.user.uid);
           await Firestore.instance
@@ -64,7 +64,7 @@ class _LoginState extends State<Login> {
             switch (value.data['role']) {
               case 'User':
                 {
-                  savePref('name', email.text);
+                  savePref('name', _email.text);
 
                   return Navigator.of(context).pushNamed('home');
                 }
@@ -185,7 +185,7 @@ class _LoginState extends State<Login> {
                           children: [
                             SizedBox(height: 15),
                             buildTextFormFieldAll('Enter Your Email', false,
-                                email, validEmail, Icons.email),
+                                _email, validEmail, Icons.email),
                             //end text email
 
                             //start text password
