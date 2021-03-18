@@ -103,14 +103,6 @@ class _RentItState extends State<RentIt> {
                         color: Color(0xff6e475b),
                       ),
                     ),
-                    // enabledBorder: OutlineInputBorder(
-                    //   borderRadius: BorderRadius.circular(20),
-                    //   borderSide: BorderSide(color: Colors.grey),
-                    // ),
-                    // focusedBorder: OutlineInputBorder(
-                    //   borderRadius: BorderRadius.circular(20),
-                    //   borderSide: BorderSide(color: Colors.grey),
-                    // ),
                     hintText: '  ' + dateSelected,
                     hintStyle: TextStyle(color: Color(0xff6e475b))),
               ),
@@ -153,14 +145,6 @@ class _RentItState extends State<RentIt> {
                         color: Color(0xff6e475b),
                       ),
                     ),
-                    // enabledBorder: OutlineInputBorder(
-                    //   borderRadius: BorderRadius.circular(20),
-                    //   borderSide: BorderSide(color: Colors.grey),
-                    // ),
-                    // focusedBorder: OutlineInputBorder(
-                    //   borderRadius: BorderRadius.circular(20),
-                    //   borderSide: BorderSide(color: Colors.grey),
-                    // ),
                     hintText: '  ' + timeSelected,
                     hintStyle: TextStyle(color: Color(0xff6e475b))),
               ),
@@ -198,14 +182,6 @@ class _RentItState extends State<RentIt> {
                       color: Color(0xff6e475b),
                     ),
                   ),
-                  // enabledBorder: OutlineInputBorder(
-                  //   borderRadius: BorderRadius.circular(20),
-                  //   borderSide: BorderSide(color: Colors.grey),
-                  // ),
-                  // focusedBorder: OutlineInputBorder(
-                  //   borderRadius: BorderRadius.circular(20),
-                  //   borderSide: BorderSide(color: Colors.grey),
-                  // ),
                   hintText: userLocality,
                   hintStyle: TextStyle(color: Color(0xff6e475b))),
             ),
@@ -292,7 +268,8 @@ class _RentItState extends State<RentIt> {
           'Date': dateSelected,
           'Time': timeSelected,
           'Location': userLocality,
-          'Phone': phoneController.text
+          'Phone': phoneController.text,
+          'userID': user.uid,
         }).then((_) {
           Navigator.of(context).pop();
         });

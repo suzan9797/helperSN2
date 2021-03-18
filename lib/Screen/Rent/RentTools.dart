@@ -8,11 +8,6 @@ class RentTools extends StatefulWidget {
 }
 
 class _RentToolsState extends State<RentTools> {
-  // var productsList = [
-  //   {'name': 'Speker', 'price': '20', 'image': 'images/speaker.jpg'},
-  //   {'name': 'Speker', 'price': '20', 'image': 'images/speaker.jpg'},
-  // ];
-
   QuerySnapshot productsList;
 
   getToolProducts() async {

@@ -9,10 +9,7 @@ class RentHome extends StatefulWidget {
 
 class _RentHomeState extends State<RentHome> {
   QuerySnapshot productsList;
-  // = [
-  //   {'name': 'Speker', 'price': '20', 'image': 'images/speaker.jpg'},
-  //   {'name': 'Speker', 'price': '20', 'image': 'images/speaker.jpg'},
-  // ];
+
   getHomeProducts() async {
     await Firestore.instance
         .collection('posts')

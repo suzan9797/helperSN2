@@ -8,10 +8,6 @@ class Electronics extends StatefulWidget {
 }
 
 class _ElectronicsState extends State<Electronics> {
-  // var productsList = [
-  //   {'name': 'Speker', 'price': '20', 'image': 'images/speaker.jpg'},
-  //   {'name': 'Speker', 'price': '20', 'image': 'images/speaker.jpg'},
-  // ];
   QuerySnapshot productsList;
 
   getElctroProducts() async {
