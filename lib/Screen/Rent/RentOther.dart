@@ -8,10 +8,6 @@ class RentOther extends StatefulWidget {
 }
 
 class _RentOtherState extends State<RentOther> {
-  // var productsList = [
-  //   {'name': 'Speker', 'price': '20', 'image': 'images/speaker.jpg'},
-  //   {'name': 'Speker', 'price': '20', 'image': 'images/speaker.jpg'},
-  // ];
   QuerySnapshot productsList;
 
   getOtherProducts() async {

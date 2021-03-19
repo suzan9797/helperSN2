@@ -10,8 +10,8 @@ class Products extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        height: 100,
-        width: 100,
+        height: 130,
+        width: 130,
         child: Card(
             child: Row(
           children: [
@@ -26,7 +26,7 @@ class Products extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(top: 30),
+                        margin: EdgeInsets.only(top: 30, left: 20),
                         child: Text(name,
                             style: TextStyle(
                                 fontSize: 18,

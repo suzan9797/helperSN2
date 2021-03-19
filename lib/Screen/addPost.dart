@@ -178,6 +178,7 @@ class _AddPostState extends State<AddPost> {
           'product description': _productDescription.text,
           'product praice': _productPrice.text,
           'category': categorySelect,
+          'userID': user.uid,
         }).then((_) {
           Navigator.of(context).pop();
         });
