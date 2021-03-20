@@ -14,7 +14,7 @@ class _RentalState extends State<Rental> {
         child: Icon(Icons.add),
         backgroundColor: Color(0xff6e475b),
         onPressed: () {
-          Navigator.of(context).pushNamed('Addimage');
+          Navigator.of(context).pushNamed('AddPost');
         },
       ),
       body: ListView(
