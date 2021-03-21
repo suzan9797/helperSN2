@@ -124,15 +124,13 @@ class _AddPostState extends State<AddPost> {
                     );
                   }).toList()),
             ),
-            SizedBox(height: 15),
-            Text('add photo'),
-            // IconButton(
-            //     icon: Icon(Icons.add_a_photo, size: 30),
-            //     onPressed: () {
-            //       _showChoiceDialog(context);
-            //     }),
-            SizedBox(height: 15),
+            SizedBox(height: 20),
             Container(
+                margin: EdgeInsets.only(right: 270),
+                child: Text('add photo:',
+                    style: TextStyle(color: Color(0xff6e475b), fontSize: 18))),
+            Container(
+              //margin: EdgeInsets.only(left: 250),
               //color: Colors.black,
               height: 120,
               width: 120,
@@ -269,15 +267,25 @@ class _AddPostState extends State<AddPost> {
               content: SingleChildScrollView(
                 child: ListBody(
                   children: [
+                    // SizedBox(height: 8),
+                    Divider(
+                      color: Color(0xff6e475b),
+                    ),
+                    SizedBox(height: 8),
                     GestureDetector(
-                      child: Text('Gallery'),
+                      child: Text('Gallery', style: TextStyle(fontSize: 18)),
                       onTap: () {
                         pickerGallery(context);
                       },
                     ),
-                    Padding(padding: EdgeInsets.all(8)),
+                    SizedBox(height: 8),
+                    Divider(
+                      color: Color(0xff6e475b),
+                    ),
+                    SizedBox(height: 8),
+                    //Padding(padding: EdgeInsets.all(8)),
                     GestureDetector(
-                      child: Text('Camera'),
+                      child: Text('Camera', style: TextStyle(fontSize: 18)),
                       onTap: () {
                         pickerCamera(context);
                       },
