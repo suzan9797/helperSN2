@@ -1,6 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart' as p;
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class AddPost extends StatefulWidget {
   @override
@@ -9,6 +13,7 @@ class AddPost extends StatefulWidget {
 
 class _AddPostState extends State<AddPost> {
   String categorySelect;
+  bool _isLoading = false;
   List listcategory = ['Electronics', 'Games', 'Home', 'Tools', 'Other'];
 
   GlobalKey<FormState> _key = new GlobalKey<FormState>();
@@ -44,8 +49,6 @@ class _AddPostState extends State<AddPost> {
     }
     return null;
   }
-
-  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -121,14 +124,41 @@ class _AddPostState extends State<AddPost> {
                     );
                   }).toList()),
             ),
-            SizedBox(height: 50),
+            SizedBox(height: 15),
+            Text('add photo'),
+            // IconButton(
+            //     icon: Icon(Icons.add_a_photo, size: 30),
+            //     onPressed: () {
+            //       _showChoiceDialog(context);
+            //     }),
+            SizedBox(height: 15),
+            Container(
+              //color: Colors.black,
+              height: 120,
+              width: 120,
+              child: Center(
+                child: _file == null
+                    ? IconButton(
+                        icon: Icon(Icons.add_a_photo, size: 30),
+                        onPressed: () {
+                          _showChoiceDialog(context);
+                        })
+                    : Image.file(_file),
+              ),
+            ),
+            SizedBox(height: 10),
             Center(
               child: Container(
                 margin: EdgeInsets.only(bottom: 20),
                 child: Column(
                   children: [
                     RaisedButton(
-                      onPressed: _addProduct,
+                      //onPressed: _addProduct,
+                      onPressed: () {
+                        uploadImage(context).whenComplete(
+                            () => Navigator.of(context).pushNamed('home'));
+                        _addProduct();
+                      },
                       color: Color(0xff6e475b),
                       padding:
                           EdgeInsets.symmetric(horizontal: 30, vertical: 10),
@@ -179,6 +209,7 @@ class _AddPostState extends State<AddPost> {
           'product praice': _productPrice.text,
           'category': categorySelect,
           'userID': user.uid,
+          "image": _url,
         }).then((_) {
           Navigator.of(context).pop();
         });
@@ -206,5 +237,70 @@ class _AddPostState extends State<AddPost> {
         ),
       ),
     );
+  }
+
+  File _file;
+  String _url;
+  Future uploadImage(context) async {
+    try {
+      FirebaseStorage storage =
+          FirebaseStorage(storageBucket: 'gs://helper-4f669.appspot.com');
+      StorageReference ref = storage.ref().child(p.basename(_file.path));
+      StorageUploadTask storageUploadTask = ref.putFile(_file);
+      StorageTaskSnapshot taskSnapshot = await storageUploadTask.onComplete;
+      String url = await taskSnapshot.ref.getDownloadURL();
+      print('url $url');
+      setState(() {
+        _url = url;
+      });
+    } catch (e) {
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text(e.message),
+      ));
+    }
+  }
+
+  Future<void> _showChoiceDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+              title: Text('Make a Choice!'),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: [
+                    GestureDetector(
+                      child: Text('Gallery'),
+                      onTap: () {
+                        pickerGallery(context);
+                      },
+                    ),
+                    Padding(padding: EdgeInsets.all(8)),
+                    GestureDetector(
+                      child: Text('Camera'),
+                      onTap: () {
+                        pickerCamera(context);
+                      },
+                    ),
+                  ],
+                ),
+              ));
+        });
+  }
+
+  Future pickerCamera(BuildContext context) async {
+    final myfile = await ImagePicker().getImage(source: ImageSource.camera);
+    setState(() {
+      _file = File(myfile.path);
+    });
+    Navigator.of(context).pop();
+  }
+
+  Future pickerGallery(BuildContext context) async {
+    final myfile = await ImagePicker().getImage(source: ImageSource.gallery);
+    setState(() {
+      _file = File(myfile.path);
+    });
+    Navigator.of(context).pop();
   }
 }
