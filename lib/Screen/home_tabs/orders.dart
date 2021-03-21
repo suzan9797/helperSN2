@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Orders extends StatefulWidget {
@@ -76,7 +77,7 @@ Widget newRequest(BuildContext context) {
                       size: 37,
                     ),
                     title: Text('Status Of Request:'),
-                    subtitle: Text('22/2/2021    3:30 PM'),
+                    //subtitle: Text('22/2/2021    3:30 PM'),
                   ),
                   ButtonBar(
                     children: <Widget>[
@@ -85,128 +86,21 @@ Widget newRequest(BuildContext context) {
                             borderRadius: BorderRadius.circular(30)),
                         color: Colors.red[900],
                         child: const Text('Cancel order'),
-                        onPressed: () {},
+                        onPressed: () {
+                          //if you want to cancel order.
+                          // setState(() {
+                          // order.removeAt(index);
+                          // });
+                        },
                       ),
                       FlatButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30)),
                         color: Color(0xff6e475b),
-                        child: const Text('VIEW '),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              elevation: 20,
-              color: Colors.grey.shade200,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  const ListTile(
-                    leading: Icon(
-                      Icons.time_to_leave_outlined,
-                      size: 37,
-                    ),
-                    title: Text('Status Of Request:'),
-                    subtitle: Text('2/7/2021    7:30 PM'),
-                  ),
-                  ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        color: Colors.red[900],
-                        child: const Text('Cancel order'),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        color: Color(0xff6e475b),
-                        child: const Text('VIEW '),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              elevation: 20,
-              color: Colors.grey.shade200,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  const ListTile(
-                    leading: Icon(
-                      Icons.time_to_leave_outlined,
-                      size: 37,
-                    ),
-                    title: Text('Status Of Request:'),
-                    subtitle: Text('2/5/2021    4:30 PM'),
-                  ),
-                  ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        color: Colors.red[900],
-                        child: const Text('Cancel order'),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        color: Color(0xff6e475b),
-                        child: const Text('VIEW '),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              elevation: 20,
-              color: Colors.grey.shade200,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  const ListTile(
-                    leading: Icon(
-                      Icons.time_to_leave_outlined,
-                      size: 37,
-                    ),
-                    title: Text('Status Of Request:'),
-                    subtitle: Text('12/8/2021    4:30 PM'),
-                  ),
-                  ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        color: Colors.red[900],
-                        child: const Text('Cancel order'),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        color: Color(0xff6e475b),
-                        child: const Text('VIEW '),
-                        onPressed: () {},
+                        child: const Text('View'),
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('ViewOrder');
+                        },
                       ),
                     ],
                   ),
@@ -239,7 +133,7 @@ Widget oldRequest(BuildContext context) {
                       size: 37,
                     ),
                     title: Text('Status Of Request:'),
-                    subtitle: Text('22/2/2021    3:30 PM'),
+                    // subtitle: Text('22/2/2021    3:30 PM'),
                   ),
                   ButtonBar(
                     children: <Widget>[
@@ -254,121 +148,7 @@ Widget oldRequest(BuildContext context) {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30)),
                         color: Color(0xff6e475b),
-                        child: const Text('VIEW '),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              elevation: 20,
-              color: Colors.grey.shade200,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  const ListTile(
-                    leading: Icon(
-                      Icons.done_all,
-                      size: 37,
-                    ),
-                    title: Text('Status Of Request:'),
-                    subtitle: Text('2/7/2021    7:30 PM'),
-                  ),
-                  ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        color: Colors.green[900],
-                        child: const Text('DONE'),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        color: Color(0xff6e475b),
-                        child: const Text('VIEW '),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              elevation: 20,
-              color: Colors.grey.shade200,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  const ListTile(
-                    leading: Icon(
-                      Icons.done_all,
-                      size: 37,
-                    ),
-                    title: Text('Status Of Request:'),
-                    subtitle: Text('2/5/2021    4:30 PM'),
-                  ),
-                  ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        color: Colors.green[900],
-                        child: const Text('Done'),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        color: Color(0xff6e475b),
-                        child: const Text('VIEW '),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              elevation: 20,
-              color: Colors.grey.shade200,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  const ListTile(
-                    leading: Icon(
-                      Icons.done_all,
-                      size: 37,
-                    ),
-                    title: Text('Status Of Request:'),
-                    subtitle: Text('12/8/2021    4:30 PM'),
-                  ),
-                  ButtonBar(
-                    children: <Widget>[
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        color: Colors.green[900],
-                        child: const Text('DONE'),
-                        onPressed: () {},
-                      ),
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        color: Color(0xff6e475b),
-                        child: const Text('VIEW '),
+                        child: const Text('Pending '),
                         onPressed: () {},
                       ),
                     ],
@@ -382,3 +162,23 @@ Widget oldRequest(BuildContext context) {
     ),
   );
 }
+
+//QuerySnapshot orders;
+//Future assignOrderToPro() async {
+//await Firestore.instance
+//  .collection('detilsPro')
+// .where('AssignedProID', isEqualTo: 'userID')
+//.where('Date&Time', isLessThanOrEqualTo: DateTime.now())
+// .where('Status', isEqualTo: 'pending')
+//.orderBy('Date&Time', descending: true)
+// .getDocuments()
+///  .then((value) {
+// if (value.documents.isEmpty == true) {
+// print('do not have any order now ');
+//} else {
+//setState(() {
+//   orders = value;
+// });
+// }
+//});
+//}

@@ -24,6 +24,7 @@ import 'Screen/home_tabs/details.dart';
 import 'Screen/home_tabs/electrical.dart';
 import 'Screen/home_tabs/painting.dart';
 import 'Screen/home_tabs/plumbing.dart';
+import 'Screen/home_tabs/viewOrder.dart';
 import 'Screen/profilePage.dart';
 import 'Screen/settings.dart';
 
@@ -105,6 +106,9 @@ class MyApp extends StatelessWidget {
         'AddPost': (context) => AddPost(),
         'order': (context) {
           return Orders();
+        },
+        'ViewOrder': (context) {
+          return ViewOrder();
         },
         'Addimage': (context) => Addimage(),
       },

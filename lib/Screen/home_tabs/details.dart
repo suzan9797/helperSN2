@@ -17,6 +17,17 @@ class _DetailsState extends State<Details> {
   GlobalKey<FormState> _key = new GlobalKey<FormState>();
   TextEditingController _detilsController = TextEditingController();
   bool _isLoading = false;
+  TextEditingController phoneController = new TextEditingController();
+  String validPhone(String val) {
+    if (val.isEmpty) {
+      return "Phone number is required";
+    }
+    if (val.length != 10) {
+      return "Enter valid phone";
+    }
+    return null;
+  }
+
   @override
   void dispose() {
     _detilsController.dispose();
@@ -35,6 +46,7 @@ class _DetailsState extends State<Details> {
     super.initState();
   }
 
+//function of Location as a string
   getLocation() async {
     print('GetLocation Function in Proccess');
     Position position = await Geolocator()
@@ -59,7 +71,7 @@ class _DetailsState extends State<Details> {
       userDistrict = addresses.last.subLocality;
       userLocality = first.addressLine;
     });
-  }
+  } //end
 
   Widget _buildDescribtion() {
     return Padding(
@@ -72,7 +84,7 @@ class _DetailsState extends State<Details> {
             borderRadius: BorderRadius.circular(55),
           ),
         ),
-        maxLines: 8,
+        maxLines: 5,
       ),
     );
   }
@@ -225,13 +237,35 @@ class _DetailsState extends State<Details> {
                   ],
                 ),
               ),
+            ), //end of Location
+            SizedBox(height: 25),
+            Text(
+              'Phone Number:',
+              style: TextStyle(color: Colors.grey[800], fontSize: 20),
             ),
+            Padding(padding: EdgeInsets.only(top: 10)),
+            TextFormField(
+              validator: validPhone,
+              controller: phoneController,
+              keyboardType: TextInputType.phone,
+              decoration: InputDecoration(
+                labelStyle: TextStyle(color: Colors.grey[600]),
+                prefixIcon: Padding(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Icon(
+                    Icons.phone,
+                    size: 30,
+                    color: Color(0xff6e475b),
+                  ),
+                ),
+              ),
+            ), //end of phone number.
             SizedBox(height: 10),
             Divider(
               color: Color(0xff6e475b),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 75),
+              padding: const EdgeInsets.only(top: 60),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
@@ -254,7 +288,7 @@ class _DetailsState extends State<Details> {
                   ),
                 ),
               ),
-            ),
+            ), //end of button
           ],
         ),
       ),
@@ -281,6 +315,9 @@ class _DetailsState extends State<Details> {
           'Describtion': _detilsController.text,
           'Date&Time': _date,
           'Location': userLocality,
+          'Phone': phoneController.text,
+          'OrderAssignTo': 'user.uid',
+          'OrderForm': user.uid,
         }).then((_) {
           Navigator.of(context).pop();
         });
