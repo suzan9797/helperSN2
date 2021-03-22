@@ -215,28 +215,6 @@ class _AddPostState extends State<AddPost> {
     }
   }
 
-  TextFormField buildTextFormField(
-      String myLabel, int lines, TextEditingController myController, myvalid) {
-    return TextFormField(
-      controller: myController,
-      validator: myvalid,
-      maxLines: lines,
-      decoration: InputDecoration(
-        labelText: myLabel,
-        filled: true,
-        fillColor: Colors.white,
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(40),
-          borderSide: BorderSide(color: Colors.grey),
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(40),
-          borderSide: BorderSide(color: Colors.grey),
-        ),
-      ),
-    );
-  }
-
   File _file;
   String _url;
   Future uploadImage(context) async {
@@ -310,5 +288,27 @@ class _AddPostState extends State<AddPost> {
       _file = File(myfile.path);
     });
     Navigator.of(context).pop();
+  }
+
+  TextFormField buildTextFormField(
+      String myLabel, int lines, TextEditingController myController, myvalid) {
+    return TextFormField(
+      controller: myController,
+      validator: myvalid,
+      maxLines: lines,
+      decoration: InputDecoration(
+        labelText: myLabel,
+        filled: true,
+        fillColor: Colors.white,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(40),
+          borderSide: BorderSide(color: Colors.grey),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(40),
+          borderSide: BorderSide(color: Colors.grey),
+        ),
+      ),
+    );
   }
 }
