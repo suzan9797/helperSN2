@@ -318,9 +318,11 @@ class _DetailsState extends State<Details> {
           'Phone': phoneController.text,
           'OrderAssignTo': 'user.uid',
           'OrderForm': user.uid,
-        }).then((_) {
-          Navigator.of(context).pop();
-        });
+        }).then(
+          (_) {
+            Navigator.of(context).pushNamed('orderConfirm');
+          },
+        );
       });
     }
   }
