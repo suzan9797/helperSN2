@@ -153,9 +153,7 @@ class _AddPostState extends State<AddPost> {
                     RaisedButton(
                       //onPressed: _addProduct,
                       onPressed: () {
-                        uploadImage(context).whenComplete(
-                            () => Navigator.of(context).pushNamed('home'));
-                        _addProduct();
+                        uploadImage(context);
                       },
                       color: Color(0xff6e475b),
                       padding:
@@ -190,7 +188,7 @@ class _AddPostState extends State<AddPost> {
     );
   }
 
-  void _addProduct() async {
+  Future addProduct() async {
     if (!_key.currentState.validate()) {
       setState(() {
         _isLoading = false;
@@ -200,14 +198,14 @@ class _AddPostState extends State<AddPost> {
         _isLoading = true;
       });
 
-      FirebaseAuth.instance.currentUser().then((user) {
-        Firestore.instance.collection("posts").document().setData({
+      await FirebaseAuth.instance.currentUser().then((user) async {
+        await Firestore.instance.collection("posts").document().setData({
           'product name': _productName.text,
           'product description': _productDescription.text,
           'product praice': _productPrice.text,
           'category': categorySelect,
           'userID': user.uid,
-          "image": _url,
+          "image": imgURL,
         }).then((_) {
           Navigator.of(context).pop();
         });
@@ -216,7 +214,7 @@ class _AddPostState extends State<AddPost> {
   }
 
   File _file;
-  String _url;
+  String imgURL;
   Future uploadImage(context) async {
     try {
       FirebaseStorage storage =
@@ -227,7 +225,10 @@ class _AddPostState extends State<AddPost> {
       String url = await taskSnapshot.ref.getDownloadURL();
       print('url $url');
       setState(() {
-        _url = url;
+        imgURL = url;
+      });
+      addProduct().then((val) {
+        Navigator.of(context).pushNamed('home');
       });
     } catch (e) {
       Scaffold.of(context).showSnackBar(SnackBar(
