@@ -14,6 +14,7 @@ import 'package:helper/Screen/addPost.dart';
 import 'package:helper/Screen/home_screen.dart';
 import 'package:helper/Screen/home_tabs/Carpentry.dart';
 import 'package:helper/Auth/login.dart';
+import 'package:helper/Screen/home_tabs/OrderConfirm.dart';
 import 'package:helper/Screen/home_tabs/orders.dart';
 import 'package:helper/utilties/app_theme.dart';
 import 'Screen/OnBoarding.dart';
@@ -102,6 +103,9 @@ class MyApp extends StatelessWidget {
         },
         'ProRegister': (context) {
           return ProRegister();
+        },
+        'orderConfirm': (context) {
+          return OrderConfirm();
         },
         'AddPost': (context) => AddPost(),
         'order': (context) {

@@ -83,6 +83,7 @@ flutter:
       - images/clock.png 
       - images/houses.png
       - images/done.png
+      - images/orderconfirm.png
   #   - images/a_dot_ham.jpeg
 
   fonts:

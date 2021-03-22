@@ -73,7 +73,9 @@ class _ViewOrderState extends State<ViewOrder> {
                           borderRadius: BorderRadius.circular(30)),
                       color: Color(0xff6e475b),
                       child: const Text('Accept'),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('orderConfirm');
+                      },
                     ),
                   ],
                 ),
