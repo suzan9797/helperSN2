@@ -312,12 +312,13 @@ class _DetailsState extends State<Details> {
       });
       FirebaseAuth.instance.currentUser().then((user) {
         Firestore.instance.collection("detilsPro").document().setData({
-          'Describtion': _detilsController.text,
+          'Description': _detilsController.text,
           'Date&Time': _date,
           'Location': userLocality,
           'Phone': phoneController.text,
-          'OrderAssignTo': 'user.uid',
-          'OrderForm': user.uid,
+          'AssignOrderTo': 'user.uid',
+          'OrderFrom': user.uid,
+          'Status': 'pending',
         }).then(
           (_) {
             Navigator.of(context).pushNamed('orderConfirm');
