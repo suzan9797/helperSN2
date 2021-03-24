@@ -53,9 +53,9 @@ class MyApp extends StatelessWidget {
         'Carpentry': (context) {
           return Carpentry();
         },
-        'details': (context) {
-          return Details();
-        },
+        // 'details': (context) {
+        //   return Details();
+        // },
         'electronic': (context) {
           return Electronics();
         },

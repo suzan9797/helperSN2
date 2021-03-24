@@ -9,11 +9,24 @@ import 'package:geolocator/geolocator.dart';
 import 'package:geolocator/geolocator.dart' as prefix0;
 
 class Details extends StatefulWidget {
+  String proID;
+  Details(String proID) {
+    this.proID = proID;
+  }
+
   @override
   _DetailsState createState() => _DetailsState();
 }
 
 class _DetailsState extends State<Details> {
+  String proID;
+  @override
+  void initState() {
+    getLocation();
+    proID = widget.proID;
+    super.initState();
+  }
+
   GlobalKey<FormState> _key = new GlobalKey<FormState>();
   TextEditingController _detilsController = TextEditingController();
   bool _isLoading = false;
@@ -39,12 +52,6 @@ class _DetailsState extends State<Details> {
   String manualAddress;
   String userDistrict;
   String userLocality = '  ';
-
-  @override
-  void initState() {
-    getLocation();
-    super.initState();
-  }
 
 //function of Location as a string
   getLocation() async {
@@ -316,7 +323,7 @@ class _DetailsState extends State<Details> {
           'Date&Time': _date,
           'Location': userLocality,
           'Phone': phoneController.text,
-          'AssignOrderTo': 'user.uid',
+          'AssignOrderTo': proID,
           'OrderFrom': user.uid,
           'Status': 'pending',
         }).then(

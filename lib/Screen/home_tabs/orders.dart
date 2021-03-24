@@ -197,7 +197,7 @@ class _OrdersState extends State<Orders> {
   Future assignOrderToPro() async {
     await Firestore.instance
         .collection('detilsPro')
-        // .where('AssignOrderTo', isEqualTo: '5bMRS6k17lQ7n02hCqzQmqT37fu2')
+        //.where('AssignOrderTo', isEqualTo: 'uid')
         .where('Status', isEqualTo: 'pending')
         //.orderBy('Date&Time', descending: true)
         .getDocuments()
