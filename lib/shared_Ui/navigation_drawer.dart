@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,9 +11,22 @@ class MyDrawer extends StatefulWidget {
 class _MyDrawerState extends State<MyDrawer> {
   var name;
   var email;
+  FirebaseUser _user;
   bool isSignIn = false;
 
   getPref() async {
+    FirebaseAuth.instance.currentUser().then((user) {
+      Firestore.instance
+          .collection('Users')
+          .where('UserID', isEqualTo: user.uid)
+          .getDocuments()
+          .then((value) {
+        setState(() {
+          name = value.documents[0]['First name'];
+          _user = user;
+        });
+      });
+    });
     SharedPreferences preferences = await SharedPreferences.getInstance();
 
     name = preferences.getString('name');
@@ -121,11 +136,13 @@ class _MyDrawerState extends State<MyDrawer> {
                     size: 25,
                   ),
                   onTap: () async {
-                    SharedPreferences preferences =
-                        await SharedPreferences.getInstance();
-                    preferences.remove('name');
-                    preferences.remove('email');
-                    Navigator.of(context).pushNamed('home');
+                    FirebaseAuth.instance.signOut().then((_) async {
+                      SharedPreferences preferences =
+                          await SharedPreferences.getInstance();
+                      preferences.remove('name');
+                      preferences.remove('email');
+                      Navigator.of(context).pushNamed('home');
+                    });
                   },
                 )
               : ListTile(
