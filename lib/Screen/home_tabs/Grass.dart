@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:helper/Screen/home_tabs/rating.dart';
 
+import 'details.dart';
+
 class Grass extends StatefulWidget {
   @override
   _GrassState createState() => _GrassState();
@@ -115,8 +117,13 @@ class _GrassState extends State<Grass> {
                 ),
               ),
             ),
+            //go to page DetaIls
             onTap: () {
-              Navigator.of(context).pushNamed('details');
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          Details(proAccounts.documents[i].data['UserID'])));
             },
           );
         },

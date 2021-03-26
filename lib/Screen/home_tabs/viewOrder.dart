@@ -17,17 +17,17 @@ class _ViewOrderState extends State<ViewOrder> {
         child: Container(
           child: Column(
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Suzan Algarousha ',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Color(0xff6e475b),
-                      fontFamily: 'YuseiMagic'),
-                ),
-              ),
+              // Padding(
+              //padding: const EdgeInsets.all(8.0),
+              // child: Text(
+              //'Suzan Algarousha ',
+              //  style: TextStyle(
+              //fontWeight: FontWeight.bold,
+              // fontSize: 20,
+              // color: Color(0xff6e475b),
+              // fontFamily: 'YuseiMagic'),
+              // ),
+              // ),
               Divider(),
               ListTile(
                 title: Text('Describtion'),
@@ -63,9 +63,10 @@ class _ViewOrderState extends State<ViewOrder> {
                       child: const Text('Cancel '),
                       onPressed: () {
                         //if you want to cancel order.
-                        // setState(() {
-                        // order.removeAt(index);
-                        // });
+                        //Firestore.instance
+                        //   .collection('detilspro')
+                        // .document(document.documentID)
+                        // .delete();
                       },
                     ),
                     FlatButton(
@@ -85,3 +86,11 @@ class _ViewOrderState extends State<ViewOrder> {
     );
   }
 }
+
+//Future assignOrderTo() async {
+//  await Firestore.instance
+// .collection('detilspro')
+/// .where('AssignOrderTo', isEqualTo: 'proID')
+//  .where('Date&Time', isLessThanOrEqualTo: DateTime.now())
+//.getDocuments();
+//}

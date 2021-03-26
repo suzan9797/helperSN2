@@ -55,6 +55,7 @@ class _OrdersState extends State<Orders> {
             oldRequest(context),
           ],
         ),
+        drawer: Drawer(),
       ),
     );
   }
@@ -197,7 +198,7 @@ class _OrdersState extends State<Orders> {
   Future assignOrderToPro() async {
     await Firestore.instance
         .collection('detilsPro')
-        //.where('AssignOrderTo', isEqualTo: 'uid')
+        //.where('AssignOrderTo', isEqualTo: 'UserID')
         .where('Status', isEqualTo: 'pending')
         //.orderBy('Date&Time', descending: true)
         .getDocuments()

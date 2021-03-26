@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:helper/Screen/home_tabs/details.dart';
 import 'package:helper/Screen/home_tabs/rating.dart';
 
 class Plumbing extends StatefulWidget {
@@ -116,7 +117,11 @@ class _PlumbingState extends State<Plumbing> {
               ),
             ),
             onTap: () {
-              Navigator.of(context).pushNamed('details');
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          Details(proAccounts.documents[i].data['UserID'])));
             },
           );
         },
