@@ -35,7 +35,9 @@ class _RentHomeState extends State<RentHome> {
           title: Text('Home'),
           //centerTitle: true,
         ),
-        body: homeProductsList(context));
+        body: Padding(
+            padding: const EdgeInsets.all(5),
+            child: homeProductsList(context)));
   }
 
   Widget homeProductsList(BuildContext context) {
@@ -48,7 +50,7 @@ class _RentHomeState extends State<RentHome> {
           return Products(
             name: productsList.documents[i].data['product name'].toString(),
             price: productsList.documents[i].data['product praice'].toString(),
-            image: productsList.documents[i].data['image'].toString(),
+            image: Image.network(productsList.documents[i].data['image']),
           );
         },
       );

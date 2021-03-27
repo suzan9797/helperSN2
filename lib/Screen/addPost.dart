@@ -58,7 +58,7 @@ class _AddPostState extends State<AddPost> {
         title: Text('Add Post'),
       ),
       body: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(15),
           child: _isLoading ? _loading(context) : _form(context)),
     );
   }

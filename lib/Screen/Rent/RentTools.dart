@@ -35,10 +35,12 @@ class _RentToolsState extends State<RentTools> {
           title: Text('Tools'),
           //centerTitle: true,
         ),
-        body: electroProductsList(context));
+        body: Padding(
+            padding: const EdgeInsets.all(5),
+            child: toolProductsList(context)));
   }
 
-  Widget electroProductsList(BuildContext context) {
+  Widget toolProductsList(BuildContext context) {
     if (productsList == null) {
       return Center(child: CircularProgressIndicator());
     } else {
@@ -48,7 +50,7 @@ class _RentToolsState extends State<RentTools> {
           return Products(
             name: productsList.documents[i].data['product name'].toString(),
             price: productsList.documents[i].data['product praice'].toString(),
-            image: productsList.documents[i].data['image'].toString(),
+            image: Image.network(productsList.documents[i].data['image']),
           );
         },
       );
