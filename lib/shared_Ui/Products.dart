@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:helper/Screen/Rent/productsDetails.dart';
 
 class Products extends StatelessWidget {
   final name;
   final price;
   final image;
-  Products({this.name, this.price, this.image});
+  final productID;
+  Products({this.name, this.price, this.image, this.productID});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,11 @@ class Products extends StatelessWidget {
             )),
       ),
       onTap: () {
-        Navigator.of(context).pushNamed('productsDetails');
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (BuildContext context) => ProductsDetails(productID)));
+        // Navigator.of(context).pushNamed('productsDetails');
       },
     );
   }

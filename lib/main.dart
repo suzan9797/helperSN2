@@ -89,9 +89,9 @@ class MyApp extends StatelessWidget {
         'ProfilePage ': (context) {
           return ProfilePage();
         },
-        'productsDetails': (context) {
-          return ProductsDetails();
-        },
+        // 'productsDetails': (context) {
+        //   return ProductsDetails();
+        // },
         'RentIt': (context) {
           return RentIt();
         },

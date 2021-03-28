@@ -51,6 +51,7 @@ class _RentHomeState extends State<RentHome> {
             name: productsList.documents[i].data['product name'].toString(),
             price: productsList.documents[i].data['product praice'].toString(),
             image: Image.network(productsList.documents[i].data['image']),
+            productID: productsList.documents[i].data['product ID'].toString(),
           );
         },
       );
