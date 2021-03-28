@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:helper/shared_Ui/navigation_drawer.dart';
+import 'package:helper/Screen/home_tabs/viewOrder.dart';
 
 class Orders extends StatefulWidget {
   @override
@@ -8,6 +8,7 @@ class Orders extends StatefulWidget {
 }
 
 class _OrdersState extends State<Orders> {
+  //String orderID;
   @override
   void initState() {
     assignOrderToPro();
@@ -139,7 +140,12 @@ class _OrdersState extends State<Orders> {
                 ),
               ),
               onTap: () {
-                Navigator.of(context).pushNamed('ViewOrder');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            ViewOrder(orders.documents[i].data['orderID'])));
+                // Navigator.of(context).pushNamed('ViewOrder');
               },
             );
           });
@@ -199,7 +205,7 @@ class _OrdersState extends State<Orders> {
   Future assignOrderToPro() async {
     await Firestore.instance
         .collection('detilsPro')
-        //.where('AssignOrderTo', isEqualTo: 'UserID')
+        //.where('orderID', isEqualTo: 'orderID')
         .where('Status', isEqualTo: 'pending')
         //.orderBy('Date&Time', descending: true)
         .getDocuments()

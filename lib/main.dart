@@ -111,9 +111,9 @@ class MyApp extends StatelessWidget {
         'order': (context) {
           return Orders();
         },
-        'ViewOrder': (context) {
-          return ViewOrder();
-        },
+        // 'ViewOrder': (context) {
+        //  return ViewOrder();
+        //  },
         'Addimage': (context) => Addimage(),
       },
       theme: AppTheme.appTheme,
