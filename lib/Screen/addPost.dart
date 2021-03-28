@@ -188,6 +188,7 @@ class _AddPostState extends State<AddPost> {
     );
   }
 
+  final docId = Firestore.instance.collection("posts").document().documentID;
   Future addProduct() async {
     if (!_key.currentState.validate()) {
       setState(() {
@@ -199,13 +200,14 @@ class _AddPostState extends State<AddPost> {
       });
 
       await FirebaseAuth.instance.currentUser().then((user) async {
-        await Firestore.instance.collection("posts").document().setData({
+        await Firestore.instance.collection("posts").document(docId).setData({
           'product name': _productName.text,
           'product description': _productDescription.text,
           'product praice': _productPrice.text,
           'category': categorySelect,
           'userID': user.uid,
           "image": imgURL,
+          'product ID': docId,
         }).then((_) {
           Navigator.of(context).pop();
         });

@@ -308,7 +308,9 @@ class _DetailsState extends State<Details> {
     );
   }
 
-  void _addOrder() async {
+  final docId =
+      Firestore.instance.collection("detilsPro").document().documentID;
+  Future _addOrder() async {
     if (!_key.currentState.validate()) {
       setState(() {
         _isLoading = false;
@@ -318,7 +320,7 @@ class _DetailsState extends State<Details> {
         _isLoading = true;
       });
       FirebaseAuth.instance.currentUser().then((user) {
-        Firestore.instance.collection("detilsPro").document().setData({
+        Firestore.instance.collection("detilsPro").document(docId).setData({
           'Description': _detilsController.text,
           'Date&Time': _date,
           'Location': userLocality,
@@ -326,6 +328,7 @@ class _DetailsState extends State<Details> {
           'AssignOrderTo': proID,
           'OrderFrom': user.uid,
           'Status': 'pending',
+          'ordeID': docId,
         }).then(
           (_) {
             Navigator.of(context).pushNamed('orderConfirm');
