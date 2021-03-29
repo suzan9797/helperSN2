@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 
 class ViewOrder extends StatefulWidget {
   String orderID;
-  ViewOrder(orderID);
-  orderView(String orderID) {
+  ViewOrder(String orderID) {
     this.orderID = orderID;
   }
 
@@ -15,17 +14,19 @@ class ViewOrder extends StatefulWidget {
 class _ViewOrderState extends State<ViewOrder> {
   QuerySnapshot orderView;
   String orderID;
+
   @override
   void initState() {
     orderID = widget.orderID;
     getViewOrder();
+
     super.initState();
   }
 
-  getViewOrder() async {
+  Future getViewOrder() async {
     await Firestore.instance
         .collection('detilsPro')
-        .where('orderID', isEqualTo: orderID)
+        // .where('AssignOrderTo', isEqualTo: 'UserID')
         .orderBy('Date&Time', descending: true)
         .getDocuments()
         .then((value) {

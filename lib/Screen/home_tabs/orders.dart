@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:helper/Screen/home_tabs/drawerOfPro.dart';
 import 'package:helper/Screen/home_tabs/viewOrder.dart';
 
 class Orders extends StatefulWidget {
@@ -51,7 +52,7 @@ class _OrdersState extends State<Orders> {
             ],
           ),
         ),
-        drawer: Drawer(),
+        drawer: DrawerPro(),
         body: TabBarView(
           children: <Widget>[
             newRequest(context),
@@ -92,18 +93,18 @@ class _OrdersState extends State<Orders> {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Row(
                                       children: [
-                                        Text('Description: ',
+                                        Text('Date & Time:',
                                             style: TextStyle(
-                                                fontSize: 18,
+                                                fontSize: 16,
                                                 fontWeight: FontWeight.w800,
                                                 color: Color(0xff6e475b))),
                                         Text(
-                                            orders.documents[i]
-                                                .data['Description']
+                                            orders
+                                                .documents[i].data['Date&Time']
                                                 .toString(),
                                             style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w500,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w300,
                                                 color: Colors.black))
                                       ],
                                     ),
@@ -205,7 +206,7 @@ class _OrdersState extends State<Orders> {
   Future assignOrderToPro() async {
     await Firestore.instance
         .collection('detilsPro')
-        //.where('orderID', isEqualTo: 'orderID')
+        .where('AssignOrderTo', isEqualTo: '3325jVQNC8TyzjKu2U23vAhT2aA2')
         .where('Status', isEqualTo: 'pending')
         //.orderBy('Date&Time', descending: true)
         .getDocuments()

@@ -25,6 +25,14 @@ class _LoginState extends State<Login> {
     print(preferences.getString('email'));
   }
 
+  savePro(String name, String email) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setString('name', name);
+    preferences.setString('email', email);
+    print(preferences.getString('name'));
+    print(preferences.getString('email'));
+  }
+
   final _auth = FirebaseAuth.instance;
 
   String _error;
@@ -71,6 +79,7 @@ class _LoginState extends State<Login> {
                 break;
               case 'Professional Account':
                 {
+                  savePro('name', _email.text);
                   return Navigator.of(context).pushNamed('order');
                 }
             }

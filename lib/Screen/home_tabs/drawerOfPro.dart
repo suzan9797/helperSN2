@@ -3,30 +3,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class MyDrawer extends StatefulWidget {
+class DrawerPro extends StatefulWidget {
   @override
-  _MyDrawerState createState() => _MyDrawerState();
+  _DrawerProState createState() => _DrawerProState();
 }
 
-class _MyDrawerState extends State<MyDrawer> {
+class _DrawerProState extends State<DrawerPro> {
   var name;
   var email;
-  FirebaseUser _user;
+  FirebaseUser _pro;
   bool isSignIn = false;
 
-  getPref() async {
-    FirebaseAuth.instance.currentUser().then((user) {
-      Firestore.instance
-          .collection('Users')
-          .where('UserID', isEqualTo: user.uid)
-          .getDocuments()
-          .then((value) {
-        setState(() {
-          name = value.documents[0]['First name'];
-          _user = user;
-        });
-      });
-    });
+  getPro() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
 
     name = preferences.getString('name');
@@ -43,7 +31,7 @@ class _MyDrawerState extends State<MyDrawer> {
 
   @override
   void initState() {
-    getPref();
+    getPro();
     super.initState();
   }
 
@@ -51,24 +39,29 @@ class _MyDrawerState extends State<MyDrawer> {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        children: [
+        children: <Widget>[
           UserAccountsDrawerHeader(
             accountName: isSignIn
-                ? Text(name, style: TextStyle(fontSize: 18))
+                ? Text(name,
+                    style:
+                        TextStyle(fontSize: 15.0, fontWeight: FontWeight.w500))
                 : Text(''),
             accountEmail: isSignIn
-                ? Text(email, style: TextStyle(fontSize: 18))
+                ? Text(
+                    email,
+                    style:
+                        TextStyle(fontSize: 15.0, fontWeight: FontWeight.w200),
+                  )
                 : Text(''),
             currentAccountPicture: CircleAvatar(
-              child: Icon(Icons.person, size: 40),
-              backgroundColor: Color(0xff925e78),
+              radius: 60,
+              backgroundImage: AssetImage('images/proffession.png'),
             ),
-            decoration: BoxDecoration(color: Color(0xff6e475b)),
           ),
           ListTile(
             trailing: Icon(Icons.chevron_right, color: Colors.grey),
             title: Text(
-              ('Home Page'),
+              ('My Order'),
               style: TextStyle(fontSize: 18),
             ),
             leading: Icon(
@@ -77,7 +70,7 @@ class _MyDrawerState extends State<MyDrawer> {
               size: 25,
             ),
             onTap: () {
-              Navigator.of(context).pushNamed('home');
+              Navigator.of(context).pushNamed('MyOrder');
             },
           ),
           ListTile(
@@ -98,11 +91,11 @@ class _MyDrawerState extends State<MyDrawer> {
           ListTile(
             trailing: Icon(Icons.chevron_right, color: Colors.grey),
             title: Text(
-              ('Favorite Persons'),
+              ('My reviews'),
               style: TextStyle(fontSize: 18),
             ),
             leading: Icon(
-              Icons.favorite,
+              Icons.star_half,
               color: Color(0xff6e475b),
               size: 25,
             ),
@@ -111,11 +104,11 @@ class _MyDrawerState extends State<MyDrawer> {
           ListTile(
             trailing: Icon(Icons.chevron_right, color: Colors.grey),
             title: Text(
-              ('Setting'),
+              ('About Me'),
               style: TextStyle(fontSize: 18),
             ),
             leading: Icon(
-              Icons.settings,
+              Icons.mark_chat_read,
               color: Color(0xff6e475b),
               size: 25,
             ),
@@ -127,7 +120,7 @@ class _MyDrawerState extends State<MyDrawer> {
               ? ListTile(
                   trailing: Icon(Icons.chevron_right, color: Colors.grey),
                   title: Text(
-                    ('Logout'),
+                    ('LogOut'),
                     style: TextStyle(fontSize: 18),
                   ),
                   leading: Icon(
@@ -135,20 +128,20 @@ class _MyDrawerState extends State<MyDrawer> {
                     color: Color(0xff6e475b),
                     size: 25,
                   ),
-                  onTap: () async {
-                    FirebaseAuth.instance.signOut().then((_) async {
-                      SharedPreferences preferences =
-                          await SharedPreferences.getInstance();
-                      preferences.remove('name');
-                      preferences.remove('email');
-                      Navigator.of(context).pushNamed('home');
-                    });
-                  },
-                )
+                  onTap: () {
+                    //async {
+                    // FirebaseAuth.instance.signOut().then((_) async {
+                    //  SharedPreferences preferences =
+                    //     await SharedPreferences.getInstance();
+                    // preferences.remove('name');
+                    //  preferences.remove('email');
+                    Navigator.of(context).pushNamed('Login');
+                    //    });
+                  })
               : ListTile(
                   trailing: Icon(Icons.chevron_right, color: Colors.grey),
                   title: Text(
-                    ('Login'),
+                    ('LogIn'),
                     style: TextStyle(fontSize: 18),
                   ),
                   leading: Icon(
