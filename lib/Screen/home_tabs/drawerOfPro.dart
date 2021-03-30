@@ -15,6 +15,18 @@ class _DrawerProState extends State<DrawerPro> {
   bool isSignIn = false;
 
   getPro() async {
+    FirebaseAuth.instance.currentUser().then((user) {
+      Firestore.instance
+          .collection('Users')
+          .where('UserID', isEqualTo: user.uid)
+          .getDocuments()
+          .then((value) {
+        setState(() {
+          name = value.documents[0]['Full name'];
+          _pro = user;
+        });
+      });
+    });
     SharedPreferences preferences = await SharedPreferences.getInstance();
 
     name = preferences.getString('name');
@@ -50,7 +62,7 @@ class _DrawerProState extends State<DrawerPro> {
                 ? Text(
                     email,
                     style:
-                        TextStyle(fontSize: 15.0, fontWeight: FontWeight.w200),
+                        TextStyle(fontSize: 15.0, fontWeight: FontWeight.w300),
                   )
                 : Text(''),
             currentAccountPicture: CircleAvatar(
@@ -100,21 +112,6 @@ class _DrawerProState extends State<DrawerPro> {
               size: 25,
             ),
             onTap: () {},
-          ),
-          ListTile(
-            trailing: Icon(Icons.chevron_right, color: Colors.grey),
-            title: Text(
-              ('About Me'),
-              style: TextStyle(fontSize: 18),
-            ),
-            leading: Icon(
-              Icons.mark_chat_read,
-              color: Color(0xff6e475b),
-              size: 25,
-            ),
-            onTap: () {
-              Navigator.of(context).pushNamed('Settings');
-            },
           ),
           isSignIn
               ? ListTile(

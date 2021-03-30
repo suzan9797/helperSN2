@@ -98,31 +98,33 @@ class _MyDrawerState extends State<MyDrawer> {
           ListTile(
             trailing: Icon(Icons.chevron_right, color: Colors.grey),
             title: Text(
-              ('Favorite Persons'),
+              ('About Us'),
               style: TextStyle(fontSize: 18),
             ),
             leading: Icon(
-              Icons.favorite,
-              color: Color(0xff6e475b),
-              size: 25,
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            trailing: Icon(Icons.chevron_right, color: Colors.grey),
-            title: Text(
-              ('Setting'),
-              style: TextStyle(fontSize: 18),
-            ),
-            leading: Icon(
-              Icons.settings,
+              Icons.reduce_capacity,
               color: Color(0xff6e475b),
               size: 25,
             ),
             onTap: () {
-              Navigator.of(context).pushNamed('Settings');
+              Navigator.of(context).pushNamed('AboutUs');
             },
           ),
+          // ListTile(
+          // trailing: Icon(Icons.chevron_right, color: Colors.grey),
+          // title: Text(
+          //   ('Setting'),
+          //   style: TextStyle(fontSize: 18),
+          // ),
+          // leading: Icon(
+          //   Icons.settings,
+          //   color: Color(0xff6e475b),
+          //   size: 25,
+          // ),
+          // onTap: () {
+          //   Navigator.of(context).pushNamed('Settings');
+          //  },
+          // ),
           isSignIn
               ? ListTile(
                   trailing: Icon(Icons.chevron_right, color: Colors.grey),

@@ -12,6 +12,7 @@ import 'package:helper/Screen/Rent/add_image.dart';
 import 'package:helper/Screen/Rent/productsDetails.dart';
 import 'package:helper/Screen/addPost.dart';
 import 'package:helper/Screen/home_screen.dart';
+import 'package:helper/Screen/home_tabs/AboutUs.dart';
 import 'package:helper/Screen/home_tabs/Carpentry.dart';
 import 'package:helper/Auth/login.dart';
 import 'package:helper/Screen/home_tabs/OrderConfirm.dart';
@@ -113,6 +114,9 @@ class MyApp extends StatelessWidget {
         },
         'MyOrder': (context) {
           return Orders();
+        },
+        'AboutUs': (context) {
+          return AboutUs();
         },
         'Addimage': (context) => Addimage(),
       },

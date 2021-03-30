@@ -74,12 +74,12 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                   Divider(),
-                  ListTile(
-                    title: Text('Location '),
-                    subtitle: Text('Abduallah ,zharaa'),
-                    leading: Icon(Icons.location_on),
-                    onTap: () {},
-                  ),
+                  // ListTile(
+                  //  title: Text('Location '),
+                  //  subtitle: Text('Abduallah ,zharaa'),
+                  //  leading: Icon(Icons.location_on),
+                  //  onTap: () {},
+                  //),
                   ListTile(
                     title: Text('Email '),
                     subtitle: Text('Algarousha.s@gmail.com'),
@@ -87,9 +87,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     onTap: () {},
                   ),
                   ListTile(
-                    title: Text('About Me'),
+                    title: Text('password'),
                     subtitle: Text('Im the best proffestion'),
-                    leading: Icon(Icons.info),
+                    leading: Icon(Icons.track_changes),
                     onTap: () {},
                   ),
                 ],

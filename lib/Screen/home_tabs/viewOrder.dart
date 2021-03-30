@@ -19,14 +19,13 @@ class _ViewOrderState extends State<ViewOrder> {
   void initState() {
     orderID = widget.orderID;
     getViewOrder();
-
     super.initState();
   }
 
   Future getViewOrder() async {
     await Firestore.instance
         .collection('detilsPro')
-        // .where('AssignOrderTo', isEqualTo: 'UserID')
+        //.where('AssignOrderTo', isEqualTo: user.uid)
         .orderBy('Date&Time', descending: true)
         .getDocuments()
         .then((value) {

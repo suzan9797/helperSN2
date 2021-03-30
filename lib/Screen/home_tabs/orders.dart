@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:helper/Screen/home_tabs/drawerOfPro.dart';
 import 'package:helper/Screen/home_tabs/viewOrder.dart';
@@ -203,21 +204,24 @@ class _OrdersState extends State<Orders> {
   }
 
   QuerySnapshot orders;
+
   Future assignOrderToPro() async {
-    await Firestore.instance
-        .collection('detilsPro')
-        .where('AssignOrderTo', isEqualTo: '3325jVQNC8TyzjKu2U23vAhT2aA2')
-        .where('Status', isEqualTo: 'pending')
-        //.orderBy('Date&Time', descending: true)
-        .getDocuments()
-        .then((value) {
-      if (value.documents.isEmpty == true) {
-        print('do not have any order now ');
-      } else {
-        setState(() {
-          orders = value;
-        });
-      }
+    await FirebaseAuth.instance.currentUser().then((user) {
+      Firestore.instance
+          .collection('detilsPro')
+          .where('AssignOrderTo', isEqualTo: user.uid)
+          .where('Status', isEqualTo: 'pending')
+          //.orderBy('Date&Time', descending: true)
+          .getDocuments()
+          .then((value) {
+        if (value.documents.isEmpty == true) {
+          print('do not have any order now ');
+        } else {
+          setState(() {
+            orders = value;
+          });
+        }
+      });
     });
   }
 }
