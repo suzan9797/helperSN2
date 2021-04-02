@@ -10,13 +10,13 @@ class Orders extends StatefulWidget {
 }
 
 class _OrdersState extends State<Orders> {
-  //String orderID;
   @override
   void initState() {
     assignOrderToPro();
     super.initState();
   }
 
+//final orderID;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -94,7 +94,7 @@ class _OrdersState extends State<Orders> {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Row(
                                       children: [
-                                        Text('Date & Time:',
+                                        Text('Date & Time: ',
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w800,

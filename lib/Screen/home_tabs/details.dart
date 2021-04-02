@@ -328,7 +328,7 @@ class _DetailsState extends State<Details> {
           'AssignOrderTo': proID,
           'OrderFrom': user.uid,
           'Status': 'pending',
-          'ordeID': docId,
+          'orderID': docId,
         }).then(
           (_) {
             Navigator.of(context).pushNamed('orderConfirm');

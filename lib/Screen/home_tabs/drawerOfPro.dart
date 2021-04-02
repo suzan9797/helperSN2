@@ -125,16 +125,16 @@ class _DrawerProState extends State<DrawerPro> {
                     color: Color(0xff6e475b),
                     size: 25,
                   ),
-                  onTap: () {
-                    //async {
-                    // FirebaseAuth.instance.signOut().then((_) async {
-                    //  SharedPreferences preferences =
-                    //     await SharedPreferences.getInstance();
-                    // preferences.remove('name');
-                    //  preferences.remove('email');
-                    Navigator.of(context).pushNamed('Login');
-                    //    });
-                  })
+                  onTap: () async {
+                    FirebaseAuth.instance.signOut().then((_) async {
+                      // SharedPreferences preferences =
+                      //     await SharedPreferences.getInstance();
+                      // preferences.remove('name');
+                      // preferences.remove('email');
+                      Navigator.of(context).pushNamed('Login');
+                    });
+                  },
+                )
               : ListTile(
                   trailing: Icon(Icons.chevron_right, color: Colors.grey),
                   title: Text(
