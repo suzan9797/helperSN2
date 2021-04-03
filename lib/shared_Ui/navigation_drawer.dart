@@ -98,6 +98,36 @@ class _MyDrawerState extends State<MyDrawer> {
           ListTile(
             trailing: Icon(Icons.chevron_right, color: Colors.grey),
             title: Text(
+              ('My Orders'),
+              style: TextStyle(fontSize: 18),
+            ),
+            leading: Icon(
+              Icons.assignment_sharp,
+              color: Color(0xff6e475b),
+              size: 25,
+            ),
+            onTap: () {
+              Navigator.of(context).pushNamed('UserOrders');
+            },
+          ),
+          ListTile(
+            trailing: Icon(Icons.chevron_right, color: Colors.grey),
+            title: Text(
+              ('My products'),
+              style: TextStyle(fontSize: 18),
+            ),
+            leading: Icon(
+              Icons.category_rounded,
+              color: Color(0xff6e475b),
+              size: 25,
+            ),
+            onTap: () {
+              Navigator.of(context).pushNamed('MyProducts');
+            },
+          ),
+          ListTile(
+            trailing: Icon(Icons.chevron_right, color: Colors.grey),
+            title: Text(
               ('About Us'),
               style: TextStyle(fontSize: 18),
             ),
@@ -110,21 +140,6 @@ class _MyDrawerState extends State<MyDrawer> {
               Navigator.of(context).pushNamed('AboutUs');
             },
           ),
-          // ListTile(
-          // trailing: Icon(Icons.chevron_right, color: Colors.grey),
-          // title: Text(
-          //   ('Setting'),
-          //   style: TextStyle(fontSize: 18),
-          // ),
-          // leading: Icon(
-          //   Icons.settings,
-          //   color: Color(0xff6e475b),
-          //   size: 25,
-          // ),
-          // onTap: () {
-          //   Navigator.of(context).pushNamed('Settings');
-          //  },
-          // ),
           isSignIn
               ? ListTile(
                   trailing: Icon(Icons.chevron_right, color: Colors.grey),
