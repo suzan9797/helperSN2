@@ -6,12 +6,12 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ProfilePage extends StatefulWidget {
+class ProProfile extends StatefulWidget {
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  _ProProfileState createState() => _ProProfileState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ProProfileState extends State<ProProfile> {
   QuerySnapshot profileView;
   File _image;
   String _url;
@@ -136,7 +136,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ListTile(
                           title: Text('  User Name:'),
                           subtitle: Text(
-                            profileView.documents[i].data['First name']
+                            profileView.documents[i].data['Full name']
                                 .toString(),
                             style: TextStyle(fontSize: 18.0),
                           ),
@@ -157,6 +157,22 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                           leading: Icon(
                             Icons.location_city,
+                            color: Color(0xff6e475b),
+                          ),
+                          onTap: () {},
+                        ),
+                        SizedBox(
+                          height: 0.25,
+                        ),
+                        ListTile(
+                          title: Text(' Profession:'),
+                          subtitle: Text(
+                            profileView.documents[i].data['Profession']
+                                .toString(),
+                            style: TextStyle(fontSize: 18.0),
+                          ),
+                          leading: Icon(
+                            Icons.work_rounded,
                             color: Color(0xff6e475b),
                           ),
                           onTap: () {},

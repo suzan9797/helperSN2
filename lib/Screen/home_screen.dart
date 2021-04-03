@@ -22,10 +22,11 @@ class _HomeScreenState extends State<HomeScreen>
     return Scaffold(
       appBar: AppBar(
         title: Text('Home Page'),
-        actions: <Widget>[
-          IconButton(icon: Icon(Icons.search), onPressed: () {}),
-          IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
-        ],
+        centerTitle: true,
+        //actions: <Widget>[
+        // IconButton(icon: Icon(Icons.search), onPressed: () {}),
+        // IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
+        //],
         bottom: TabBar(
           indicatorColor: Colors.white,
           tabs: [
@@ -41,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen>
           controller: _tabController,
         ),
       ),
-      drawer: MyDrawer(),
+      drawer: MyDrawer(), //go to page Navigation_drawer
       body: Center(
         child: TabBarView(
           children: [
