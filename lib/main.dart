@@ -10,6 +10,7 @@ import 'package:helper/Screen/Rent/RentIt.dart';
 import 'package:helper/Screen/Rent/RentOther.dart';
 import 'package:helper/Screen/Rent/RentTools.dart';
 import 'package:helper/Screen/Rent/UserOrders.dart';
+import 'package:helper/Screen/Rent/add_image.dart';
 import 'package:helper/Screen/Rent/productsDetails.dart';
 import 'package:helper/Screen/addPost.dart';
 import 'package:helper/Screen/home_screen.dart';
@@ -120,15 +121,12 @@ class MyApp extends StatelessWidget {
         'AboutUs': (context) {
           return AboutUs();
         },
-<<<<<<< HEAD
         ' ProProfile ': (context) {
           return ProProfile();
         },
         'Addimage': (context) => Addimage(),
-=======
         'UserOrders': (context) => UserOrders(),
         'MyProducts': (context) => MyProducts(),
->>>>>>> 05c817eb83fbb0f6a53176d07227bd5008e23c4e
       },
       theme: AppTheme.appTheme,
       home: OnBoarding(),

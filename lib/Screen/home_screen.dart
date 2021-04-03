@@ -22,18 +22,12 @@ class _HomeScreenState extends State<HomeScreen>
     return Scaffold(
       appBar: AppBar(
         title: Text('Home Page'),
-<<<<<<< HEAD
         centerTitle: true,
         //actions: <Widget>[
         // IconButton(icon: Icon(Icons.search), onPressed: () {}),
         // IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
         //],
-=======
-        // actions: <Widget>[
-        //   IconButton(icon: Icon(Icons.search), onPressed: () {}),
-        //   IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
-        // ],
->>>>>>> 05c817eb83fbb0f6a53176d07227bd5008e23c4e
+
         bottom: TabBar(
           indicatorColor: Colors.white,
           tabs: [
