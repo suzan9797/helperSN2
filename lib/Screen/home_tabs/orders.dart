@@ -37,7 +37,7 @@ class _OrdersState extends State<Orders> {
             indicatorColor: Colors.white,
             tabs: [
               Tab(
-                text: "New requests ",
+                text: "New Requests ",
                 icon: Icon(
                   Icons.assignment_sharp,
                   color: Colors.white,
