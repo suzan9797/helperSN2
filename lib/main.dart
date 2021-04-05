@@ -17,6 +17,7 @@ import 'package:helper/Screen/home_screen.dart';
 import 'package:helper/Screen/home_tabs/AboutUs.dart';
 import 'package:helper/Screen/home_tabs/Carpentry.dart';
 import 'package:helper/Auth/login.dart';
+import 'package:helper/Screen/home_tabs/EditProfile.dart';
 import 'package:helper/Screen/home_tabs/OrderConfirm.dart';
 import 'package:helper/Screen/home_tabs/orders.dart';
 import 'package:helper/Screen/home_tabs/proProfile.dart';
@@ -123,6 +124,9 @@ class MyApp extends StatelessWidget {
         },
         ' ProProfile ': (context) {
           return ProProfile();
+        },
+        ' EditProfile': (context) {
+          return EditProfile();
         },
         'Addimage': (context) => Addimage(),
         'UserOrders': (context) => UserOrders(),

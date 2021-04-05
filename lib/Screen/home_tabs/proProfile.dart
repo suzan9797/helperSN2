@@ -1,4 +1,5 @@
 import 'dart:io';
+//import 'package:flutter/foundation.dart';
 import 'package:path/path.dart' as p;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,9 +16,11 @@ class _ProProfileState extends State<ProProfile> {
   QuerySnapshot profileView;
   File _image;
   String _url;
+
   @override
   void initState() {
     getViewprofile();
+
     super.initState();
   }
 
@@ -134,6 +137,7 @@ class _ProProfileState extends State<ProProfile> {
                           height: 0.25,
                         ),
                         ListTile(
+                          trailing: Icon(Icons.edit, color: Colors.grey),
                           title: Text('  User Name:'),
                           subtitle: Text(
                             profileView.documents[i].data['Full name']
@@ -144,7 +148,9 @@ class _ProProfileState extends State<ProProfile> {
                             Icons.edit_road,
                             color: Color(0xff6e475b),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).pushNamed(' EditProfile');
+                          },
                         ),
                         SizedBox(
                           height: 0.25,
@@ -197,6 +203,7 @@ class _ProProfileState extends State<ProProfile> {
     });
   }
 
+  String imagURL;
   void uploadImage(context) async {
     try {
       FirebaseStorage storage =
@@ -207,14 +214,27 @@ class _ProProfileState extends State<ProProfile> {
       Scaffold.of(context).showSnackBar(SnackBar(
         content: Text('success'),
       ));
-      String url = await taskSnapshot.ref.getDownloadURL();
+      String _url = await taskSnapshot.ref.getDownloadURL();
       setState(() {
-        _url = _url;
+        imagURL = _url;
+      });
+      setViewprofile().then((val) {
+        Navigator.of(context).pop();
       });
     } catch (ex) {
       Scaffold.of(context).showSnackBar(SnackBar(
         content: Text(ex.message),
       ));
     }
+  }
+
+  Future setViewprofile() async {
+    await FirebaseAuth.instance.currentUser().then((user) async {
+      await Firestore.instance.collection('Users').document().setData({
+        'profil Image': imagURL,
+      }).then((_) {
+        Navigator.of(context).pop();
+      });
+    });
   }
 }

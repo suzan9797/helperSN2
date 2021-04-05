@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:helper/Auth/reset.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
@@ -249,7 +250,8 @@ class _LoginState extends State<Login> {
                   // _errorMessage(context),
                   SizedBox(height: 15),
                   InkWell(
-                    onTap: () {},
+                    onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => ResetScreen())),
                     child: Text(
                       'forgot password ?',
                       style: TextStyle(
