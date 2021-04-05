@@ -22,7 +22,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
 
   getProductsDetails() async {
     await Firestore.instance
-        .collection('posts')
+        .collection('products')
         .where('product ID', isEqualTo: productID)
         .getDocuments()
         .then((value) {

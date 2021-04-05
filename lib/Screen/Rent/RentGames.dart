@@ -12,7 +12,7 @@ class _RentGamesState extends State<RentGames> {
 
   getGameProducts() async {
     await Firestore.instance
-        .collection('posts')
+        .collection('products')
         .where('category', isEqualTo: 'Games')
         .getDocuments()
         .then((value) {

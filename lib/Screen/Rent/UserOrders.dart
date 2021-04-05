@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class UserOrders extends StatefulWidget {
@@ -6,6 +8,12 @@ class UserOrders extends StatefulWidget {
 }
 
 class _UserOrdersState extends State<UserOrders> {
+  @override
+  void initState() {
+    getProfessionalRequest();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -96,70 +104,107 @@ class _UserOrdersState extends State<UserOrders> {
   }
 
   Widget professionalRequest(BuildContext context) {
-    return Column(
-      children: [
-        Card(
-            elevation: 10,
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    height: 130,
-                    color: Color(0xff6e475b),
-                    alignment: Alignment.center,
-                    child: Text(
-                      'Plumbing',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.white),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 3,
-                  child: Container(
-                      height: 130,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            child: ListTile(
-                              title: Text("professional name",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w800,
-                                      color: Color(0xff6e475b))),
-                              subtitle: Text('20/4/2021',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                  )),
-                            ),
+    if (proRequest == null) {
+      return Center(child: Text('do not have any products')
+          //CircularProgressIndicator(),
+          );
+    } else {
+      return ListView.builder(
+          itemCount: proRequest.documents.length,
+          itemBuilder: (context, i) {
+            return Container(
+              child: Card(
+                  elevation: 10,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          height: 130,
+                          color: Color(0xff6e475b),
+                          alignment: Alignment.center,
+                          child: Text(
+                            'Plumbing',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.white),
                           ),
-                          Container(
-                            margin: EdgeInsets.only(left: 200),
-                            child: FlatButton(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 10),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30)),
-                              color: Colors.grey,
-                              child: const Text(
-                                'Cancel',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 16),
-                              ),
-                              onPressed: () {},
-                            ),
-                          ),
-                        ],
-                      )),
-                ),
-              ],
-            )),
-      ],
-    );
+                        ),
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: Container(
+                            height: 130,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  child: ListTile(
+                                    title: Text("professional name",
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w800,
+                                            color: Color(0xff6e475b))),
+                                    subtitle: Text(
+                                        proRequest
+                                            .documents[i].data['Date&Time']
+                                            .toString(),
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                        )),
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 200),
+                                  child: FlatButton(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 10),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(30)),
+                                    color: Colors.grey,
+                                    child: const Text(
+                                      'Cancel',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 16),
+                                    ),
+                                    onPressed: () {},
+                                  ),
+                                ),
+                              ],
+                            )),
+                      ),
+                    ],
+                  )),
+            );
+          });
+    }
+  }
+
+  QuerySnapshot proRequest;
+  Future getProfessionalRequest() async {
+    try {
+      await FirebaseAuth.instance.currentUser().then((user) {
+        Firestore.instance
+            .collection('detilsPro')
+            .where('OrderFrom', isEqualTo: user.uid)
+            .getDocuments()
+            .then((value) {
+          if (value.documents.isEmpty == true) {
+            print('do not have any request ');
+          } else {
+            setState(() {
+              proRequest = value;
+            });
+          }
+        });
+      });
+    } catch (e) {
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text(e.message),
+      ));
+    }
   }
 }

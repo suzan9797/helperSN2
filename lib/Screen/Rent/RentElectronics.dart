@@ -12,7 +12,7 @@ class _ElectronicsState extends State<Electronics> {
 
   getElctroProducts() async {
     await Firestore.instance
-        .collection('posts')
+        .collection('products')
         .where('category', isEqualTo: 'Electronics')
         .getDocuments()
         .then((value) {

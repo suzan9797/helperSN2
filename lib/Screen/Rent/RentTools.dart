@@ -12,7 +12,7 @@ class _RentToolsState extends State<RentTools> {
 
   getToolProducts() async {
     await Firestore.instance
-        .collection('posts')
+        .collection('products')
         .where('category', isEqualTo: 'Tools')
         .getDocuments()
         .then((value) {

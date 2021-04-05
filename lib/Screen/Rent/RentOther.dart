@@ -12,7 +12,7 @@ class _RentOtherState extends State<RentOther> {
 
   getOtherProducts() async {
     await Firestore.instance
-        .collection('posts')
+        .collection('products')
         .where('category', isEqualTo: 'Other')
         .getDocuments()
         .then((value) {

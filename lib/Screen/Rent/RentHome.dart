@@ -12,7 +12,7 @@ class _RentHomeState extends State<RentHome> {
 
   getHomeProducts() async {
     await Firestore.instance
-        .collection('posts')
+        .collection('products')
         .where('category', isEqualTo: 'Home')
         .getDocuments()
         .then((value) {

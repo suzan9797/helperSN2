@@ -200,7 +200,10 @@ class _AddPostState extends State<AddPost> {
       });
 
       await FirebaseAuth.instance.currentUser().then((user) async {
-        await Firestore.instance.collection("posts").document(docId).setData({
+        await Firestore.instance
+            .collection("products")
+            .document(docId)
+            .setData({
           'product name': _productName.text,
           'product description': _productDescription.text,
           'product praice': _productPrice.text,

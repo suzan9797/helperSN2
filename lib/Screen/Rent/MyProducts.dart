@@ -10,7 +10,7 @@ class MyProducts extends StatefulWidget {
 class _MyProductsState extends State<MyProducts> {
   @override
   void initState() {
-    getProducts();
+    getMyProducts();
     super.initState();
   }
 
@@ -96,7 +96,9 @@ class _MyProductsState extends State<MyProducts> {
                                             .collection("posts")
                                             .document(products
                                                 .documents[i].documentID)
-                                            .delete();
+                                            .delete()
+                                            .then((value) =>
+                                                Navigator.of(context).pop());
                                       },
                                     ),
                                   ],
@@ -172,11 +174,11 @@ class _MyProductsState extends State<MyProducts> {
   }
 
   QuerySnapshot products;
-  Future getProducts() async {
+  Future getMyProducts() async {
     try {
       await FirebaseAuth.instance.currentUser().then((user) {
         Firestore.instance
-            .collection('posts')
+            .collection('products')
             .where('userID', isEqualTo: user.uid)
             .getDocuments()
             .then((value) {
