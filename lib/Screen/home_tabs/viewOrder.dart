@@ -100,10 +100,11 @@ class _ViewOrderState extends State<ViewOrder> {
                             child: const Text('Cancel '),
                             onPressed: () {
                               //if you want to cancel order.
-                              // Firestore.instance
-                              //   .collection('detilspro')
-                              //.document(documents[i].data['orderID'])
-                              // .delete();
+                              Firestore.instance
+                                  .collection('detilsPro')
+                                  .document(orderView.documents[i].documentID)
+                                  .updateData({'Status': 'Canceled'}).then(
+                                      (value) => Navigator.of(context).pop());
                             },
                           ),
                           FlatButton(
@@ -111,7 +112,13 @@ class _ViewOrderState extends State<ViewOrder> {
                                 borderRadius: BorderRadius.circular(30)),
                             color: Color(0xff6e475b),
                             child: const Text('Accept'),
-                            onPressed: () {},
+                            onPressed: () {
+                              Firestore.instance
+                                  .collection('detilsPro')
+                                  .document(orderView.documents[i].documentID)
+                                  .updateData({'Status': 'Acceptable'}).then(
+                                      (value) => Navigator.of(context).pop());
+                            },
                           ),
                         ],
                       ),

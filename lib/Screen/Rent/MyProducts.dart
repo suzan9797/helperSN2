@@ -93,7 +93,7 @@ class _MyProductsState extends State<MyProducts> {
                                       ),
                                       onPressed: () async {
                                         await Firestore.instance
-                                            .collection("posts")
+                                            .collection("products")
                                             .document(products
                                                 .documents[i].documentID)
                                             .delete()
