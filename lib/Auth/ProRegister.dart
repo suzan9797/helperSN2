@@ -8,8 +8,6 @@ class ProRegister extends StatefulWidget {
 }
 
 class _ProRegisterState extends State<ProRegister> {
-  String valueChoose;
-  List listcity = ['Jeddah', 'Riyadh', 'Dammam'];
   String valueSelect;
   List listpro = [
     'Carpentry',
@@ -82,7 +80,6 @@ class _ProRegisterState extends State<ProRegister> {
           'Full name': _fullName.text,
           'Email': _email.text,
           'Profession': valueSelect,
-          'City': valueChoose,
           'role': _role,
           'UserID': result.user.uid
         });
@@ -151,8 +148,8 @@ class _ProRegisterState extends State<ProRegister> {
           children: [
             Center(
                 child: Container(
-                    margin: EdgeInsets.only(top: 150),
-                    height: 435,
+                    margin: EdgeInsets.only(top: 180),
+                    height: 390,
                     width: mdw / 1.2,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -221,47 +218,8 @@ class _ProRegisterState extends State<ProRegister> {
                                       }).toList()),
                                 ),
                                 //end drop pro
-                                SizedBox(height: 5),
 
-                                //Start drop city
                                 SizedBox(height: 20),
-                                Container(
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(40),
-                                  ),
-                                  child: DropdownButtonFormField<String>(
-                                      validator: (newValue) => newValue == null
-                                          ? "City is required"
-                                          : null,
-                                      decoration: InputDecoration(
-                                          isDense: true,
-                                          border: InputBorder.none),
-                                      hint: Text('Select your city:'),
-                                      icon: Icon(Icons.arrow_drop_down),
-                                      iconSize: 35,
-                                      style: TextStyle(
-                                          color: Colors.grey[600],
-                                          fontSize: 17),
-                                      value: valueChoose,
-                                      onChanged: (newValue) {
-                                        setState(() {
-                                          valueChoose = newValue;
-                                        });
-                                      },
-                                      items: listcity
-                                          .map<DropdownMenuItem<String>>(
-                                              (valueItem) {
-                                        return DropdownMenuItem<String>(
-                                          value: valueItem,
-                                          child: Text(valueItem),
-                                        );
-                                      }).toList()),
-                                ),
-                                //end drop city
-                                SizedBox(height: 20),
-
                                 //end text passwoed
                                 buildTextFormFieldAll('Enter Your password',
                                     true, _password, validPasswoed)

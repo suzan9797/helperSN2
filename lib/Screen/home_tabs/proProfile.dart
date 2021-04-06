@@ -155,18 +155,18 @@ class _ProProfileState extends State<ProProfile> {
                         SizedBox(
                           height: 0.25,
                         ),
-                        ListTile(
-                          title: Text(' City:'),
-                          subtitle: Text(
-                            profileView.documents[i].data['City'].toString(),
-                            style: TextStyle(fontSize: 18.0),
-                          ),
-                          leading: Icon(
-                            Icons.location_city,
-                            color: Color(0xff6e475b),
-                          ),
-                          onTap: () {},
-                        ),
+                        // ListTile(
+                        //   title: Text(' City:'),
+                        //   subtitle: Text(
+                        //     profileView.documents[i].data['City'].toString(),
+                        //     style: TextStyle(fontSize: 18.0),
+                        //   ),
+                        //   leading: Icon(
+                        //     Icons.location_city,
+                        //     color: Color(0xff6e475b),
+                        //   ),
+                        //   onTap: () {},
+                        // ),
                         SizedBox(
                           height: 0.25,
                         ),

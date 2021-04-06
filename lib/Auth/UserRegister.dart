@@ -77,7 +77,6 @@ class _UserRegister extends State<UserRegister> {
           'First name': _fname.text,
           'Last name': _lname.text,
           'Email': _email.text,
-          'City': valueChoose,
           "role": _role,
           'UserID': result.user.uid,
         });
@@ -93,9 +92,6 @@ class _UserRegister extends State<UserRegister> {
     _password.dispose();
     super.dispose();
   }
-
-  String valueChoose;
-  List listitem = ['Jeddah', 'Riyadh', 'Dammam'];
 
   @override
   Widget build(BuildContext context) {
@@ -151,8 +147,8 @@ class _UserRegister extends State<UserRegister> {
           children: [
             Center(
                 child: Container(
-                    margin: EdgeInsets.only(top: 150),
-                    height: 435,
+                    margin: EdgeInsets.only(top: 180),
+                    height: 390,
                     width: mdw / 1.2,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -191,46 +187,6 @@ class _UserRegister extends State<UserRegister> {
                                     _email, validEmail),
                                 //end text email
 
-                                SizedBox(height: 20),
-
-                                Container(
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(40),
-                                  ),
-                                  child: DropdownButtonFormField<String>(
-                                      autovalidateMode:
-                                          AutovalidateMode.onUserInteraction,
-                                      validator: (newValue) => newValue == null
-                                          ? "City can't to be empty"
-                                          : null,
-                                      decoration: InputDecoration(
-                                          isDense: true,
-                                          border: InputBorder.none),
-                                      hint: Text('Select your city:'),
-                                      icon: Icon(Icons.arrow_drop_down),
-                                      iconSize: 35,
-                                      style: TextStyle(
-                                          color: Colors.grey[600],
-                                          fontSize: 16),
-                                      value: valueChoose,
-                                      onChanged: (String newValue) {
-                                        setState(() {
-                                          valueChoose = newValue;
-                                        });
-                                      },
-                                      items: listitem
-                                          .map<DropdownMenuItem<String>>(
-                                              (valueItem) {
-                                        return DropdownMenuItem<String>(
-                                          value: valueItem,
-                                          child: Text(valueItem),
-                                        );
-                                      }).toList()),
-                                ),
-
-                                //end dropDown
                                 SizedBox(height: 20),
 
                                 //start text passwoed
