@@ -1,70 +1,47 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:helper/Screen/home_tabs/OldOrder.dart';
-import 'package:helper/Screen/home_tabs/drawerOfPro.dart';
-import 'package:helper/Screen/home_tabs/viewOrder.dart';
 
-class Orders extends StatefulWidget {
+class OldOrder extends StatefulWidget {
   @override
-  _OrdersState createState() => _OrdersState();
+  _OldOrderState createState() => _OldOrderState();
 }
 
-class _OrdersState extends State<Orders> {
+class _OldOrderState extends State<OldOrder> {
   @override
   void initState() {
-    assignOrderToPro();
+    oldProOrder();
     super.initState();
   }
 
-//final orderID;
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xff6e475b),
-          centerTitle: true,
-          title: Text('Orders'),
-          bottom: TabBar(
-            indicatorColor: Colors.white,
-            tabs: [
-              Tab(
-                text: "New Requests ",
-                icon: Icon(
-                  Icons.assignment_sharp,
-                  color: Colors.white,
-                ),
-              ),
-              Tab(
-                text: "Old Requests",
-                icon: Icon(
-                  Icons.assignment_turned_in,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-        ),
-        drawer: DrawerPro(),
-        body: TabBarView(
-          children: <Widget>[
-            newRequest(context),
-            OldOrder(),
-            //oldRequest(context),
-          ],
-        ),
-      ),
-    );
+  QuerySnapshot oldOrders;
+
+  Future oldProOrder() async {
+    await FirebaseAuth.instance.currentUser().then((user) {
+      Firestore.instance
+          .collection('detilsPro')
+          .where('AssignOrderTo', isEqualTo: user.uid)
+          .where('Status', isEqualTo: 'Canceled')
+          .getDocuments()
+          .then((value) {
+        if (value.documents.isEmpty == true) {
+          print('do not have any order now ');
+        } else {
+          setState(() {
+            oldOrders = value;
+          });
+        }
+      });
+    });
   }
 
-  Widget newRequest(BuildContext context) {
-    if (newOrders == null) {
+  @override
+  Widget build(BuildContext context) {
+    if (oldOrders == null) {
       return Center(child: CircularProgressIndicator());
     } else {
       return ListView.builder(
-          itemCount: newOrders.documents.length,
+          itemCount: oldOrders.documents.length,
           itemBuilder: (context, i) {
             return InkWell(
               child: Container(
@@ -75,9 +52,7 @@ class _OrdersState extends State<Orders> {
                   color: Colors.grey.shade200,
                   child: Row(
                     children: <Widget>[
-                      Expanded(
-                          flex: 1,
-                          child: Icon(Icons.time_to_leave_outlined, size: 37)),
+                      Expanded(flex: 1, child: Icon(Icons.done, size: 37)),
                       Expanded(
                           flex: 3,
                           child: Container(
@@ -95,7 +70,7 @@ class _OrdersState extends State<Orders> {
                                                 fontWeight: FontWeight.w800,
                                                 color: Color(0xff6e475b))),
                                         Text(
-                                            newOrders
+                                            oldOrders
                                                 .documents[i].data['Date&Time']
                                                 .toString(),
                                             style: TextStyle(
@@ -118,7 +93,7 @@ class _OrdersState extends State<Orders> {
                                           ),
                                         ),
                                         Text(
-                                          newOrders.documents[i].data['Status']
+                                          oldOrders.documents[i].data['Status']
                                               .toString(),
                                           style: TextStyle(
                                               fontSize: 18,
@@ -136,36 +111,8 @@ class _OrdersState extends State<Orders> {
                   ),
                 ),
               ),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            ViewOrder(newOrders.documents[i].data['orderID'])));
-              },
             );
           });
     }
-  }
-
-  QuerySnapshot newOrders;
-  Future assignOrderToPro() async {
-    await FirebaseAuth.instance.currentUser().then((user) {
-      Firestore.instance
-          .collection('detilsPro')
-          .where('AssignOrderTo', isEqualTo: user.uid)
-          // .where('Status', isEqualTo: 'pending')
-          //.orderBy('Date&Time', descending: true)
-          .getDocuments()
-          .then((value) {
-        if (value.documents.isEmpty == true) {
-          print('do not have any order now ');
-        } else {
-          setState(() {
-            newOrders = value;
-          });
-        }
-      });
-    });
   }
 }

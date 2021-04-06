@@ -64,7 +64,6 @@ class _ViewOrderState extends State<ViewOrder> {
                         orderView.documents[i].data['Description'].toString(),
                       ),
                       leading: Icon(Icons.data_usage_outlined),
-                      onTap: () {},
                     ),
                     ListTile(
                       title: Text('Date & Time '),
@@ -72,7 +71,6 @@ class _ViewOrderState extends State<ViewOrder> {
                         orderView.documents[i].data['Date&Time'].toString(),
                       ),
                       leading: Icon(Icons.date_range),
-                      onTap: () {},
                     ),
                     ListTile(
                       title: Text('Location '),
@@ -80,7 +78,6 @@ class _ViewOrderState extends State<ViewOrder> {
                         orderView.documents[i].data['Location'].toString(),
                       ),
                       leading: Icon(Icons.location_on),
-                      onTap: () {},
                     ),
                     ListTile(
                       title: Text('phone Number '),
@@ -88,7 +85,6 @@ class _ViewOrderState extends State<ViewOrder> {
                         orderView.documents[i].data['Phone'].toString(),
                       ),
                       leading: Icon(Icons.call),
-                      onTap: () {},
                     ),
                     Center(
                       child: ButtonBar(
@@ -104,7 +100,8 @@ class _ViewOrderState extends State<ViewOrder> {
                                   .collection('detilsPro')
                                   .document(orderView.documents[i].documentID)
                                   .updateData({'Status': 'Canceled'}).then(
-                                      (value) => Navigator.of(context).pop());
+                                      (value) => Navigator.of(context)
+                                          .pushNamed('order'));
                             },
                           ),
                           FlatButton(
@@ -117,7 +114,8 @@ class _ViewOrderState extends State<ViewOrder> {
                                   .collection('detilsPro')
                                   .document(orderView.documents[i].documentID)
                                   .updateData({'Status': 'Acceptable'}).then(
-                                      (value) => Navigator.of(context).pop());
+                                      (value) => Navigator.of(context)
+                                          .pushNamed('order'));
                             },
                           ),
                         ],

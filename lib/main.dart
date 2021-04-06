@@ -97,9 +97,9 @@ class MyApp extends StatelessWidget {
         // 'productsDetails': (context) {
         //   return ProductsDetails();
         // },
-        'RentIt': (context) {
-          return RentIt();
-        },
+        // 'RentIt': (context) {
+        //   return RentIt();
+        // },
         'Settings': (context) {
           return Settings();
         },

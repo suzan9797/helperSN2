@@ -8,6 +8,10 @@ import 'package:geolocator/geolocator.dart';
 import 'package:geolocator/geolocator.dart' as prefix0;
 
 class RentIt extends StatefulWidget {
+  String renterID;
+  RentIt(String renterID) {
+    this.renterID = renterID;
+  }
   @override
   _RentItState createState() => _RentItState();
 }
@@ -36,8 +40,11 @@ class _RentItState extends State<RentIt> {
     return null;
   }
 
+  String renterID;
+
   @override
   void initState() {
+    renterID = widget.renterID;
     getLocation();
     super.initState();
   }
@@ -264,12 +271,13 @@ class _RentItState extends State<RentIt> {
       });
 
       FirebaseAuth.instance.currentUser().then((user) {
-        Firestore.instance.collection("Rent Order").document().setData({
+        Firestore.instance.collection("RentOrders").document().setData({
           'Date': dateSelected,
           'Time': timeSelected,
           'Location': userLocality,
           'Phone': phoneController.text,
           'userID': user.uid,
+          'RenterId': renterID,
         }).then((_) {
           Navigator.of(context).pop();
         });

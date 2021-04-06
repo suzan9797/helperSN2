@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:helper/Screen/Rent/RentIt.dart';
 
 class ProductsDetails extends StatefulWidget {
   String productID;
@@ -151,7 +152,15 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                       children: [
                         RaisedButton(
                           onPressed: () {
-                            Navigator.of(context).pushNamed('RentIt');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) => RentIt(
+                                        productDetails
+                                            .documents[i].data['userID']
+                                            .toString())));
+
+                            //Navigator.of(context).pushNamed('RentIt');
                           },
                           color: Color(0xff6e475b),
                           padding: EdgeInsets.symmetric(
