@@ -110,6 +110,7 @@ class _ViewOrderState extends State<ViewOrder> {
                             color: Color(0xff6e475b),
                             child: const Text('Accept'),
                             onPressed: () {
+                              //if you want to accept order.
                               Firestore.instance
                                   .collection('detilsPro')
                                   .document(orderView.documents[i].documentID)

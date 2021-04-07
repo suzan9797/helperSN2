@@ -62,7 +62,7 @@ class _UserOrdersState extends State<UserOrders> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          height: 130,
+                          height: 150,
                           color: Color(0xff6e475b),
                           alignment: Alignment.center,
                           child: Text(
@@ -77,10 +77,10 @@ class _UserOrdersState extends State<UserOrders> {
                       Expanded(
                         flex: 3,
                         child: Container(
-                            height: 130,
+                            height: 150,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Container(
                                   child: ListTile(
@@ -98,22 +98,64 @@ class _UserOrdersState extends State<UserOrders> {
                                         )),
                                   ),
                                 ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 200),
-                                  child: FlatButton(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 20, vertical: 10),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(30)),
-                                    color: Colors.grey,
-                                    child: const Text(
-                                      'Cancel',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 16),
+                                SizedBox(height: 15),
+                                Row(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(left: 100),
+                                      child: FlatButton(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 20, vertical: 10),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(30)),
+                                        color: Colors.grey,
+                                        child: const Text(
+                                          'Cancel',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16),
+                                        ),
+                                        onPressed: () {
+                                          Firestore.instance
+                                              .collection('detilsPro')
+                                              .document(proRequest
+                                                  .documents[i].documentID)
+                                              .updateData({
+                                            'Status': 'Canceled'
+                                          }).then((value) =>
+                                                  Navigator.of(context).pop());
+                                        },
+                                      ),
                                     ),
-                                    onPressed: () {},
-                                  ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 12),
+                                      child: FlatButton(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 20, vertical: 10),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(30)),
+                                        color: Colors.green,
+                                        child: const Text(
+                                          'Done',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16),
+                                        ),
+                                        onPressed: () {
+                                          Firestore.instance
+                                              .collection('detilsPro')
+                                              .document(proRequest
+                                                  .documents[i].documentID)
+                                              .updateData({
+                                            'Status': 'Done'
+                                          }).then((value) =>
+                                                  Navigator.of(context).pop());
+                                        },
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             )),
@@ -132,6 +174,7 @@ class _UserOrdersState extends State<UserOrders> {
         Firestore.instance
             .collection('detilsPro')
             .where('OrderFrom', isEqualTo: user.uid)
+            .where('Status', isEqualTo: 'Acceptable')
             .getDocuments()
             .then((value) {
           if (value.documents.isEmpty == true) {
