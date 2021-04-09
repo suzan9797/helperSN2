@@ -83,6 +83,11 @@ class _LoginState extends State<Login> {
                   savePro('name', _email.text);
                   return Navigator.of(context).pushNamed('order');
                 }
+                break;
+              case 'admin':
+                {
+                  return Navigator.of(context).pushNamed('Admin');
+                }
             }
           });
         } else {

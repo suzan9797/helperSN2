@@ -148,9 +148,6 @@ class _ProProfileState extends State<ProProfile> {
                             Icons.edit_road,
                             color: Color(0xff6e475b),
                           ),
-                          //onTap: () {
-                          //Navigator.of(context).pushNamed(' EditProfile');
-                          // },
                         ),
                         SizedBox(
                           height: 0.25,

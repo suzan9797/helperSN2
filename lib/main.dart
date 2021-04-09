@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/rendering.dart';
+import 'package:helper/Admin/homeAdmin.dart';
 import 'package:helper/Auth/JoinOptions.dart';
 import 'package:helper/Auth/ProRegister.dart';
 import 'package:helper/Screen/Rent/MyProducts.dart';
@@ -18,6 +20,7 @@ import 'package:helper/Screen/home_tabs/AboutUs.dart';
 import 'package:helper/Screen/home_tabs/Carpentry.dart';
 import 'package:helper/Auth/login.dart';
 import 'package:helper/Screen/home_tabs/EditProfile.dart';
+import 'package:helper/Screen/home_tabs/EditUserProfile.dart';
 import 'package:helper/Screen/home_tabs/OrderConfirm.dart';
 import 'package:helper/Screen/home_tabs/orders.dart';
 import 'package:helper/Screen/home_tabs/proProfile.dart';
@@ -127,6 +130,12 @@ class MyApp extends StatelessWidget {
         },
         ' EditProfile': (context) {
           return EditProfile();
+        },
+        ' EditUserProfile': (context) {
+          return EditUserProfile();
+        },
+        'Admin': (context) {
+          return Admin();
         },
         'Addimage': (context) => Addimage(),
         'UserOrders': (context) => UserOrders(),
