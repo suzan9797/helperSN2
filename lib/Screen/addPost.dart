@@ -55,7 +55,7 @@ class _AddPostState extends State<AddPost> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Add Post'),
+        title: Text('Add product'),
       ),
       body: Padding(
           padding: const EdgeInsets.all(15),
@@ -128,7 +128,10 @@ class _AddPostState extends State<AddPost> {
             Container(
                 margin: EdgeInsets.only(right: 270),
                 child: Text('add photo:',
-                    style: TextStyle(color: Color(0xff6e475b), fontSize: 18))),
+                    style: TextStyle(
+                        color: Color(0xff6e475b),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold))),
             Container(
               //margin: EdgeInsets.only(left: 250),
               //color: Colors.black,
@@ -188,7 +191,8 @@ class _AddPostState extends State<AddPost> {
     );
   }
 
-  final docId = Firestore.instance.collection("posts").document().documentID;
+  final docId = Firestore.instance.collection("products").document().documentID;
+
   Future addProduct() async {
     if (!_key.currentState.validate()) {
       setState(() {

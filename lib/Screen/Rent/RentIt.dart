@@ -123,8 +123,8 @@ class _RentItState extends State<RentIt> {
                         doneStyle: TextStyle(color: Colors.red),
                         itemStyle: TextStyle(color: Colors.black)),
                     showTitleActions: true,
-                    minTime: DateTime(2020, 1, 1),
-                    maxTime: DateTime(2021, 10, 30), onConfirm: (date) {
+                    minTime: DateTime.now(),
+                    maxTime: DateTime(2022, 10, 30), onConfirm: (date) {
                   print('confirm $date');
                   setState(() {
                     dateSelected =
