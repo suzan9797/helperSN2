@@ -61,7 +61,7 @@ class _OrdersState extends State<Orders> {
 
   Widget newRequest(BuildContext context) {
     if (newOrders == null) {
-      return Center(child: CircularProgressIndicator());
+      return Center(child: Text('Dont not have any Orders...'));
     } else {
       return ListView.builder(
           itemCount: newOrders.documents.length,
