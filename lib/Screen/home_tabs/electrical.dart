@@ -120,8 +120,9 @@ class _ElectricalState extends State<Electrical> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                          Details(proAccounts.documents[i].data['UserID'])));
+                      builder: (BuildContext context) => Details(
+                          proAccounts.documents[i].data['UserID'],
+                          proAccounts.documents[i].data['Full name'])));
               //Navigator.of(context).pushNamed('details');
             },
           );

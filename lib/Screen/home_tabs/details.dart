@@ -10,8 +10,10 @@ import 'package:geolocator/geolocator.dart' as prefix0;
 
 class Details extends StatefulWidget {
   String proID;
-  Details(String proID) {
+  String proname;
+  Details(String proID, String proname) {
     this.proID = proID;
+    this.proname = proname;
   }
 
   @override
@@ -20,10 +22,12 @@ class Details extends StatefulWidget {
 
 class _DetailsState extends State<Details> {
   String proID;
+  String proname;
   @override
   void initState() {
     getLocation();
     proID = widget.proID;
+    proname = widget.proname;
     super.initState();
   }
 
@@ -329,6 +333,7 @@ class _DetailsState extends State<Details> {
           'OrderFrom': user.uid,
           'Status': 'pending',
           'orderID': docId,
+          'proName': proname,
         }).then(
           (_) {
             Navigator.of(context).pushNamed('orderConfirm');

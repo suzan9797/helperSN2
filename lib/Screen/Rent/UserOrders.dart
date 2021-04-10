@@ -66,7 +66,8 @@ class _UserOrdersState extends State<UserOrders> {
                           color: Color(0xff6e475b),
                           alignment: Alignment.center,
                           child: Text(
-                            'Plumbing',
+                            proRequest.documents[i].data['Status'],
+                            //'Plumbing',
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w800,
@@ -84,7 +85,9 @@ class _UserOrdersState extends State<UserOrders> {
                               children: [
                                 Container(
                                   child: ListTile(
-                                    title: Text("professional name",
+                                    title: Text(
+                                        proRequest.documents[i].data['proName'],
+                                        //"professional name",
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w800,
@@ -174,7 +177,7 @@ class _UserOrdersState extends State<UserOrders> {
         Firestore.instance
             .collection('detilsPro')
             .where('OrderFrom', isEqualTo: user.uid)
-            .where('Status', isEqualTo: 'Acceptable')
+            //.where('Status', isEqualTo: 'Acceptable')
             .getDocuments()
             .then((value) {
           if (value.documents.isEmpty == true) {

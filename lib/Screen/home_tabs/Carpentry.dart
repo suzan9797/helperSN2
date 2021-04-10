@@ -121,8 +121,9 @@ class _CarpentryState extends State<Carpentry> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                          Details(proAccounts.documents[i].data['UserID'])));
+                      builder: (BuildContext context) => Details(
+                          proAccounts.documents[i].data['UserID'],
+                          proAccounts.documents[i].data['Full name'])));
 
               //Navigator.of(context).pushNamed('details');
             },
