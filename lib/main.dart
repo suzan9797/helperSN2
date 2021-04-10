@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/rendering.dart';
 import 'package:helper/Admin/homeAdmin.dart';
+import 'package:helper/Admin/proAdmin.dart';
+import 'package:helper/Admin/userAdmin.dart';
 import 'package:helper/Auth/JoinOptions.dart';
 import 'package:helper/Auth/ProRegister.dart';
 import 'package:helper/Screen/Rent/MyProducts.dart';
@@ -136,6 +138,12 @@ class MyApp extends StatelessWidget {
         },
         'Admin': (context) {
           return Admin();
+        },
+        "ProAdmin": (context) {
+          return ProAdmin();
+        },
+        "UsersAdmin": (context) {
+          return UsersAdmin();
         },
         'Addimage': (context) => Addimage(),
         'UserOrders': (context) => UserOrders(),

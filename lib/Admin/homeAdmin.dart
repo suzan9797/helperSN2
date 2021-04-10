@@ -10,8 +10,18 @@ class _AdminState extends State<Admin> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ADMIN'),
+        title: Text(
+          'Admin Home ',
+          style: TextStyle(
+              color: Color((0xff6e475b)),
+              fontSize: 22,
+              fontFamily: 'YuseiMagic',
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2),
+        ),
         centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0.0,
       ),
       body: Container(
         height: 350,
@@ -29,6 +39,7 @@ class _AdminState extends State<Admin> {
                       'Proffestion',
                       textAlign: TextAlign.center,
                       style: TextStyle(
+                        fontFamily: 'YuseiMagic',
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Color((0xff6e475b)),
@@ -37,7 +48,7 @@ class _AdminState extends State<Admin> {
                   ),
                 ),
                 onTap: () {
-                  //   Navigator.of(context).pushNamed("Carpentry");
+                  Navigator.of(context).pushNamed("ProAdmin");
                 },
               ),
               InkWell(
@@ -50,14 +61,16 @@ class _AdminState extends State<Admin> {
                       'Users',
                       textAlign: TextAlign.center,
                       style: TextStyle(
+                        fontFamily: 'YuseiMagic',
                         fontSize: 24,
+                        fontWeight: FontWeight.bold,
                         color: Color((0xff6e475b)),
                       ),
                     ),
                   ),
                 ),
                 onTap: () {
-                  //  Navigator.of(context).pushNamed("Grass");
+                  Navigator.of(context).pushNamed('UsersAdmin');
                 },
               ),
             ],
