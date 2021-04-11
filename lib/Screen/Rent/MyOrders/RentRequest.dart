@@ -9,6 +9,12 @@ class RentRequest extends StatefulWidget {
 
 class _RentRequestState extends State<RentRequest> {
   @override
+  void initState() {
+    getMyProducts();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     if (rentOrders == null) {
       return Center(child: Text('do not have any products')
@@ -26,9 +32,9 @@ class _RentRequestState extends State<RentRequest> {
                   child: Row(
                     children: [
                       Expanded(
-                        flex: 1,
-                        child: Image.asset('images/speaker.jpg'),
-                      ),
+                          flex: 1,
+                          child: Image.network(
+                              rentOrders.documents[i].data['image'])),
                       Expanded(
                         flex: 2,
                         child: Container(
@@ -40,7 +46,9 @@ class _RentRequestState extends State<RentRequest> {
                               children: [
                                 Container(
                                   margin: EdgeInsets.only(top: 30, left: 20),
-                                  child: Text("Productname",
+                                  child: Text(
+                                      rentOrders
+                                          .documents[i].data['productName'],
                                       style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w800,

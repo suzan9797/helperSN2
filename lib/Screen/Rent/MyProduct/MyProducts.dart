@@ -114,66 +114,6 @@ class _MyProductsState extends State<MyProducts> {
     }
   }
 
-  Widget renterRequests(BuildContext context) {
-    return
-        // Container(
-        //   height: 150,
-        //   padding: EdgeInsets.all(8.0),
-        //   child:
-        Column(
-      children: [
-        Card(
-            elevation: 10,
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Image.asset('images/speaker.jpg'),
-                ),
-                Expanded(
-                  flex: 3,
-                  child: Container(
-                      alignment: Alignment.topLeft,
-                      height: 130,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(top: 30, left: 20),
-                            child: Text("Product name",
-                                style: TextStyle(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w800,
-                                    color: Color(0xff6e475b))),
-                          ),
-                          ButtonBar(
-                            children: <Widget>[
-                              FlatButton(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 20, vertical: 10),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30)),
-                                color: Colors.grey,
-                                child: const Text(
-                                  'Cancel',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 14),
-                                ),
-                                onPressed: () {},
-                              ),
-                            ],
-                          ),
-                        ],
-                      )),
-                ),
-              ],
-            )),
-      ],
-      //),
-    );
-  }
-
   QuerySnapshot products;
   Future getMyProducts() async {
     try {

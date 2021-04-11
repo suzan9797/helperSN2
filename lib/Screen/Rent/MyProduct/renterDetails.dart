@@ -32,6 +32,19 @@ class _RenterDetailsState extends State<RenterDetails> {
     });
   }
 
+  // List<String> userName;
+  // Future getUserName(QuerySnapshot orders) async {
+  //   for (int i = 0; i < orders.documents.length; i) {
+  //     await Firestore.instance
+  //         .collection('Users')
+  //         .document(orders.documents[i].data['UserID'])
+  //         .get()
+  //         .then((value) {
+  //       userName.add(value.data['First name']);
+  //     });
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +61,7 @@ class _RenterDetailsState extends State<RenterDetails> {
         child: CircularProgressIndicator(),
       );
     } else {
+      //  getUserName(orderDetails);
       return ListView.builder(
           itemCount: orderDetails.documents.length,
           itemBuilder: (context, i) {
@@ -60,6 +74,7 @@ class _RenterDetailsState extends State<RenterDetails> {
                     ListTile(
                       title: Text('Name'),
                       subtitle: Text(
+                        // orderDetails.documents[i].data['First name'].toString(),
                         'name ',
                       ),
                       leading: Icon(Icons.person),
@@ -92,43 +107,6 @@ class _RenterDetailsState extends State<RenterDetails> {
                       ),
                       leading: Icon(Icons.location_on),
                     ),
-
-                    // Center(
-                    //   child: ButtonBar(
-                    //     children: <Widget>[
-                    //       FlatButton(
-                    //         shape: RoundedRectangleBorder(
-                    //             borderRadius: BorderRadius.circular(30)),
-                    //         color: Colors.red[900],
-                    //         child: const Text('Cancel '),
-                    //         onPressed: () {
-                    //           //if you want to cancel order.
-                    //           Firestore.instance
-                    //               .collection('detilsPro')
-                    //               .document(orderView.documents[i].documentID)
-                    //               .updateData({'Status': 'Canceled'}).then(
-                    //                   (value) => Navigator.of(context)
-                    //                       .pushNamed('order'));
-                    //         },
-                    //       ),
-                    //       FlatButton(
-                    //         shape: RoundedRectangleBorder(
-                    //             borderRadius: BorderRadius.circular(30)),
-                    //         color: Color(0xff6e475b),
-                    //         child: const Text('Accept'),
-                    //         onPressed: () {
-                    //           //if you want to accept order.
-                    //           Firestore.instance
-                    //               .collection('detilsPro')
-                    //               .document(orderView.documents[i].documentID)
-                    //               .updateData({'Status': 'Acceptable'}).then(
-                    //                   (value) => Navigator.of(context)
-                    //                       .pushNamed('order'));
-                    //         },
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
                   ],
                 ),
               ),
