@@ -40,7 +40,7 @@ class _RentRequestState extends State<RentRequest> {
                               children: [
                                 Container(
                                   margin: EdgeInsets.only(top: 30, left: 20),
-                                  child: Text("Product name",
+                                  child: Text("Productname",
                                       style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w800,

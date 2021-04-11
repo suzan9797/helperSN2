@@ -86,6 +86,7 @@ flutter:
       - images/orderconfirm.png
       - images/user.png
       - images/Worker.png
+      - images/box.png
   #   - images/a_dot_ham.jpeg
 
   fonts:

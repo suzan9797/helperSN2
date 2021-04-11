@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Admin extends StatefulWidget {
@@ -20,11 +21,20 @@ class _AdminState extends State<Admin> {
               letterSpacing: 2),
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 0.0,
+        backgroundColor: Colors.grey[400],
+        elevation: 10.0,
+        actions: [
+          IconButton(
+              icon: Icon(Icons.logout),
+              onPressed: () {
+                FirebaseAuth.instance
+                    .signOut()
+                    .then((value) => Navigator.of(context).pushNamed('Login'));
+              })
+        ],
       ),
       body: Container(
-        height: 350,
+        height: 800,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: GridView(
@@ -71,6 +81,28 @@ class _AdminState extends State<Admin> {
                 ),
                 onTap: () {
                   Navigator.of(context).pushNamed('UsersAdmin');
+                },
+              ),
+              InkWell(
+                child: GridTile(
+                  child: Image.asset(
+                    'images/box.png',
+                  ),
+                  footer: Container(
+                    child: Text(
+                      'Products',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'YuseiMagic',
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Color((0xff6e475b)),
+                      ),
+                    ),
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushNamed("productAdmin");
                 },
               ),
             ],

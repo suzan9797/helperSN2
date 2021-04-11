@@ -32,8 +32,8 @@ class _ProAdminState extends State<ProAdmin> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        // backgroundColor: Colors.white,
-
+        backgroundColor: Colors.grey[400],
+        elevation: 10.0,
         title: Text(
           'Proffestion',
           style: TextStyle(

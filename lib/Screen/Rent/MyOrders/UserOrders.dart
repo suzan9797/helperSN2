@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:helper/Screen/Rent/RentRequest.dart';
+import 'package:helper/Screen/Rent/MyOrders/RentRequest.dart';
 
 class UserOrders extends StatefulWidget {
   @override
@@ -63,7 +63,10 @@ class _UserOrdersState extends State<UserOrders> {
                         flex: 1,
                         child: Container(
                           height: 150,
-                          color: Color(0xff6e475b),
+                          color: proRequest.documents[i].data['Status'] ==
+                                  'Acceptable'
+                              ? Color(0xff6e475b)
+                              : Colors.red,
                           alignment: Alignment.center,
                           child: Text(
                             proRequest.documents[i].data['Status'],

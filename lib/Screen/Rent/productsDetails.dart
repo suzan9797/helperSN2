@@ -153,12 +153,17 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                         RaisedButton(
                           onPressed: () {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (BuildContext context) => RentIt(
-                                        productDetails
-                                            .documents[i].data['userID']
-                                            .toString())));
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) => RentIt(
+                                    productDetails.documents[i].data['userID']
+                                        .toString(),
+                                    productDetails
+                                        .documents[i].data['product name']
+                                        .toString(),
+                                    productDetails.documents[i].data['image']),
+                              ),
+                            );
 
                             //Navigator.of(context).pushNamed('RentIt');
                           },

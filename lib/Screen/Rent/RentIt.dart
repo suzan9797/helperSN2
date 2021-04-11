@@ -9,8 +9,12 @@ import 'package:geolocator/geolocator.dart' as prefix0;
 
 class RentIt extends StatefulWidget {
   String renterID;
-  RentIt(String renterID) {
+  String productName;
+  String image;
+  RentIt(String renterID, String productName, String image) {
     this.renterID = renterID;
+    this.productName = productName;
+    this.image = image;
   }
   @override
   _RentItState createState() => _RentItState();
@@ -41,10 +45,13 @@ class _RentItState extends State<RentIt> {
   }
 
   String renterID;
-
+  String productName;
+  String image;
   @override
   void initState() {
     renterID = widget.renterID;
+    productName = widget.productName;
+    image = widget.image;
     getLocation();
     super.initState();
   }
@@ -260,6 +267,8 @@ class _RentItState extends State<RentIt> {
     );
   }
 
+  final docId =
+      Firestore.instance.collection("RentOrders").document().documentID;
   void _addOrder() async {
     if (!_key.currentState.validate()) {
       setState(() {
@@ -271,13 +280,16 @@ class _RentItState extends State<RentIt> {
       });
 
       FirebaseAuth.instance.currentUser().then((user) {
-        Firestore.instance.collection("RentOrders").document().setData({
+        Firestore.instance.collection("RentOrders").document(docId).setData({
           'Date': dateSelected,
           'Time': timeSelected,
           'Location': userLocality,
           'Phone': phoneController.text,
           'userID': user.uid,
           'RenterId': renterID,
+          'image': image,
+          'productName': productName,
+          'OrderID': docId
         }).then((_) {
           Navigator.of(context).pop();
         });

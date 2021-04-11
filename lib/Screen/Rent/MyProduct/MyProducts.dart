@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:helper/Screen/Rent/MyProduct/RenterRequest.dart';
 
 class MyProducts extends StatefulWidget {
   @override
@@ -31,7 +32,7 @@ class _MyProductsState extends State<MyProducts> {
           ),
         ),
         body: TabBarView(
-          children: [myProducts(context), renterRequests(context)],
+          children: [myProducts(context), RenterRequst()],
         ),
       ),
     );
