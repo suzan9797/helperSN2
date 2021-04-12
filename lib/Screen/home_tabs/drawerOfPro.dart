@@ -100,19 +100,6 @@ class _DrawerProState extends State<DrawerPro> {
               Navigator.of(context).pushNamed(' ProProfile ');
             },
           ),
-          ListTile(
-            trailing: Icon(Icons.chevron_right, color: Colors.grey),
-            title: Text(
-              ('My reviews'),
-              style: TextStyle(fontSize: 18),
-            ),
-            leading: Icon(
-              Icons.star_half,
-              color: Color(0xff6e475b),
-              size: 25,
-            ),
-            onTap: () {},
-          ),
           isSignIn
               ? ListTile(
                   trailing: Icon(Icons.chevron_right, color: Colors.grey),

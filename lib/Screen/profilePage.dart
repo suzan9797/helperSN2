@@ -48,8 +48,13 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget profilesView(BuildContext context) {
     if (profileView == null) {
       return Center(
-        child: CircularProgressIndicator(),
-      );
+          child: Text(
+        ' You Dont not have User Accounts...',
+        style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Color((0xff6e475b))),
+      ));
     } else
       return ListView.builder(
           itemCount: profileView.documents.length,

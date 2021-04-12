@@ -87,6 +87,7 @@ flutter:
       - images/user.png
       - images/Worker.png
       - images/box.png
+      - images/boxs.png
   #   - images/a_dot_ham.jpeg
 
   fonts:

@@ -82,24 +82,25 @@ class _ElectricalState extends State<Electrical> {
                                   fontSize: 25,
                                 ),
                               ),
-                              //  Padding(
-                              //  padding: const EdgeInsets.all(8.0),
-                              // child: Row(
-                              // mainAxisAlignment: MainAxisAlignment.start,
-                              // crossAxisAlignment: CrossAxisAlignment.center,
-                              // children: <Widget>[
-                              //Padding(
-                              //padding: const EdgeInsets.all(8.0),
-                              // child: Text(
-                              //  '10 min away',
-                              // style: TextStyle(
-                              //    color: Colors.red,
-                              //   ),
-                              // ),
-                              //),
-                              //  ],
-                              // ),
-                              //  ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'I am ready to receive your Orders',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.blueGrey.shade600,
+                                            fontSize: 14),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                               //  Rating(
                               // (rating) {
                               // setState(() {

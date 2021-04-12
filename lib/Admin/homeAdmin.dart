@@ -34,79 +34,76 @@ class _AdminState extends State<Admin> {
         ],
       ),
       body: Container(
-        height: 800,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GridView(
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-            children: <Widget>[
-              InkWell(
-                child: GridTile(
-                  child: Image.asset('images/Worker.png'),
-                  footer: Container(
-                    child: Text(
-                      'Proffestion',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'YuseiMagic',
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Color((0xff6e475b)),
-                      ),
+        height: 900,
+        child: GridView(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 1, childAspectRatio: 2),
+          children: <Widget>[
+            InkWell(
+              child: GridTile(
+                child: Image.asset('images/Worker.png'),
+                footer: Container(
+                  child: Text(
+                    'Proffestion',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: 'YuseiMagic',
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Color((0xff6e475b)),
                     ),
                   ),
                 ),
-                onTap: () {
-                  Navigator.of(context).pushNamed("ProAdmin");
-                },
               ),
-              InkWell(
-                child: GridTile(
-                  child: Image.asset(
-                    'images/user.png',
-                  ),
-                  footer: Container(
-                    child: Text(
-                      'Users',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'YuseiMagic',
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Color((0xff6e475b)),
-                      ),
+              onTap: () {
+                Navigator.of(context).pushNamed("ProAdmin");
+              },
+            ),
+            InkWell(
+              child: GridTile(
+                child: Image.asset(
+                  'images/user.png',
+                ),
+                footer: Container(
+                  child: Text(
+                    'Users',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: 'YuseiMagic',
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Color((0xff6e475b)),
                     ),
                   ),
                 ),
-                onTap: () {
-                  Navigator.of(context).pushNamed('UsersAdmin');
-                },
               ),
-              InkWell(
-                child: GridTile(
-                  child: Image.asset(
-                    'images/box.png',
-                  ),
-                  footer: Container(
-                    child: Text(
-                      'Products',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'YuseiMagic',
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Color((0xff6e475b)),
-                      ),
+              onTap: () {
+                Navigator.of(context).pushNamed('UsersAdmin');
+              },
+            ),
+            InkWell(
+              child: GridTile(
+                child: Image.asset(
+                  'images/boxs.png',
+                ),
+                footer: Container(
+                  child: Text(
+                    'Products',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: 'YuseiMagic',
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color((0xff6e475b)),
                     ),
                   ),
                 ),
-                onTap: () {
-                  Navigator.of(context).pushNamed("productAdmin");
-                },
               ),
-            ],
-          ),
+              onTap: () {
+                Navigator.of(context).pushNamed("productAdmin");
+              },
+            ),
+          ],
         ),
       ),
     );
