@@ -104,7 +104,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
                       TextField(
                         controller: displayNameController,
                         decoration: InputDecoration(
-                            hintText: proData.documents[i].data['First name']
+                            hintText: proData.documents[i].data['Full name']
                                 .toString()),
                       )
                     ],

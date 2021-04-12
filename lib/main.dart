@@ -38,7 +38,6 @@ import 'Screen/home_tabs/painting.dart';
 import 'Screen/home_tabs/plumbing.dart';
 import 'Screen/home_tabs/viewOrder.dart';
 import 'Screen/profilePage.dart';
-import 'Screen/settings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -106,9 +105,7 @@ class MyApp extends StatelessWidget {
         // 'RentIt': (context) {
         //   return RentIt();
         // },
-        'Settings': (context) {
-          return Settings();
-        },
+
         'JoinOptions': (context) {
           return JoinOptions();
         },

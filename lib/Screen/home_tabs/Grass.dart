@@ -80,34 +80,34 @@ class _GrassState extends State<Grass> {
                                 style: TextStyle(
                                   color: Color(0xff925e78),
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 20,
+                                  fontSize: 30,
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        '10 min away',
-                                        style: TextStyle(
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Rating(
-                                (rating) {
-                                  setState(() {
-                                    _Rating = rating;
-                                  });
-                                },
-                              ),
+                              //  Padding(
+                              //  padding: const EdgeInsets.all(8.0),
+                              // child: Row(
+                              // mainAxisAlignment: MainAxisAlignment.start,
+                              // crossAxisAlignment: CrossAxisAlignment.center,
+                              // children: <Widget>[
+                              //Padding(
+                              //padding: const EdgeInsets.all(8.0),
+                              // child: Text(
+                              //  '10 min away',
+                              // style: TextStyle(
+                              //    color: Colors.red,
+                              //   ),
+                              // ),
+                              //),
+                              //  ],
+                              // ),
+                              //  ),
+                              //  Rating(
+                              // (rating) {
+                              // setState(() {
+                              //   _Rating = rating;
+//});
+                              //  },
+                              // ),
                             ],
                           ),
                         ),
