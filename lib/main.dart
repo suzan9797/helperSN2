@@ -146,7 +146,7 @@ class MyApp extends StatelessWidget {
         'Addimage': (context) => Addimage(),
         'UserOrders': (context) => UserOrders(),
         'MyProducts': (context) => MyProducts(),
-        'productAdmin': (context) => ProductAdmin()
+        'productAdmin': (context) => ProductAdmin(),
       },
       theme: AppTheme.appTheme,
       home: OnBoarding(),

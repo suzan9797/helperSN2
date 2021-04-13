@@ -61,57 +61,60 @@ class _RenterDetailsState extends State<RenterDetails> {
         child: CircularProgressIndicator(),
       );
     } else {
-      //  getUserName(orderDetails);
+      // getUserName(orderDetails);
+      // if (userName.length == orderDetails.documents.length) {
       return ListView.builder(
-          itemCount: orderDetails.documents.length,
-          itemBuilder: (context, i) {
-            return Card(
-              child: Container(
-                height: 400,
-                child: Column(
-                  children: <Widget>[
-                    Divider(),
-                    ListTile(
-                      title: Text('Name'),
-                      subtitle: Text(
-                        // orderDetails.documents[i].data['First name'].toString(),
-                        'name ',
-                      ),
-                      leading: Icon(Icons.person),
+        itemCount: orderDetails.documents.length,
+        itemBuilder: (context, i) {
+          return Card(
+            child: Container(
+              height: 400,
+              child: Column(
+                children: <Widget>[
+                  Divider(),
+                  ListTile(
+                    title: Text('Name'),
+                    subtitle: Text(
+                      // orderDetails.documents[i].data['First name'].toString(),
+                      'name ',
                     ),
-                    ListTile(
-                      title: Text('phone Number '),
-                      subtitle: Text(
-                        orderDetails.documents[i].data['Phone'].toString(),
-                      ),
-                      leading: Icon(Icons.call),
+                    leading: Icon(Icons.person),
+                  ),
+                  ListTile(
+                    title: Text('phone Number '),
+                    subtitle: Text(
+                      orderDetails.documents[i].data['Phone'].toString(),
                     ),
-                    ListTile(
-                      title: Text('Date'),
-                      subtitle: Text(
-                        orderDetails.documents[i].data['Date'].toString(),
-                      ),
-                      leading: Icon(Icons.date_range),
+                    leading: Icon(Icons.call),
+                  ),
+                  ListTile(
+                    title: Text('Date'),
+                    subtitle: Text(
+                      orderDetails.documents[i].data['Date'].toString(),
                     ),
-                    ListTile(
-                      title: Text('Time'),
-                      subtitle: Text(
-                        orderDetails.documents[i].data['Time'].toString(),
-                      ),
-                      leading: Icon(Icons.access_time),
+                    leading: Icon(Icons.date_range),
+                  ),
+                  ListTile(
+                    title: Text('Time'),
+                    subtitle: Text(
+                      orderDetails.documents[i].data['Time'].toString(),
                     ),
-                    ListTile(
-                      title: Text('Location '),
-                      subtitle: Text(
-                        orderDetails.documents[i].data['Location'].toString(),
-                      ),
-                      leading: Icon(Icons.location_on),
+                    leading: Icon(Icons.access_time),
+                  ),
+                  ListTile(
+                    title: Text('Location '),
+                    subtitle: Text(
+                      orderDetails.documents[i].data['Location'].toString(),
                     ),
-                  ],
-                ),
+                    leading: Icon(Icons.location_on),
+                  ),
+                ],
               ),
-            );
-          });
+            ),
+          );
+        },
+      );
     }
   }
 }
+//}
