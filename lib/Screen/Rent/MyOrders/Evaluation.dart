@@ -83,14 +83,14 @@ class _EvaluationState extends State<Evaluation> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 30),
+                      margin: EdgeInsets.only(top: 40),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           IconButton(
                               icon: Icon(
-                                Icons.star_rate,
-                                color: Colors.yellow,
+                                Icons.thumb_up,
+                                color: Color(0xff6e475b),
                                 size: 60,
                               ),
                               onPressed: () {
@@ -101,11 +101,11 @@ class _EvaluationState extends State<Evaluation> {
                                     .updateData({'Like': like});
                                 Navigator.pop(context);
                               }),
-                          SizedBox(width: 30),
+                          SizedBox(width: 50),
                           IconButton(
                               icon: Icon(
-                                Icons.clear,
-                                color: Colors.red[700],
+                                Icons.thumb_down,
+                                color: Colors.grey,
                                 size: 60,
                               ),
                               onPressed: () {

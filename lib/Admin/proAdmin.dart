@@ -83,7 +83,7 @@ class _ProAdminState extends State<ProAdmin> {
                                       .toString(),
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
-                                    color: Color(0xff925e78),
+                                    color: Color(0xff6e475b),
                                     fontWeight: FontWeight.w600,
                                     fontSize: 20,
                                   ),
@@ -93,7 +93,7 @@ class _ProAdminState extends State<ProAdmin> {
                                       .toString(),
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
-                                    color: Color(0xff925e78),
+                                    color: Color(0xff6e475b),
                                     fontWeight: FontWeight.w500,
                                     fontSize: 16,
                                   ),
@@ -101,20 +101,27 @@ class _ProAdminState extends State<ProAdmin> {
                                 SizedBox(height: 15),
                                 Row(
                                   children: [
+                                    Icon(
+                                      Icons.thumb_up,
+                                      color: Colors.green[800],
+                                    ),
+                                    SizedBox(width: 5),
                                     Text(
-                                      'Likes: ' +
-                                          proAccounts.documents[i].data['Like']
-                                              .toString(),
+                                      proAccounts.documents[i].data['Like']
+                                          .toString(),
                                       style: TextStyle(
                                           color: Colors.green[800],
                                           fontWeight: FontWeight.bold),
                                     ),
                                     SizedBox(width: 10),
+                                    Icon(
+                                      Icons.thumb_down,
+                                      color: Colors.red[800],
+                                    ),
+                                    SizedBox(width: 5),
                                     Text(
-                                      'Dislikes: ' +
-                                          proAccounts
-                                              .documents[i].data['Dislike']
-                                              .toString(),
+                                      proAccounts.documents[i].data['Dislike']
+                                          .toString(),
                                       style: TextStyle(
                                           color: Colors.red[800],
                                           fontWeight: FontWeight.bold),
