@@ -70,34 +70,14 @@ class _ProProfileState extends State<ProProfile> {
                         Stack(
                           children: <Widget>[
                             CircleAvatar(
-                              radius: 80,
-                              backgroundImage:
-                                  _image == null ? null : FileImage(_image),
-                            ),
-                            Positioned(
-                              bottom: 3,
-                              right: 2,
-                              child: GestureDetector(
-                                onTap: pickImage,
-                                child: Icon(
-                                  Icons.camera_alt,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            )
+                                radius: 80,
+                                backgroundImage:
+                                    AssetImage('images/proffession.png')),
                           ],
                         ),
                         SizedBox(
                           height: 10,
                         ),
-                        Builder(
-                          builder: (context) => RaisedButton(
-                            onPressed: () {
-                              uploadImage(context);
-                            },
-                            child: Text('Upload Image'),
-                          ),
-                        )
                       ],
                     ),
                   ),
@@ -194,48 +174,5 @@ class _ProProfileState extends State<ProProfile> {
               ],
             );
           });
-  }
-
-  void pickImage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
-
-    setState(() {
-      _image = image;
-    });
-  }
-
-  String imagURL;
-  void uploadImage(context) async {
-    try {
-      FirebaseStorage storage =
-          FirebaseStorage(storageBucket: 'gs://helper-4f669.appspot.com');
-      StorageReference ref = storage.ref().child(p.basename(_image.path));
-      StorageUploadTask storageUploadTask = ref.putFile(_image);
-      StorageTaskSnapshot taskSnapshot = await storageUploadTask.onComplete;
-      Scaffold.of(context).showSnackBar(SnackBar(
-        content: Text('success'),
-      ));
-      String _url = await taskSnapshot.ref.getDownloadURL();
-      setState(() {
-        imagURL = _url;
-      });
-      setViewprofile().then((val) {
-        Navigator.of(context).pop();
-      });
-    } catch (ex) {
-      Scaffold.of(context).showSnackBar(SnackBar(
-        content: Text(ex.message),
-      ));
-    }
-  }
-
-  Future setViewprofile() async {
-    await FirebaseAuth.instance.currentUser().then((user) async {
-      await Firestore.instance.collection('Users').document().updateData({
-        'profil Image': imagURL,
-      }).then((_) {
-        Navigator.of(context).pop();
-      });
-    });
   }
 }

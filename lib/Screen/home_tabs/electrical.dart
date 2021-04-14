@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:helper/Screen/home_tabs/rating.dart';
+
 import 'package:helper/Screen/home_tabs/details.dart';
 
 class Electrical extends StatefulWidget {
@@ -9,7 +9,6 @@ class Electrical extends StatefulWidget {
 }
 
 class _ElectricalState extends State<Electrical> {
-  int _Rating;
   QuerySnapshot proAccounts;
 
   @override

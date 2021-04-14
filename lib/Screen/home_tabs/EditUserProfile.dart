@@ -73,20 +73,16 @@ class _EditUserProfileState extends State<EditUserProfile> {
                           children: <Widget>[
                             CircleAvatar(
                               radius: 80,
-                              backgroundImage:
-                                  AssetImage('images/proffession.png'),
+                              backgroundImage: AssetImage('images/user.png'),
                             ),
-                            Positioned(
-                              bottom: 3,
-                              right: 2,
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Icon(
-                                  Icons.camera_alt,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            )
+                            //  Positioned(
+                            //  bottom: 3,
+                            // right: 2,
+                            //child: GestureDetector(
+                            // onTap: () {},
+                            // child: Icon(
+                            //  Icons.camera_alt,
+                            //  color: Colors.white,
                           ],
                         ),
                       ],
@@ -104,7 +100,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
                       TextField(
                         controller: displayNameController,
                         decoration: InputDecoration(
-                            hintText: proData.documents[i].data['Full name']
+                            hintText: proData.documents[i].data['First name']
                                 .toString()),
                       )
                     ],

@@ -154,7 +154,9 @@ class _OrdersState extends State<Orders> {
       Firestore.instance
           .collection('detilsPro')
           .where('AssignOrderTo', isEqualTo: user.uid)
-          // .where('Status', isEqualTo: 'pending')
+          //.where('Status', arrayContainsAny: ['pending', 'Acceptable'])
+          //.where('Status', isEqualTo: 'pending')
+
           //.orderBy('Date&Time', descending: true)
           .getDocuments()
           .then((value) {

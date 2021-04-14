@@ -55,14 +55,18 @@ class _DrawerProState extends State<DrawerPro> {
           UserAccountsDrawerHeader(
             accountName: isSignIn
                 ? Text(name,
-                    style:
-                        TextStyle(fontSize: 15.0, fontWeight: FontWeight.w500))
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'YuseiMagic'))
                 : Text(''),
             accountEmail: isSignIn
                 ? Text(
                     email,
-                    style:
-                        TextStyle(fontSize: 15.0, fontWeight: FontWeight.w300),
+                    style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w300,
+                        fontFamily: 'YuseiMagic'),
                   )
                 : Text(''),
             currentAccountPicture: CircleAvatar(

@@ -1,10 +1,9 @@
 import 'dart:io';
-import 'package:path/path.dart' as p;
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -73,33 +72,13 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: <Widget>[
                             CircleAvatar(
                               radius: 80,
-                              backgroundImage:
-                                  _image == null ? null : FileImage(_image),
+                              backgroundImage: AssetImage('images/user.png'),
                             ),
-                            Positioned(
-                              bottom: 3,
-                              right: 2,
-                              child: GestureDetector(
-                                onTap: pickImage,
-                                child: Icon(
-                                  Icons.camera_alt,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            )
                           ],
                         ),
                         SizedBox(
                           height: 10,
                         ),
-                        Builder(
-                          builder: (context) => RaisedButton(
-                            onPressed: () {
-                              uploadImage(context);
-                            },
-                            child: Text('Upload Image'),
-                          ),
-                        )
                       ],
                     ),
                   ),
@@ -180,34 +159,5 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             );
           });
-  }
-
-  void pickImage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
-
-    setState(() {
-      _image = image;
-    });
-  }
-
-  void uploadImage(context) async {
-    try {
-      FirebaseStorage storage =
-          FirebaseStorage(storageBucket: 'gs://helper-4f669.appspot.com');
-      StorageReference ref = storage.ref().child(p.basename(_image.path));
-      StorageUploadTask storageUploadTask = ref.putFile(_image);
-      StorageTaskSnapshot taskSnapshot = await storageUploadTask.onComplete;
-      Scaffold.of(context).showSnackBar(SnackBar(
-        content: Text('success'),
-      ));
-      String url = await taskSnapshot.ref.getDownloadURL();
-      setState(() {
-        _url = _url;
-      });
-    } catch (ex) {
-      Scaffold.of(context).showSnackBar(SnackBar(
-        content: Text(ex.message),
-      ));
-    }
   }
 }

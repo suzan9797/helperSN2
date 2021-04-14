@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:helper/Screen/home_tabs/rating.dart';
 
 import 'details.dart';
 
@@ -10,7 +9,6 @@ class Grass extends StatefulWidget {
 }
 
 class _GrassState extends State<Grass> {
-  int _Rating;
   QuerySnapshot proAccounts;
 
   @override

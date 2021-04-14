@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:helper/Screen/home_tabs/details.dart';
-import 'package:helper/Screen/home_tabs/rating.dart';
 
 class Plumbing extends StatefulWidget {
   @override
@@ -9,7 +8,6 @@ class Plumbing extends StatefulWidget {
 }
 
 class _PlumbingState extends State<Plumbing> {
-  int _Rating;
   QuerySnapshot proAccounts;
 
   @override

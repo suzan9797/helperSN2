@@ -11,6 +11,7 @@ class MyDrawer extends StatefulWidget {
 class _MyDrawerState extends State<MyDrawer> {
   var name;
   var email;
+  var image;
   FirebaseUser _user;
   bool isSignIn = false;
 
@@ -31,11 +32,13 @@ class _MyDrawerState extends State<MyDrawer> {
 
     name = preferences.getString('name');
     email = preferences.getString('email');
+    image = preferences.getString('image');
 
     if (name != null) {
       setState(() {
         name = preferences.getString('name');
         email = preferences.getString('email');
+        image = preferences.getString('image');
         isSignIn = true;
       });
     }
@@ -54,14 +57,16 @@ class _MyDrawerState extends State<MyDrawer> {
         children: [
           UserAccountsDrawerHeader(
             accountName: isSignIn
-                ? Text(name, style: TextStyle(fontSize: 18))
+                ? Text(name,
+                    style: TextStyle(fontSize: 20.0, fontFamily: 'YuseiMagic'))
                 : Text(''),
             accountEmail: isSignIn
-                ? Text(email, style: TextStyle(fontSize: 18))
+                ? Text(email,
+                    style: TextStyle(fontSize: 20.0, fontFamily: 'YuseiMagic'))
                 : Text(''),
             currentAccountPicture: CircleAvatar(
-              child: Icon(Icons.person, size: 40),
-              backgroundColor: Color(0xff925e78),
+              backgroundImage: AssetImage('images/user.png'),
+              maxRadius: 6,
             ),
             decoration: BoxDecoration(color: Color(0xff6e475b)),
           ),

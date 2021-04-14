@@ -76,17 +76,17 @@ class _EditProfileState extends State<EditProfile> {
                               backgroundImage:
                                   AssetImage('images/proffession.png'),
                             ),
-                            Positioned(
-                              bottom: 3,
-                              right: 2,
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Icon(
-                                  Icons.camera_alt,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            )
+                            //Positioned(
+                            // bottom: 3,
+                            // right: 2,
+                            //child: GestureDetector(
+                            //onTap: () {},
+                            //child: Icon(
+                            //  Icons.camera_alt,
+                            //  color: Colors.white,
+                            //  ),
+                            // ),
+                            // )
                           ],
                         ),
                       ],

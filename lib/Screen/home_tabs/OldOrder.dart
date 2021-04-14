@@ -38,7 +38,7 @@ class _OldOrderState extends State<OldOrder> {
   @override
   Widget build(BuildContext context) {
     if (oldOrders == null) {
-      return Center(child: CircularProgressIndicator());
+      return Center(child: Text('Dont not have any Old Orders...'));
     } else {
       return ListView.builder(
           itemCount: oldOrders.documents.length,
