@@ -28,6 +28,8 @@ class _ProRegisterState extends State<ProRegister> {
   bool isLoading = false;
   String error;
   String _role = 'Professional Account';
+  int like = 0;
+  int dislike = 0;
 
   String validFullName(String value) {
     if (value.isEmpty) {
@@ -81,7 +83,9 @@ class _ProRegisterState extends State<ProRegister> {
           'Email': _email.text,
           'Profession': valueSelect,
           'role': _role,
-          'UserID': result.user.uid
+          'UserID': result.user.uid,
+          'Like': like,
+          'Dislike': dislike,
         });
         Navigator.of(context).pushNamed('Login');
       }

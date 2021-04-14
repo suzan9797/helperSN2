@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:helper/Screen/Rent/MyOrders/Evaluation.dart';
 import 'package:helper/Screen/Rent/MyOrders/RentRequest.dart';
 
 class UserOrders extends StatefulWidget {
@@ -63,10 +64,7 @@ class _UserOrdersState extends State<UserOrders> {
                         flex: 1,
                         child: Container(
                           height: 150,
-                          color: proRequest.documents[i].data['Status'] ==
-                                  'Acceptable'
-                              ? Color(0xff6e475b)
-                              : Colors.red,
+                          color: Color(0xff6e475b),
                           alignment: Alignment.center,
                           child: Text(
                             proRequest.documents[i].data['Status'],
@@ -156,8 +154,14 @@ class _UserOrdersState extends State<UserOrders> {
                                                   .documents[i].documentID)
                                               .updateData({
                                             'Status': 'Done'
-                                          }).then((value) =>
-                                                  Navigator.of(context).pop());
+                                          }).then((value) => Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (BuildContext
+                                                              context) =>
+                                                          Evaluation(proRequest
+                                                              .documents[i]
+                                                              .data['AssignOrderTo']))));
                                         },
                                       ),
                                     ),
@@ -181,6 +185,7 @@ class _UserOrdersState extends State<UserOrders> {
             .collection('detilsPro')
             .where('OrderFrom', isEqualTo: user.uid)
             //.where('Status', isEqualTo: 'Acceptable')
+            //.where('Status', isEqualTo: 'pending')
             .getDocuments()
             .then((value) {
           if (value.documents.isEmpty == true) {

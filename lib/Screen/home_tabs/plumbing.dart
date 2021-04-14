@@ -101,13 +101,27 @@ class _PlumbingState extends State<Plumbing> {
                                   ],
                                 ),
                               ),
-                              //  Rating(
-                              // (rating) {
-                              // setState(() {
-                              //   _Rating = rating;
-//});
-                              //  },
-                              // ),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Likes: ' +
+                                        proAccounts.documents[i].data['Like']
+                                            .toString(),
+                                    style: TextStyle(
+                                        color: Colors.green[800],
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Text(
+                                    'Dislikes: ' +
+                                        proAccounts.documents[i].data['Dislike']
+                                            .toString(),
+                                    style: TextStyle(
+                                        color: Colors.red[800],
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ],
+                              ),
                             ],
                           ),
                         ),

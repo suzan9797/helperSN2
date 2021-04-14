@@ -98,28 +98,54 @@ class _ProAdminState extends State<ProAdmin> {
                                     fontSize: 16,
                                   ),
                                 ),
+                                SizedBox(height: 15),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Likes: ' +
+                                          proAccounts.documents[i].data['Like']
+                                              .toString(),
+                                      style: TextStyle(
+                                          color: Colors.green[800],
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(width: 10),
+                                    Text(
+                                      'Dislikes: ' +
+                                          proAccounts
+                                              .documents[i].data['Dislike']
+                                              .toString(),
+                                      style: TextStyle(
+                                          color: Colors.red[800],
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
                               ],
                             ),
                           ),
                         ),
                       ),
-                      FlatButton(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        color: Colors.red[900],
-                        child: const Text(
-                          'Delete',
-                          style: TextStyle(color: Colors.white, fontSize: 14),
+                      Container(
+                        margin: EdgeInsets.only(right: 10),
+                        child: FlatButton(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30)),
+                          color: Colors.red[900],
+                          child: const Text(
+                            'Delete',
+                            style: TextStyle(color: Colors.white, fontSize: 14),
+                          ),
+                          onPressed: () async {
+                            await Firestore.instance
+                                .collection("Users")
+                                .document(proAccounts.documents[i].documentID)
+                                .delete()
+                                .then((value) => Navigator.of(context).pop());
+                          },
                         ),
-                        onPressed: () async {
-                          await Firestore.instance
-                              .collection("Users")
-                              .document(proAccounts.documents[i].documentID)
-                              .delete()
-                              .then((value) => Navigator.of(context).pop());
-                        },
                       ),
                     ],
                   ),
