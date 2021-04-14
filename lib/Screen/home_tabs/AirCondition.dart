@@ -103,19 +103,27 @@ class _AirConditionState extends State<AirCondition> {
                               ),
                               Row(
                                 children: [
+                                  Icon(
+                                    Icons.thumb_up,
+                                    color: Colors.green[800],
+                                  ),
+                                  SizedBox(width: 5),
                                   Text(
-                                    'Likes: ' +
-                                        proAccounts.documents[i].data['Like']
-                                            .toString(),
+                                    proAccounts.documents[i].data['Like']
+                                        .toString(),
                                     style: TextStyle(
                                         color: Colors.green[800],
                                         fontWeight: FontWeight.bold),
                                   ),
                                   SizedBox(width: 10),
+                                  Icon(
+                                    Icons.thumb_down,
+                                    color: Colors.red[800],
+                                  ),
+                                  SizedBox(width: 5),
                                   Text(
-                                    'Dislikes: ' +
-                                        proAccounts.documents[i].data['Dislike']
-                                            .toString(),
+                                    proAccounts.documents[i].data['Dislike']
+                                        .toString(),
                                     style: TextStyle(
                                         color: Colors.red[800],
                                         fontWeight: FontWeight.bold),
