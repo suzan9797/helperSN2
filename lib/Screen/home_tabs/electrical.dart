@@ -77,7 +77,7 @@ class _ElectricalState extends State<Electrical> {
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Color(0xff925e78),
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontSize: 25,
                                 ),
                               ),
