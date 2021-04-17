@@ -61,12 +61,13 @@ class _ProProfileState extends State<ProProfile> {
               children: <Widget>[
                 Container(
                   color: Color(0xff6e475b),
-                  height: MediaQuery.of(context).size.height * 0.3,
+                  height: MediaQuery.of(context).size.height * 0.25,
                   width: double.infinity,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: <Widget>[
+                        SizedBox(height: 20),
                         Stack(
                           children: <Widget>[
                             CircleAvatar(
@@ -74,9 +75,6 @@ class _ProProfileState extends State<ProProfile> {
                                 backgroundImage:
                                     AssetImage('images/proffession.png')),
                           ],
-                        ),
-                        SizedBox(
-                          height: 10,
                         ),
                       ],
                     ),
@@ -98,9 +96,6 @@ class _ProProfileState extends State<ProProfile> {
                           ),
                         ),
                         Divider(),
-                        SizedBox(
-                          height: 0.25,
-                        ),
                         ListTile(
                           title: Text('  Email :'),
                           subtitle: Text(
@@ -111,13 +106,8 @@ class _ProProfileState extends State<ProProfile> {
                             Icons.email,
                             color: Color(0xff6e475b),
                           ),
-                          onTap: () {},
-                        ),
-                        SizedBox(
-                          height: 0.25,
                         ),
                         ListTile(
-                          // trailing: Icon(Icons.edit, color: Colors.grey),
                           title: Text('  User Name:'),
                           subtitle: Text(
                             profileView.documents[i].data['Full name']
@@ -128,12 +118,6 @@ class _ProProfileState extends State<ProProfile> {
                             Icons.edit_road,
                             color: Color(0xff6e475b),
                           ),
-                        ),
-                        SizedBox(
-                          height: 0.25,
-                        ),
-                        SizedBox(
-                          height: 0.25,
                         ),
                         ListTile(
                           title: Text(' Profession:'),
@@ -146,17 +130,35 @@ class _ProProfileState extends State<ProProfile> {
                             Icons.work_rounded,
                             color: Color(0xff6e475b),
                           ),
-                          onTap: () {},
                         ),
-                        SizedBox(
-                          height: 0.25,
+                        ListTile(
+                          title: Text(' Likes:'),
+                          subtitle: Text(
+                            profileView.documents[i].data['Like'].toString(),
+                            style: TextStyle(fontSize: 18.0),
+                          ),
+                          leading: Icon(
+                            Icons.thumb_up,
+                            color: Color(0xff6e475b),
+                          ),
                         ),
+                        ListTile(
+                          title: Text(' Disikes:'),
+                          subtitle: Text(
+                            profileView.documents[i].data['Dislike'].toString(),
+                            style: TextStyle(fontSize: 18.0),
+                          ),
+                          leading: Icon(
+                            Icons.thumb_down,
+                            color: Color(0xff6e475b),
+                          ),
+                        )
                       ],
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 109.0),
+                  padding: const EdgeInsets.only(top: 10.0),
                   child: RaisedButton(
                     child: Text(
                       'Edit Profile',
