@@ -32,6 +32,7 @@ class _DetailsState extends State<Details> {
   }
 
   GlobalKey<FormState> _key = new GlobalKey<FormState>();
+
   TextEditingController _detilsController = TextEditingController();
   bool _isLoading = false;
   TextEditingController phoneController = new TextEditingController();
@@ -308,7 +309,14 @@ class _DetailsState extends State<Details> {
 
   Widget _loading(BuildContext context) {
     return Center(
-      child: CircularProgressIndicator(),
+      child: Text(
+        'please signIn if you want to Orders...',
+        style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+            color: Color(0xff6e475b),
+            fontFamily: 'YuseiMagic'),
+      ),
     );
   }
 
@@ -323,6 +331,7 @@ class _DetailsState extends State<Details> {
       setState(() {
         _isLoading = true;
       });
+
       FirebaseAuth.instance.currentUser().then((user) {
         Firestore.instance.collection("detilsPro").document(docId).setData({
           'Description': _detilsController.text,

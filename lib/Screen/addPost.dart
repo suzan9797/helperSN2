@@ -187,7 +187,14 @@ class _AddPostState extends State<AddPost> {
 
   Widget _loading(BuildContext context) {
     return Center(
-      child: CircularProgressIndicator(),
+      child: Text(
+        'please signIn if you want to add product..',
+        style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            color: Color(0xff6e475b),
+            fontFamily: 'YuseiMagic'),
+      ),
     );
   }
 

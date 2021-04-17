@@ -263,7 +263,14 @@ class _RentItState extends State<RentIt> {
 
   Widget _loading(BuildContext context) {
     return Center(
-      child: CircularProgressIndicator(),
+      child: Text(
+        'please signIn if you want to renting...',
+        style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 17,
+            color: Color(0xff6e475b),
+            fontFamily: 'YuseiMagic'),
+      ),
     );
   }
 

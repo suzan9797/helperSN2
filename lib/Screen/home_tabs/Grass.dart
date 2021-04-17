@@ -77,7 +77,7 @@ class _GrassState extends State<Grass> {
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Color(0xff925e78),
-                                  fontWeight: FontWeight.w400,
+                                  fontWeight: FontWeight.w600,
                                   fontSize: 28,
                                 ),
                               ),
