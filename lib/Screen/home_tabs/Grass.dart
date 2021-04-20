@@ -90,7 +90,7 @@ class _GrassState extends State<Grass> {
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        'I am ready to receive your Orders',
+                                        'I am ready to receive your Order',
                                         style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             color: Colors.blueGrey.shade600,
