@@ -15,7 +15,6 @@ import 'package:helper/Screen/Rent/RentIt.dart';
 import 'package:helper/Screen/Rent/RentOther.dart';
 import 'package:helper/Screen/Rent/RentTools.dart';
 import 'package:helper/Screen/Rent/MyOrders/UserOrders.dart';
-import 'package:helper/Screen/Rent/add_image.dart';
 import 'package:helper/Screen/Rent/productsDetails.dart';
 import 'package:helper/Screen/addPost.dart';
 import 'package:helper/Screen/home_screen.dart';
@@ -143,7 +142,7 @@ class MyApp extends StatelessWidget {
         "UsersAdmin": (context) {
           return UsersAdmin();
         },
-        'Addimage': (context) => Addimage(),
+
         'UserOrders': (context) => UserOrders(),
         'MyProducts': (context) => MyProducts(),
         'productAdmin': (context) => ProductAdmin(),

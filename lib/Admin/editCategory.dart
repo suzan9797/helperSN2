@@ -117,8 +117,6 @@ class _EditCategoryState extends State<EditCategory> {
                                     .updateData({'category': categorySelect});
                                 Navigator.pushReplacementNamed(
                                     context, 'productAdmin');
-                                //Navigator.of(context).pushNamed("productAdmin");
-                                // Navigator.pop(context);
                               }
                             }),
                         SizedBox(width: 10),

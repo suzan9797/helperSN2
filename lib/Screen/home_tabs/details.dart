@@ -36,12 +36,20 @@ class _DetailsState extends State<Details> {
   TextEditingController _detilsController = TextEditingController();
   bool _isLoading = false;
   TextEditingController phoneController = new TextEditingController();
+
   String validPhone(String val) {
     if (val.isEmpty) {
       return "Phone number is required";
     }
     if (val.length != 10) {
       return "Enter valid phone";
+    }
+    return null;
+  }
+
+  String validDescription(String value) {
+    if (value.isEmpty) {
+      return "Description is required";
     }
     return null;
   }
@@ -88,8 +96,9 @@ class _DetailsState extends State<Details> {
   Widget _buildDescribtion() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: TextField(
+      child: TextFormField(
         controller: _detilsController,
+        validator: validDescription,
         decoration: InputDecoration(
           labelText: 'Enter your Describtion',
           border: OutlineInputBorder(
@@ -277,7 +286,7 @@ class _DetailsState extends State<Details> {
               color: Color(0xff6e475b),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 60),
+              padding: const EdgeInsets.only(top: 10),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
