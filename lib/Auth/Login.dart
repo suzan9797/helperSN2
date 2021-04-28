@@ -2,8 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:helper/Auth/reset.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:async';
 
 class Login extends StatefulWidget {
   @override
@@ -12,7 +14,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   //start form controller
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
   TextEditingController _email = new TextEditingController();
   TextEditingController _password = new TextEditingController();
 
@@ -91,9 +93,11 @@ class _LoginState extends State<Login> {
             }
           });
         } else {
-          print('Invalid email or password');
+          showInSnackBar('Invalid email or password');
         }
-      } catch (e) {
+      } on PlatformException catch (e) {
+        showInSnackBar('Invalid Email or Password');
+      } catch (s) {
         showInSnackBar('Invalid Email or Password');
       }
     }
