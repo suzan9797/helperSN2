@@ -24,6 +24,12 @@ class _UserOrdersState extends State<UserOrders> {
           appBar: AppBar(
             centerTitle: true,
             title: Text('My Orders'),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.of(context).pushNamed("home");
+              },
+            ),
             bottom: TabBar(
               indicatorColor: Colors.white,
               tabs: [
@@ -125,9 +131,8 @@ class _UserOrdersState extends State<UserOrders> {
                                               .collection('detilsPro')
                                               .document(proRequest
                                                   .documents[i].documentID)
-                                              .updateData({
-                                            'Status': 'Canceled'
-                                          }).then((value) =>
+                                              .delete()
+                                              .then((value) =>
                                                   Navigator.of(context).pop());
                                         },
                                       ),
@@ -152,16 +157,16 @@ class _UserOrdersState extends State<UserOrders> {
                                               .collection('detilsPro')
                                               .document(proRequest
                                                   .documents[i].documentID)
-                                              .updateData({
-                                            'Status': 'Done'
-                                          }).then((value) => Navigator.push(
+                                              .delete()
+                                              .then((value) => Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (BuildContext
                                                               context) =>
                                                           Evaluation(proRequest
-                                                              .documents[i]
-                                                              .data['AssignOrderTo']))));
+                                                                  .documents[i]
+                                                                  .data[
+                                                              'AssignOrderTo']))));
                                         },
                                       ),
                                     ),
@@ -184,7 +189,7 @@ class _UserOrdersState extends State<UserOrders> {
         Firestore.instance
             .collection('detilsPro')
             .where('OrderFrom', isEqualTo: user.uid)
-            //.where('Status', isEqualTo: 'Acceptable')
+
             //.where('Status', isEqualTo: 'pending')
             .getDocuments()
             .then((value) {

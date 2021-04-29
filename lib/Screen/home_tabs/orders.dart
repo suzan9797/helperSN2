@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:helper/Screen/home_tabs/OldOrder.dart';
 import 'package:helper/Screen/home_tabs/drawerOfPro.dart';
 import 'package:helper/Screen/home_tabs/viewOrder.dart';
 
@@ -17,45 +16,16 @@ class _OrdersState extends State<Orders> {
     super.initState();
   }
 
-//final orderID;
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xff6e475b),
-          centerTitle: true,
-          title: Text('Orders'),
-          bottom: TabBar(
-            indicatorColor: Colors.white,
-            tabs: [
-              Tab(
-                text: "New Requests ",
-                icon: Icon(
-                  Icons.assignment_sharp,
-                  color: Colors.white,
-                ),
-              ),
-              Tab(
-                text: "Old Requests",
-                icon: Icon(
-                  Icons.assignment_turned_in,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-        ),
-        drawer: DrawerPro(),
-        body: TabBarView(
-          children: <Widget>[
-            newRequest(context),
-            OldOrder(),
-            //oldRequest(context),
-          ],
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xff6e475b),
+        centerTitle: true,
+        title: Text('Orders'),
       ),
+      drawer: DrawerPro(),
+      body: newRequest(context),
     );
   }
 

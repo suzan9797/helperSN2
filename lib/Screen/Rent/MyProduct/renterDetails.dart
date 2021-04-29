@@ -32,19 +32,6 @@ class _RenterDetailsState extends State<RenterDetails> {
     });
   }
 
-  // List<String> userName;
-  // Future getUserName(QuerySnapshot orders) async {
-  //   for (int i = 0; i < orders.documents.length; i) {
-  //     await Firestore.instance
-  //         .collection('Users')
-  //         .document(orders.documents[i].data['UserID'])
-  //         .get()
-  //         .then((value) {
-  //       userName.add(value.data['First name']);
-  //     });
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,8 +48,6 @@ class _RenterDetailsState extends State<RenterDetails> {
         child: CircularProgressIndicator(),
       );
     } else {
-      // getUserName(orderDetails);
-      // if (userName.length == orderDetails.documents.length) {
       return ListView.builder(
         itemCount: orderDetails.documents.length,
         itemBuilder: (context, i) {
@@ -72,14 +57,7 @@ class _RenterDetailsState extends State<RenterDetails> {
               child: Column(
                 children: <Widget>[
                   Divider(),
-                  ListTile(
-                    title: Text('Name'),
-                    subtitle: Text(
-                      // orderDetails.documents[i].data['First name'].toString(),
-                      'name ',
-                    ),
-                    leading: Icon(Icons.person),
-                  ),
+                  SizedBox(height: 20),
                   ListTile(
                     title: Text('phone Number '),
                     subtitle: Text(
@@ -87,6 +65,7 @@ class _RenterDetailsState extends State<RenterDetails> {
                     ),
                     leading: Icon(Icons.call),
                   ),
+                  Divider(),
                   ListTile(
                     title: Text('Date'),
                     subtitle: Text(
@@ -94,6 +73,7 @@ class _RenterDetailsState extends State<RenterDetails> {
                     ),
                     leading: Icon(Icons.date_range),
                   ),
+                  Divider(),
                   ListTile(
                     title: Text('Time'),
                     subtitle: Text(
@@ -101,6 +81,7 @@ class _RenterDetailsState extends State<RenterDetails> {
                     ),
                     leading: Icon(Icons.access_time),
                   ),
+                  Divider(),
                   ListTile(
                     title: Text('Location '),
                     subtitle: Text(

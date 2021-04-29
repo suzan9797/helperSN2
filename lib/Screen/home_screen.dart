@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:helper/shared_Ui/navigation_drawer.dart';
-import 'home_tabs/Rental.dart';
+import 'Rent/Rental.dart';
 import 'home_tabs/Home_Maintence.dart';
 
 class HomeScreen extends StatefulWidget {

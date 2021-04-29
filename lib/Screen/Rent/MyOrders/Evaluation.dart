@@ -99,7 +99,8 @@ class _EvaluationState extends State<Evaluation> {
                                     .collection('Users')
                                     .document(proRating.documents[i].documentID)
                                     .updateData({'Like': like});
-                                Navigator.pop(context);
+                                Navigator.of(context).pushNamed('UserOrders');
+                                // Navigator.pop(context);
                               }),
                           SizedBox(width: 50),
                           IconButton(
@@ -114,7 +115,8 @@ class _EvaluationState extends State<Evaluation> {
                                     .collection('Users')
                                     .document(proRating.documents[i].documentID)
                                     .updateData({'Dislike': dislike});
-                                Navigator.pop(context);
+                                Navigator.of(context).pushNamed('UserOrders');
+                                //Navigator.pop(context);
                               }),
                         ],
                       ),

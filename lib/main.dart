@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/rendering.dart';
 import 'package:helper/Admin/homeAdmin.dart';
 import 'package:helper/Admin/proAdmin.dart';
 import 'package:helper/Admin/productAdmin.dart';
@@ -11,12 +9,10 @@ import 'package:helper/Screen/Rent/MyProduct/MyProducts.dart';
 import 'package:helper/Screen/Rent/RentElectronics.dart';
 import 'package:helper/Screen/Rent/RentGames.dart';
 import 'package:helper/Screen/Rent/RentHome.dart';
-import 'package:helper/Screen/Rent/RentIt.dart';
 import 'package:helper/Screen/Rent/RentOther.dart';
 import 'package:helper/Screen/Rent/RentTools.dart';
 import 'package:helper/Screen/Rent/MyOrders/UserOrders.dart';
-import 'package:helper/Screen/Rent/productsDetails.dart';
-import 'package:helper/Screen/addPost.dart';
+import 'package:helper/Screen/Rent/addPost.dart';
 import 'package:helper/Screen/home_screen.dart';
 import 'package:helper/Screen/home_tabs/AboutUs.dart';
 import 'package:helper/Screen/home_tabs/Carpentry.dart';
@@ -31,11 +27,9 @@ import 'Screen/OnBoarding.dart';
 import 'Auth/UserRegister.dart';
 import 'Screen/home_tabs/AirCondition.dart';
 import 'Screen/home_tabs/Grass.dart';
-import 'Screen/home_tabs/details.dart';
 import 'Screen/home_tabs/electrical.dart';
 import 'Screen/home_tabs/painting.dart';
 import 'Screen/home_tabs/plumbing.dart';
-import 'Screen/home_tabs/viewOrder.dart';
 import 'Screen/profilePage.dart';
 
 void main() async {
@@ -62,9 +56,6 @@ class MyApp extends StatelessWidget {
         'Carpentry': (context) {
           return Carpentry();
         },
-        // 'details': (context) {
-        //   return Details();
-        // },
         'electronic': (context) {
           return Electronics();
         },
@@ -98,13 +89,6 @@ class MyApp extends StatelessWidget {
         'ProfilePage ': (context) {
           return ProfilePage();
         },
-        // 'productsDetails': (context) {
-        //   return ProductsDetails();
-        // },
-        // 'RentIt': (context) {
-        //   return RentIt();
-        // },
-
         'JoinOptions': (context) {
           return JoinOptions();
         },
@@ -124,25 +108,12 @@ class MyApp extends StatelessWidget {
         'AboutUs': (context) {
           return AboutUs();
         },
-        ' ProProfile ': (context) {
-          return ProProfile();
-        },
-        ' EditProfile': (context) {
-          return EditProfile();
-        },
-        ' EditUserProfile': (context) {
-          return EditUserProfile();
-        },
-        'Admin': (context) {
-          return Admin();
-        },
-        "ProAdmin": (context) {
-          return ProAdmin();
-        },
-        "UsersAdmin": (context) {
-          return UsersAdmin();
-        },
-
+        ' ProProfile ': (context) => ProProfile(),
+        ' EditProfile': (context) => EditProfile(),
+        ' EditUserProfile': (context) => EditUserProfile(),
+        'Admin': (context) => Admin(),
+        "ProAdmin": (context) => ProAdmin(),
+        "UsersAdmin": (context) => UsersAdmin(),
         'UserOrders': (context) => UserOrders(),
         'MyProducts': (context) => MyProducts(),
         'productAdmin': (context) => ProductAdmin(),

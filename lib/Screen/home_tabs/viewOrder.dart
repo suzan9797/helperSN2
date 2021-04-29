@@ -99,9 +99,9 @@ class _ViewOrderState extends State<ViewOrder> {
                               Firestore.instance
                                   .collection('detilsPro')
                                   .document(orderView.documents[i].documentID)
-                                  .updateData({'Status': 'Canceled'}).then(
-                                      (value) => Navigator.of(context)
-                                          .pushNamed('order'));
+                                  .delete()
+                                  .then((value) =>
+                                      Navigator.of(context).pushNamed('order'));
                             },
                           ),
                           FlatButton(
