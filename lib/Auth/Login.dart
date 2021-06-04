@@ -338,16 +338,4 @@ class _LoginState extends State<Login> {
     }
     return SizedBox(height: 0);
   }
-
-  // Widget _errorMessage(BuildContext context) {
-  //   if (_error == null) {
-  //     return Container();
-  //   }
-  //   return Container(
-  //     child: Text(
-  //       _error,
-  //       style: TextStyle(color: Colors.red),
-  //     ),
-  //   );
-  // }
 }

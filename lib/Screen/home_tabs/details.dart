@@ -178,7 +178,7 @@ class _DetailsState extends State<Details> {
                         doneStyle: TextStyle(color: Colors.red),
                         itemStyle: TextStyle(color: Colors.black)),
                     showTitleActions: true,
-                    minTime: DateTime(2020, 1, 1),
+                    minTime: DateTime.now(),
                     maxTime: DateTime(2021, 10, 30), onConfirm: (date) {
                   print('confirm $date');
                   _date = '${date.day} / ${date.month} / ${date.year}  ' +

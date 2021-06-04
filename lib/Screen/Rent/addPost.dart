@@ -133,8 +133,6 @@ class _AddPostState extends State<AddPost> {
                         fontSize: 20,
                         fontWeight: FontWeight.bold))),
             Container(
-              //margin: EdgeInsets.only(left: 250),
-              //color: Colors.black,
               height: 120,
               width: 120,
               child: Center(
